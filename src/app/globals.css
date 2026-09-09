@@ -2,14 +2,40 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-en: var(--font-en);
+  --font-ar: var(--font-ar);
+  --font-inter: var(--font-inter);
+
+  --breakpoint-3xs:370px;
+  --breakpoint-2xs:414px;
+  --breakpoint-xs:428px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-2md:820px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+  --breakpoint-2xxl: 1680px;
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4xl: 2260px;
+
+  --color-main: #145048;
+  --color-secondary: #F3F3F3;
+  --color-text-secondary: #15131A;
+  --color-text-placeholder: #515151;
+  --color-text-disabled: #A4A4A4;
+
+  --text-1: 48px;
+  --text-2: 36px;
+  --text-3: 24px;
+  --text-4: 20px;
+  --text-5: 18px;
+  --text-6: 16px;
+
+  --leading-5:28px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +46,28 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: white;
 }
+
+
+.filter-teal {
+  transition: filter 0.3s ease;
+  filter: invert(51%) sepia(51%) saturate(393%) hue-rotate(132deg) brightness(72%) contrast(95%);
+}
+
+button{
+  cursor: pointer;
+}
+
+.animation-wrapper {
+    transition-property: opacity, transform, filter, background;
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+}
+
+.page-transition {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(12px);
+}
+

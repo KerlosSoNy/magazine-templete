@@ -1,7 +1,25 @@
-import type { NextConfig } from "next";
-
+import {NextConfig} from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
+ 
 const nextConfig: NextConfig = {
-  /* config options here */
+    images: {
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'plus.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tawq-cms.o-projects.org',
+      },
+    ],
+  },
 };
-
-export default nextConfig;
+ 
+const withNextIntl = createNextIntlPlugin();
+export default withNextIntl(nextConfig);

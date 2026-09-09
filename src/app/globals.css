@@ -24,18 +24,27 @@
 
   --color-main: #145048;
   --color-secondary: #F3F3F3;
+  --color-secondary-bg: #F3F3F3;
   --color-text-secondary: #15131A;
   --color-text-placeholder: #515151;
   --color-text-disabled: #A4A4A4;
 
-  --text-1: 48px;
+  --text-1: 64px;
   --text-2: 36px;
-  --text-3: 24px;
+  --text-3: 28px;
   --text-4: 20px;
   --text-5: 18px;
   --text-6: 16px;
+  --text-7: 14px;
 
+
+  --leading-1:72px;
+  --leading-2:40px;
+  --leading-3:28px;
+  --leading-4:20px;
   --leading-5:28px;
+  --leading-6:24px;
+  --leading-7:20px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -53,6 +62,16 @@ body {
 .filter-teal {
   transition: filter 0.3s ease;
   filter: invert(51%) sepia(51%) saturate(393%) hue-rotate(132deg) brightness(72%) contrast(95%);
+}
+
+img:focus {
+  outline: none;
+  border: none;
+}
+
+img:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 button{

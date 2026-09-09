@@ -17,7 +17,7 @@ export default function Popup({
     isOpen,
     onClose,
     children,
-    showCloseButton = true,
+    // showCloseButton = true,
     closeOnBackdropClick = true,
     animationKey = "popup-content",
 }: PopupProps) {
@@ -49,7 +49,6 @@ export default function Popup({
 
     return createPortal(
         <div
-            data-nav-bg="white"
             className="fixed inset-0 w-screen h-screen top-0 left-0 z-200 flex items-center justify-center bg-black/60 backdrop-blur-xl p-4"
             onMouseDown={(e) => {
                 if (closeOnBackdropClick && e.target === e.currentTarget) onClose();

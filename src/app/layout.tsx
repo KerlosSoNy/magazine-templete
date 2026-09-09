@@ -1,4 +1,5 @@
 import AnimationWrapper from '@/components/providers/AnimationWrapper';
+import { NavThemeProvider } from '@/components/providers/NavThemeProvider';
 import { NextIntlClientProvider } from 'next-intl';
 import './globals.css';
 import Footer from '@/components/organisims/footer/footer';
@@ -29,11 +30,13 @@ export default async function LocaleLayout({
       </head>
       <body suppressHydrationWarning className={locale === "ar" ? "font-ar" : "font-en"}>
         <NextIntlClientProvider>
-          <AnimationWrapper>
-            <Navbar />
-            {children}
-            <Footer />
-          </AnimationWrapper>
+          <NavThemeProvider>
+            <AnimationWrapper>
+              <Navbar />
+              {children}
+              <Footer />
+            </AnimationWrapper>
+          </NavThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

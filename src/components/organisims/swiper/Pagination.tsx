@@ -1,8 +1,11 @@
+import { useNavTheme } from '@/lib/hooks/useNavTheme';
 import React from 'react'
 
 export default function CoverFlowPagination({ slides, activeIndex, currentDisplay, totalDisplay }: { slides: React.ReactNode[], activeIndex: number, currentDisplay: string, totalDisplay: string }) {
+    const isWhite = useNavTheme();
+
     return (
-        <div className="absolute top-1/2 -translate-y-1/2 inset-e-40 z-30 flex flex-col items-center gap-8">
+        <div className={`${isWhite && "filter-teal"} absolute top-1/2 -translate-y-1/2 inset-e-40 z-30 flex flex-col items-center gap-8 `}>
             <span className="text-6 text-white">
                 {currentDisplay}
             </span>

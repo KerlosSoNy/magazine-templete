@@ -13,7 +13,7 @@ interface CheckboxFieldProps {
 function CheckIcon() {
     return (
         <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0.75 4.75L3.75 7.75L10.75 0.75" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M0.75 4.75L3.75 7.75L10.75 0.75" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     );
 }

@@ -12,9 +12,8 @@ export default function CoverFlowPagination({ slides, activeIndex, currentDispla
 
             <div className="flex flex-col items-start gap-6">
                 {slides.map((_, i) => (
-                    <button
+                    <div
                         key={i}
-                        type="button"
                         aria-label={`Go to slide ${i + 1}`}
                         aria-current={i === activeIndex}
                         className="group flex items-center justify-center p-1.5"
@@ -22,10 +21,10 @@ export default function CoverFlowPagination({ slides, activeIndex, currentDispla
                         <span
                             className={`block rounded-full transition-all duration-300 ${i === activeIndex
                                 ? 'w-9 h-0.5 rounded-full bg-white'
-                                : 'w-6 h-px bg-white/80 group-hover:bg-gray-600'
+                                : 'w-6 h-px bg-white/80 '
                                 }`}
                         />
-                    </button>
+                    </div>
                 ))}
             </div>
 

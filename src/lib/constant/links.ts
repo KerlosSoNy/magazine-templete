@@ -30,6 +30,6 @@ export const Links = [
     },
     {
         name: 'Contact',
-        href: '/contact'
+        href: '/contact-us'
     }
 ]

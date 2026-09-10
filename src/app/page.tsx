@@ -12,7 +12,7 @@ import Welcome from '@/components/pages/home/slides/welcome';
 
 export default async function HomePage() {
 
-  return <div className="w-full max-w-full overflow-hidden">
+  return <div className="hide-scrollbar w-full max-w-full overflow-hidden">
     <CoverflowSlider
       slides={[
         <HeroSection key='1' />,

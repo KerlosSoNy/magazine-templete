@@ -1,6 +1,5 @@
 "use client";
 
-import TransitionLink from "@/components/buttons/transitionsLink/TransitionLink";
 import { Links } from "@/lib/constant/links";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,12 +25,12 @@ export default function Footer() {
     return (
         <div
             ref={ref}
-            className={`bg-secondary flex flex-col justify-center gap-16 text-main w-full h-155.25 px-62.5 transition-all duration-700 ease-out ${isVisible
+            className={`relative z-20 bg-secondary flex flex-col justify-center gap-10 md:gap-16 text-main w-full py-12 xl:h-155.25 xl:py-0 px-6 2xs:px-8 md:px-12 lg:px-16 xl:px-25 3xl:px-62.5 transition-all duration-700 ease-out ${isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-100 opacity-0"
                 }`}
         >
-            <div className="flex flex-row items-start justify-between w-full">
+            <div className="flex flex-col md:flex-row items-start justify-between gap-10 md:gap-8 w-full">
                 <div className="flex flex-col gap-4">
                     <Image
                         src="/images/logos/logo-tele.png"
@@ -39,6 +38,7 @@ export default function Footer() {
                         width={278}
                         height={70}
                         loading="eager"
+                        className="w-40 2xs:w-48 md:w-69.5 h-auto"
                     />
                     <span className="text-5 max-w-101 mt-7">
                         At Minds Advisory, our commitment is to create enduring value by fostering partnerships that yield meaningful, long-term success
@@ -51,7 +51,7 @@ export default function Footer() {
                             {
                                 Links?.slice(0, 5).map((link, index) => {
                                     return (
-                                        <Link href={link?.href} key={index} className="text-6 w-[163.5px] text-text-placeholder hover:text-main transition-colors">
+                                        <Link href={link?.href} key={index} className="text-6 w-full max-w-41 text-text-placeholder hover:text-main transition-colors">
                                             {link?.name}
                                         </Link>
                                     )
@@ -62,7 +62,7 @@ export default function Footer() {
                             {
                                 Links?.slice(5, 8).map((link, index) => {
                                     return (
-                                        <Link href={link?.href} key={index} className="text-6 w-[163.5px] text-text-placeholder hover:text-main transition-colors">
+                                        <Link href={link?.href} key={index} className="text-6 w-full max-w-41 text-text-placeholder hover:text-main transition-colors">
                                             {link?.name}
                                         </Link>
                                     )
@@ -92,7 +92,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="w-full h-px bg-[#D2D2D2]" />
-            <span className="text-6 text-text-disabled mx-auto">© 2024 Minds Advisory. All rights reserved.</span>
+            <span className="text-6 text-text-disabled mx-auto text-center">© 2024 Minds Advisory. All rights reserved.</span>
         </div>
     );
 }

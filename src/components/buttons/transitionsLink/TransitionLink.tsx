@@ -12,12 +12,13 @@ interface Props {
         name: string,
         href: string
     }
+    pathname?: string
     image?: boolean
     children?: React.ReactNode
     onclick?: () => void;
 }
 
-const TransitionLink: FC<Props> = ({ active, link, children, onclick }) => {
+const TransitionLink: FC<Props> = ({ active, link, children, onclick, pathname }) => {
     const transition = usePageTransition()
     const isWhiteBg = useNavTheme();
 
@@ -35,10 +36,10 @@ const TransitionLink: FC<Props> = ({ active, link, children, onclick }) => {
         }}
             href={link.href}
             className={cn(
-                "text-white! font-inter font-normal relative no-focus-ring uppercase text-6 3xl:text-5",
+                "text-white! font-inter font-normal relative no-focus-ring uppercase text-7 3xl:text-5",
                 {
                     "text-white! ": active,
-                    "filter-teal ": (isWhiteBg && active),
+                    "text-black!": (isWhiteBg && active) || pathname !== "/",
                     "text-text-secondary!": isWhiteBg
                 }
             )}

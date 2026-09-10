@@ -1,9 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import TransitionLink from "@/components/buttons/transitionsLink/TransitionLink";
+import LanguageSwitcher from "@/components/buttons/changeLanguage/LanguageSwitcher";
 import { Links } from "@/lib/constant/links";
+import { useNavTheme } from "@/lib/hooks/useNavTheme";
+import { MenuIcon } from "@/components/icons/menuIcon";
+import { cn } from "@/lib/functions/utils";
+import MobileMenu from "./mobileMenu";
 
 const listVariants = {
     hidden: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
@@ -15,59 +21,76 @@ const itemVariants = {
     visible: { opacity: 1, x: 0 },
 };
 
+
 export default function NavbarMenu() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const isDark = useNavTheme();
+    const pathname = usePathname();
+    const isHome = pathname === "/";
+    const showLinks = isHome ? isOpen : true;
 
     return (
         <div className="relative flex flex-row items-center">
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.ul
-                        initial="hidden"
-                        animate="visible"
-                        exit="hidden"
-                        variants={listVariants}
-                        className="flex flex-row-reverse items-center gap-6 me-6"
-                    >
-                        {Links.slice().reverse().map((link, index) => (
+            <div className="hidden xl:flex xl:flex-row xl:items-center">
+                <AnimatePresence>
+                    {showLinks && (
+                        <motion.ul
+                            initial={isHome ? "hidden" : false}
+                            animate="visible"
+                            exit="hidden"
+                            variants={listVariants}
+                            className="flex flex-row-reverse items-center gap-3 2xl:gap-6 me-6"
+                        >
                             <motion.li
-                                key={link.href ?? index}
                                 variants={itemVariants}
                                 transition={{ duration: 0.3, ease: "easeOut" }}
                                 className="list-none whitespace-nowrap"
                             >
-                                <TransitionLink link={link} />
+                                <LanguageSwitcher />
                             </motion.li>
-                        ))}
-                    </motion.ul>
-                )}
-            </AnimatePresence>
+                            {Links.slice().reverse().map((link, index) => (
+                                <motion.li
+                                    key={link.href ?? index}
+                                    variants={itemVariants}
+                                    transition={{ duration: 0.3, ease: "easeOut" }}
+                                    className="list-none whitespace-nowrap"
+                                >
+                                    <TransitionLink pathname={pathname} link={link} />
+                                </motion.li>
+                            ))}
+                        </motion.ul>
+                    )}
+                </AnimatePresence>
 
-            <div
-                className="flex flex-row items-center gap-3 me-6 cursor-pointer select-none"
-                onClick={() => setIsOpen((prev) => !prev)}
-            >
-                <span className="text-white text-5">Menu</span>
-                <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="transition-transform duration-300"
-                    style={{ transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
-                >
-                    <g clipPath="url(#clip0_9_2192)">
-                        <rect width="24" height="2" transform="translate(24 16.2783) rotate(-180)" fill="white" />
-                        <rect width="16" height="2" transform="translate(8.19336 9)" fill="white" />
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_9_2192">
-                            <rect width="24" height="24" fill="white" />
-                        </clipPath>
-                    </defs>
-                </svg>
+                {isHome && (
+                    <div
+                        className={`flex flex-row items-center gap-3 me-6 cursor-pointer select-none ${(isDark || pathname !== "/") && "filter-teal"}`}
+                        onClick={() => setIsOpen((prev) => !prev)}
+                    >
+                        <span className="text-white text-5">Menu</span>
+                        <MenuIcon isOpen={isOpen} />
+                    </div>
+                )}
             </div>
+
+            <button
+                type="button"
+                aria-label="Open menu"
+                onClick={() => setIsDrawerOpen(true)}
+                className={cn(
+                    "flex h-10 w-10 items-center justify-center xl:hidden",
+                    (isDark || pathname !== "/") ? "text-text-secondary" : "text-white"
+                )}
+            >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M4 7H20" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+                    <path d="M4 12H20" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+                    <path d="M4 17H20" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+                </svg>
+            </button>
+
+            <MobileMenu isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
         </div>
     );
 }

@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';
 import AnimationWrapper from '@/components/providers/AnimationWrapper';
 import { NavThemeProvider } from '@/components/providers/NavThemeProvider';
 import { NextIntlClientProvider } from 'next-intl';
@@ -5,6 +6,7 @@ import './globals.css';
 import Footer from '@/components/organisims/footer/footer';
 import Navbar from '@/components/organisims/navbar/navbar';
 import { inter, namian, notoKufiArabic } from '@/lib/fonts/fonts';
+import { resolveLocale } from '@/lib/i18n/locale';
 
 const metadata = {
   title: 'Minds Advisor',
@@ -13,11 +15,12 @@ const metadata = {
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
 }: {
   children: React.ReactNode;
-  params: { locale: string };
 }) {
+  const store = await cookies();
+  const locale = resolveLocale(store.get('locale')?.value);
+
   return (
     <html
       lang={locale}

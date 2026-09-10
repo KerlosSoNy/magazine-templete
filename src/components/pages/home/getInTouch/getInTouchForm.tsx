@@ -3,7 +3,7 @@
 import DarkField from "@/components/inputs/darkInput";
 import { getInTouchSchema } from "@/lib/validation/getInTouchValidation";
 import { useFormik } from "formik";
-import { EmailIcon } from "../icons/getInTouch";
+import { EmailIcon } from "../../../icons/getInTouch";
 
 interface FormValues {
     fullName: string;

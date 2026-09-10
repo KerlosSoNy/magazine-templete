@@ -31,7 +31,7 @@ export default function TextField({
             {label && <label htmlFor={name} className="sr-only">
                 {label}
             </label>}
-            <div className={`relative h-14 max-h-14 rounded-lg  border flex items-center ${icon ? "pl-15" : "pl-6"} pe-6 ${error ? "border-red-500" : "border-text-disabled"}`}>
+            <div className={`relative h-14 max-h-14 rounded-lg  border flex items-center bg-white ${icon ? "pl-15" : "pl-6"} pe-6 ${error ? "border-red-500" : "border-text-disabled"}`}>
                 <div className="absolute top-1/2 -translate-y-1/2 inset-s-6">
                     {icon}
                 </div>

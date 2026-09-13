@@ -7,10 +7,16 @@ import Footer from '@/components/organisims/footer/footer';
 import Navbar from '@/components/organisims/navbar/navbar';
 import { inter, namian, notoKufiArabic } from '@/lib/fonts/fonts';
 import { resolveLocale } from '@/lib/i18n/locale';
+import { Viewport } from 'next';
 
 const metadata = {
   title: 'Minds Advisor',
   description: 'Minds Advisor',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default async function LocaleLayout({

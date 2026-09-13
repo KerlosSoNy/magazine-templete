@@ -19,62 +19,75 @@ export function NavThemeProvider({
   const pathname = usePathname();
 
   useEffect(() => {
-    const sections = document.querySelectorAll<HTMLElement>(
-      '[data-nav-bg]'
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-nav-bg]')
     );
 
     if (!sections.length) return;
 
     const updateTheme = () => {
-      const navbarOffset = 80;
+      const navbarOffset = 20;
 
       let activeSection: HTMLElement | null = null;
 
-      sections.forEach((section) => {
+      // First: find the section directly underneath the navbar
+      for (const section of sections) {
         const rect = section.getBoundingClientRect();
 
-        if (
-          rect.top <= navbarOffset &&
-          rect.bottom > navbarOffset
-        ) {
+        if (rect.top <= navbarOffset && rect.bottom > navbarOffset) {
           activeSection = section;
+          break;
         }
-      });
-      // @ts-expect-error type missing
-      const shouldBeWhite = activeSection?.getAttribute('data-nav-bg') === 'white';
+      }
 
-      setIsWhiteBg((current) => {
-        if (current === shouldBeWhite) {
-          return current;
+      // Fallback: find the section closest to the navbar
+      if (!activeSection) {
+        let closestDistance = Infinity;
+
+        for (const section of sections) {
+          const rect = section.getBoundingClientRect();
+
+          const distance = Math.abs(rect.top - navbarOffset);
+
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            activeSection = section;
+          }
         }
+      }
 
-        return shouldBeWhite;
+      const shouldBeWhite =
+        activeSection?.dataset.navBg === 'white';
+
+      setIsWhiteBg((current) =>
+        current === shouldBeWhite ? current : shouldBeWhite
+      );
+    };
+
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (ticking) return;
+
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        updateTheme();
+        ticking = false;
       });
     };
 
-    const observer = new IntersectionObserver(
-      () => {
-        requestAnimationFrame(updateTheme);
-      },
-      {
-        rootMargin: '-80px 0px -80% 0px',
-        threshold: [0, 0.1, 0.5, 1],
-      }
-    );
-
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-
-    window.addEventListener('scroll', updateTheme, {
+    window.addEventListener('scroll', handleScroll, {
       passive: true,
     });
 
-    requestAnimationFrame(updateTheme);
+    window.addEventListener('resize', updateTheme);
+
+    updateTheme();
 
     return () => {
-      observer.disconnect();
-      window.removeEventListener('scroll', updateTheme);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateTheme);
     };
   }, [pathname]);
 

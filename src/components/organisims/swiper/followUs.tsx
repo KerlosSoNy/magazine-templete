@@ -28,7 +28,7 @@ const SOCIALS = [
 export default function FollowUs() {
     const isWhite = useNavTheme();
     return (
-        <div className={`absolute top-1/2 -translate-y-1/2 inset-s-40 z-30 flex flex-col items-center gap-4 ${isWhite && "filter-teal"}`}>
+        <div className={`absolute top-1/2 -translate-y-1/2 inset-s-5 xl:inset-s-10 3xl:inset-s-40 z-30 hidden md:flex flex-col items-center gap-4 ${isWhite && "filter-teal"}`}>
             <div className="flex flex-col items-center gap-5">
                 {SOCIALS.map((social, index) => (
                     <a

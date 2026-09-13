@@ -1,63 +1,122 @@
 'use client'
+
+import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { dummyData } from './dummy'
-import { cardVariants, contentVariants, descriptionVariants } from './variants'
+import {
+    cardVariants,
+    contentVariants,
+    descriptionVariants,
+} from './variants'
 import GenericButton from '@/components/buttons/genericButton'
 
 export default function DiscoverCards() {
-    return (
-        <div className="max-w-350.25 w-350.25 h-121 flex mt-14 overflow-hidden">
-            {
-                dummyData?.map((item, index: number) => {
+    const [activeIndex, setActiveIndex] = useState<number | null>(null)
+    const containerRef = useRef<HTMLDivElement>(null)
 
-                    return (
+    useEffect(() => {
+        function handleOutsideClick(e: MouseEvent | TouchEvent) {
+            if (
+                containerRef.current &&
+                !containerRef.current.contains(e.target as Node)
+            ) {
+                setActiveIndex(null)
+            }
+        }
+
+        document.addEventListener('mousedown', handleOutsideClick)
+        document.addEventListener('touchstart', handleOutsideClick)
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick)
+            document.removeEventListener('touchstart', handleOutsideClick)
+        }
+    }, [])
+
+    return (
+        <div
+            ref={containerRef}
+            className="container mt-10  h-fit  overflow-hidden lg:mt-14 flex-wrap lg:flex-nowrap grid grid-cols-2 lg:flex lg:h-90 3xl:h-121"
+        >
+            {dummyData?.map((item, index) => {
+                const isActive = activeIndex === index
+
+                return (
+                    <motion.div
+                        key={item.title + ' - ' + index}
+                        initial="rest"
+                        whileHover="hover"
+                        animate={isActive ? 'hover' : 'rest'}
+                        variants={cardVariants}
+                        transition={{
+                            duration: 0.5,
+                            ease: 'easeInOut',
+                        }}
+                        onClick={() =>
+                            setActiveIndex(index)
+                        }
+                        className={`
+                            relative h-60 cursor-pointer overflow-hidden
+                            lg:h-full lg:shrink-0
+                        `}
+                        style={{
+                            flexBasis: 0,
+                        }}
+                    >
+                        <Image
+                            fill
+                            src={item.image}
+                            alt={item.title}
+                            className="object-cover"
+                        />
+
+                        <div className="absolute top-0 h-full w-full cursor-pointer bg-text-secondary opacity-60" />
+
                         <motion.div
-                            key={index}
-                            initial="rest"
-                            whileHover="hover"
-                            animate="rest"
-                            variants={cardVariants}
-                            transition={{ duration: 0.5, ease: 'easeInOut' }}
-                            className="relative h-full group shrink-0 overflow-hidden"
-                            style={{ flexBasis: 0 }}
+                            variants={contentVariants}
+                            transition={{
+                                duration: 0.5,
+                                ease: 'easeInOut',
+                            }}
+                            className="absolute inset-0 top-1/2 z-10 flex h-fit w-full -translate-y-1/2 flex-col items-center p-2 text-white 2xl:p-6"
                         >
-                            <Image
-                                fill
-                                src={item.image}
-                                alt={item.title}
-                                className="object-cover"
-                            />
-                            <div className="w-full h-full bg-text-secondary cursor-pointer opacity-60 absolute top-0" />
+                            <div className="mb-2">{item.icon}</div>
+
+                            <h3 className="text-2 font-bold text-white">
+                                {item.title}
+                            </h3>
+
+                            <motion.p
+                                variants={descriptionVariants}
+                                transition={{
+                                    duration: 1.8,
+                                    ease: 'easeInOut',
+                                }}
+                                className="mt-2 text-center text-7 md:text-5 leading-7 md:leading-5 text-white"
+                            >
+                                {item.description}
+                            </motion.p>
 
                             <motion.div
-                                variants={contentVariants}
-                                transition={{ duration: 0.5, ease: 'easeInOut' }}
-                                className="absolute inset-0 w-full h-fit top-1/2 -translate-y-1/2 flex flex-col items-center p-6 z-10 text-white"
+                                variants={descriptionVariants}
+                                transition={{
+                                    duration: 1.8,
+                                    ease: 'easeInOut',
+                                }}
+                                className="mt-4 text-center text-5 leading-5 text-white"
                             >
-                                <div className="mb-2">{item.icon}</div>
-                                <h3 className="text-2 font-bold text-white">{item.title}</h3>
-                                <motion.p
-                                    variants={descriptionVariants}
-                                    transition={{ duration: 1.8, ease: 'easeInOut' }}
-                                    className="text-5 text-white leading-5 text-center mt-2"
-                                >
-                                    {item.description}
-                                </motion.p>
-                                <motion.div
-                                    key={"button-" + index}
-                                    variants={descriptionVariants}
-                                    transition={{ duration: 1.8, ease: 'easeInOut' }}
-                                    className="text-5 text-white leading-5 text-center mt-4"
-                                >
-                                    <GenericButton withoutBg title={'Discover More'} />
-                                </motion.div>
-
+                                <GenericButton
+                                    svgColor="stroke-white"
+                                    titleClasses="text-white!"
+                                    withoutBg
+                                    title="Discover More"
+                                />
                             </motion.div>
                         </motion.div>
-                    )
-                })
-            }
+                    </motion.div>
+                )
+            })}
         </div>
     )
 }

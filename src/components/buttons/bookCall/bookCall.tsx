@@ -8,7 +8,7 @@ export default function BookCall() {
     return (
         <div className="shrink-0">
             <button
-                className="flex items-center shrink-0 text-6 2xl:text-5 text-white font-bold rounded-lg font-inter justify-between gap-2 px-4 h-12 2xl:h-14 bg-main"
+                className="flex items-center shrink-0 text-6 3xl:text-5 text-white font-bold rounded-lg font-inter justify-between gap-2 px-4 h-12 3xl:h-14 bg-main"
                 onClick={() => setIsOpen(true)}
             >
                 <svg className="2xl:w-6 w-4 " width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

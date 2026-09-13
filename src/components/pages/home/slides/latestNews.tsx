@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import NewsCard from "../cards/news/NewsCard"
 import { latestNews } from "../cards/news/dummy"
@@ -16,7 +16,11 @@ const ArrowRight = () => (
     </svg>
 )
 
-const VISIBLE = 3
+const VISIBLE_DESKTOP = 3
+const VISIBLE_MOBILE = 2
+const VISIBLE_SMALLMOBILE = 1
+const MOBILE_BREAKPOINT = 1024
+const SMALLMOBILE_BREAKPOINT = 640
 
 const cardVariants = {
     initial: (direction: number) => ({ opacity: 0, x: direction >= 0 ? 32 : -32 }),
@@ -24,9 +28,39 @@ const cardVariants = {
     exit: (direction: number) => ({ opacity: 0, x: direction >= 0 ? -32 : 32 }),
 }
 
+function useVisibleCount() {
+    const [count, setCount] = useState(VISIBLE_DESKTOP)
+
+    useEffect(() => {
+        const mobileMql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
+        const smallMobileMql = window.matchMedia(`(max-width: ${SMALLMOBILE_BREAKPOINT - 1}px)`)
+
+        const update = () => {
+            if (smallMobileMql.matches) {
+                setCount(VISIBLE_SMALLMOBILE)
+            } else if (mobileMql.matches) {
+                setCount(VISIBLE_MOBILE)
+            } else {
+                setCount(VISIBLE_DESKTOP)
+            }
+        }
+
+        update()
+        mobileMql.addEventListener("change", update)
+        smallMobileMql.addEventListener("change", update)
+        return () => {
+            mobileMql.removeEventListener("change", update)
+            smallMobileMql.removeEventListener("change", update)
+        }
+    }, [])
+
+    return count
+}
+
 export default function LatestNews() {
     const total = latestNews.length
     const [[index, direction], setIndex] = useState<[number, number]>([0, 0])
+    const VISIBLE = useVisibleCount()
 
     const step = (dir: 1 | -1) => {
         setIndex(([current]) => [(((current + dir) % total) + total) % total, dir])
@@ -38,13 +72,16 @@ export default function LatestNews() {
         return { ...latestNews[dataIndex], dataIndex }
     })
 
+    const gridColsClass =
+        visibleCount <= 1 ? "grid-cols-1" : visibleCount === 2 ? "grid-cols-3" : "grid-cols-4"
+
     return (
-        <div className="w-screen h-screen overflow-hidden flex items-center justify-center" data-nav-bg="white">
-            <div className="max-w-355.5 w-355.5 flex flex-col">
-                <div className="flex items-center justify-between">
+        <div className="w-screen h-fit pb-10 lg:pb-0 lg:h-screen overflow-hidden flex items-center justify-center pt-10 3xl:pt-0" data-nav-bg="white">
+            <div className="container flex flex-col">
+                <div className="flex items-center justify-between px-4 md:px-0">
                     <div className="flex flex-col items-start">
-                        <span className="text-5 text-text-placeholder">News & Insight</span>
-                        <h2 className="text-1 font-bold leading-1 text-text-secondary mt-4">
+                        <span className="text-7 3xl:text-5 text-text-placeholder">News & Insight</span>
+                        <h2 className="text-3 3xl:text-1 font-bold leading-3 3xl:leading-1 text-text-secondary mt-2 3xl:mt-4">
                             Latest News & <span className="text-main">Announcement</span>
                         </h2>
                     </div>
@@ -53,7 +90,7 @@ export default function LatestNews() {
                             type="button"
                             aria-label="Previous news"
                             onClick={() => step(-1)}
-                            className="w-11 h-11 rounded-lg bg-main flex items-center justify-center"
+                            className="w-8 md:w-11 h-8 md:h-11 rounded-lg bg-main flex items-center justify-center"
                         >
                             <ArrowLeft />
                         </button>
@@ -61,13 +98,13 @@ export default function LatestNews() {
                             type="button"
                             aria-label="Next news"
                             onClick={() => step(1)}
-                            className="w-11 h-11 rounded-lg bg-main flex items-center justify-center"
+                            className="w-8 md:w-11 h-8 md:h-11 rounded-lg bg-main flex items-center justify-center"
                         >
                             <ArrowRight />
                         </button>
                     </div>
                 </div>
-                <div className="grid grid-cols-4 gap-5.25 mt-8">
+                <div className={`grid ${gridColsClass} gap-5.25 mt-4 3xl:mt-8`}>
                     <AnimatePresence mode="popLayout" initial={false} custom={direction}>
                         {visibleItems.map((item, slot) => (
                             <motion.div
@@ -79,7 +116,7 @@ export default function LatestNews() {
                                 animate="animate"
                                 exit="exit"
                                 transition={{ duration: 0.5, ease: 'easeInOut' }}
-                                className={slot === 0 ? "col-span-2" : "col-span-1"}
+                                className={slot === 0 && visibleCount > 1 ? "col-span-2" : "col-span-1"}
                             >
                                 <NewsCard item={item} large={slot === 0} />
                             </motion.div>

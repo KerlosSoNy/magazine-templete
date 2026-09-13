@@ -36,9 +36,9 @@ export default function GenericButton({
             : "border border-white"
         : colorClasses
 
-    const containerClasses = `${backgroundClasses} ${mainClasses} rounded-lg h-12 w-fit px-10 flex items-center justify-center gap-1.5 transition-all duration-500 group`
+    const containerClasses = `${backgroundClasses} ${mainClasses} rounded-lg h-12 w-fit px-5 2xl:px-10 flex items-center justify-center gap-1.5 transition-all duration-500 group`
 
-    const textClasses = `font-bold text-6 ${revertColors ? "text-main group-hover:text-white" : "text-white group-hover:text-main"} ${titleClasses}`
+    const textClasses = `font-bold text-[12px] lg:text-6 ${revertColors ? "text-main group-hover:text-white" : "text-white group-hover:text-main"} ${titleClasses}`
 
     const renderIcon = () => {
         if (withoutIcon) return ""

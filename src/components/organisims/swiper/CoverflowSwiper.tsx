@@ -18,9 +18,9 @@ const DURATION = 0.9;
 const EASE = 'power2.inOut';
 // Extra lock (ms) after a transition finishes, to eat leftover
 // trackpad inertia so a single gesture can't sneak in a second step.
-const COOLDOWN_MS = 450;
+const COOLDOWN_MS = 500;
 // Minimum swipe distance (px) to count as a slide change on touch
-const SWIPE_THRESHOLD = 40;
+const SWIPE_THRESHOLD = 100;
 
 export default function CoverflowSlider({ slides }: CoverflowSliderProps) {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -197,7 +197,7 @@ export default function CoverflowSlider({ slides }: CoverflowSliderProps) {
     return (
         <section
             ref={containerRef}
-            className="relative w-screen h-screen overflow-hidden bg-gray-100"
+            className="relative  w-screen h-screen overflow-hidden bg-gray-100"
         >
             {slides.map((slide, i) => (
                 <div

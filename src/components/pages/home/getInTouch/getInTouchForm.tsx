@@ -42,8 +42,8 @@ export default function GetInTouchForm() {
     });
 
     return (
-        <form onSubmit={formik.handleSubmit} className="flex flex-col max-w-145 gap-4 w-full">
-            <div className="grid grid-cols-2 gap-4">
+        <form onSubmit={formik.handleSubmit} className="flex flex-col max-w-full lg:max-w-110 xl:max-w-145 gap-4 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-4">
                 <DarkField
                     name="fullName"
                     placeholder="Full Name"
@@ -79,7 +79,7 @@ export default function GetInTouchForm() {
                 />
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col -mt-3 md:mt-0">
                 <label htmlFor="inquiry" className="sr-only">
                     Your Inquiry
                 </label>

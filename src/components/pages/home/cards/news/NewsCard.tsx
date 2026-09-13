@@ -9,8 +9,8 @@ const CalendarIcon = () => (
 
 export default function NewsCard({ item, large }: { item: any, large?: boolean }) {
     return (
-        <div className="flex flex-col items-start w-full">
-            <div className={`relative w-full overflow-hidden rounded-xl ${large ? "h-82.5 max-h-82.5" : "h-61.5 max-h-61.5"} ]`}>
+        <div className="flex flex-col items-start w-[95%] mx-auto md:mx-0 md:w-full">
+            <div className={`relative w-full overflow-hidden rounded-xl ${large ? "h-70 3xl:h-82.5 max-h-82.5" : "h-51 3xl:h-61.5 max-h-61.5"} ]`}>
                 <Image
                     src={item.image}
                     alt={item.title}
@@ -18,17 +18,17 @@ export default function NewsCard({ item, large }: { item: any, large?: boolean }
                     className="object-cover"
                 />
             </div>
-            <div className="flex items-center gap-2 text-text-disabled mt-5">
+            <div className="flex items-center gap-2 text-text-disabled mt-2.5 3xl:mt-5">
                 <CalendarIcon />
                 <span className="text-6 font-inter">{item.date}</span>
             </div>
-            <h3 className="text-3 font-bold leading-3 h-[55px] text-text-secondary mt-2 line-clamp-2">{item.title}</h3>
-            <p className={`text-6 leading-6 text-text-placeholder mt-2 ${large ? "line-clamp-2" : "line-clamp-4"} `}>{item.description}</p>
+            <h3 className="text-5 3xl:text-3 font-bold leading-5 3xl:leading-3 h-12 3xl:h-13.75 text-text-secondary mt-2 line-clamp-2">{item.title}</h3>
+            <p className={`text-6 leading-6 text-text-placeholder mt-2 ${large ? "line-clamp-3 md:line-clamp-2" : "line-clamp-4"} `}>{item.description}</p>
             <GenericButton
                 title="Read More"
                 withoutBg
                 withoutBorder
-                mainClasses="p-0! mt-4"
+                mainClasses="p-0! 3xl:mt-4"
                 titleClasses="text-main!"
                 svgColor="stroke-main"
             />

@@ -5,12 +5,12 @@ export default function CoverFlowPagination({ slides, activeIndex, currentDispla
     const isWhite = useNavTheme();
 
     return (
-        <div className={`${isWhite && "filter-teal"} absolute top-1/2 -translate-y-1/2 inset-e-40 z-30 flex flex-col items-center gap-8 `}>
+        <div className={`${isWhite && "filter-teal"} absolute top-[95%] md:top-1/2 md:-translate-y-1/2 inset-e-3 md:inset-e-3 xl:inset-e-10 3xl:inset-e-40 z-30 flex flex-row md:flex-col items-center gap-4 3xl:gap-8 `}>
             <span className="text-6 text-white">
                 {currentDisplay}
             </span>
 
-            <div className="flex flex-col items-start gap-6">
+            <div className="hidden md:flex flex-col items-start gap-2 3xl:gap-6">
                 {slides.map((_, i) => (
                     <div
                         key={i}
@@ -28,6 +28,9 @@ export default function CoverFlowPagination({ slides, activeIndex, currentDispla
                 ))}
             </div>
 
+            <span className="text-6 text-white md:hidden">
+                /
+            </span>
             <span className="text-6 text-white">
                 {totalDisplay}
             </span>

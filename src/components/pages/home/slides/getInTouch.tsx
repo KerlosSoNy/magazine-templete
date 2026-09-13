@@ -27,9 +27,9 @@ export default function GetInTouch() {
                                 <PhoneIcon />
                                 <span className="text-6 font-inter text-white">+966 13 845 5555</span>
                             </div>
-                            <div className="flex flex-row items-start gap-4">
+                            <div className="flex flex-row items-start md:col-span-2 lg:col-span-1 gap-4">
                                 <LocationIcon />
-                                <span className="text-6 font-inter text-white max-w-84">
+                                <span className="text-6 font-inter text-white lg:max-w-84">
                                     3640 King Faisal Rd Al Khalidiyah Dammam 31411, Eastern Province, Saudi Arabia
                                 </span>
                             </div>

@@ -14,12 +14,12 @@ const executiveManagement = [
 
 export default function BoardOfDirectors() {
     return (
-        <div data-nav-bg="black" className="w-screen flex flex-col items-center py-16 xl:py-24 bg-main relative max-w-full overflow-hidden">
+        <div data-nav-bg="black" className="w-screen flex flex-col items-center py-16 xl:py-24 px-4 sm:px-8 lg:px-0 bg-main relative max-w-full overflow-hidden">
             <div className="container flex flex-col items-center z-2">
                 <h2 className="text-3 xl:text-1 font-bold text-white text-center">Board Of Directors</h2>
                 <p className="max-w-156 text-5 text-white/80 text-center mt-3 leading-5">Our board is comprised of distinguished leaders who bring invaluable insights and governance to Minds Advisory</p>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-10 w-full">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-10 w-full">
                     {boardMembers.map((member) => (
                         <BoardMemberCard key={member.name} {...member} />
                     ))}
@@ -27,7 +27,7 @@ export default function BoardOfDirectors() {
 
                 <h2 className="text-3 xl:text-1 font-bold text-white text-center mt-16">Our Executive Management</h2>
 
-                <div className="grid grid-cols-2 gap-6 mt-10 w-full sm:w-[calc(50%-0.75rem)]">
+                <div className="grid grid-cols-2 gap-6 mt-10 w-full lg:w-[calc(50%-0.75rem)]">
                     {executiveManagement.map((member) => (
                         <BoardMemberCard key={member.name} {...member} />
                     ))}

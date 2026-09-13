@@ -56,20 +56,20 @@ export default function Legacy() {
     const y = useTransform(scrollYProgress, [0, 1], [-80, 80])
 
     return (
-        <div ref={sectionRef} className="w-screen flex flex-col items-center py-24 bg-white relative">
+        <div ref={sectionRef} className="w-screen flex flex-col items-center py-16 lg:py-24 bg-white relative px-4 sm:px-8 lg:px-0">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <AboutUsIconLegacySection />
             </div>
 
-            <h2 className="text-1 font-bold text-text-secondary text-center leading-1 z-2">
+            <h2 className="text-3 md:text-2 lg:text-1 font-bold text-text-secondary text-center leading-3 md:leading-2 lg:leading-1 z-2">
                 A Legacy of Excellence<br />
                 and <span className="text-main">Impact</span>
             </h2>
-            <span className="text-5 font-bold text-text-secondary text-center mt-4 z-2">Explore the Milestones That Define Our Journey</span>
+            <span className="text-6 md:text-5 font-bold text-text-secondary text-center mt-4 z-2">Explore the Milestones That Define Our Journey</span>
 
             <div className="container grid grid-cols-1 lg:grid-cols-2 gap-10 mt-14 items-start z-2">
-                <div className="lg:sticky lg:top-24 w-[457.06px] justify-self-end">
-                    <div className="relative h-100 lg:h-[677.77px] min-h-[677.77px] rounded-xl overflow-hidden">
+                <div className="lg:sticky lg:top-24 w-full max-w-114.25 lg:max-w-none lg:w-[457.06px] justify-self-center lg:justify-self-end">
+                    <div className="relative h-72 sm:h-90 lg:h-[677.77px] lg:min-h-[677.77px] rounded-xl overflow-hidden">
                         <motion.div style={{ y }} className="absolute inset-x-0 -top-24 -bottom-24">
                             <Image
                                 src="/images/about/hand.jpg"

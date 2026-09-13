@@ -47,7 +47,7 @@ export default function CaseCard({ item }: any) {
                     transition={{ duration: 1, ease: 'easeInOut' }}
                     className="absolute bottom-0 bg-[#0E3832] w-full text-start h-fit z-10 rounded-xl p-6 flex flex-col">
                     <span className="font-bold text-white text-7 lg:text-5">{item?.subTitle}</span>
-                    <p className="text-text-disabled leading-[12px] lg:text-6 leading-6 line-clamp-3 mt-2 mb-4">{item?.description}</p>
+                    <p className="text-text-disabled leading-[12px] lg:text-6 lg:leading-6 line-clamp-3 mt-2 mb-4">{item?.description}</p>
                     <GenericButton title="Discover More" />
                 </motion.div>
             </div>

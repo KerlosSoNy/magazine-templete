@@ -2,16 +2,10 @@ import GenericButton from "@/components/buttons/genericButton";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import SuccessCard from "../cards/success/successCard";
+import LogosMarquee from "@/components/shared/logosMarquee/LogosMarquee";
 
 export default function OurSuccess() {
-    const logos = [
-        "/images/home/logos/almaha.png",
-        "/images/home/logos/alarkkannew.png",
-        "/images/home/logos/almuhaidib.png",
-        "/images/home/logos/alromansiah.png",
-        "/images/home/logos/mayar.png",
-        "/images/home/logos/ufmc.png",
-    ]
+
     return (
         <div className="w-screen h-fit md:h-screen overflow-hidden pb-10 md:pb-0 pt-10 flex items-center justify-center relative" data-nav-bg="white">
             <Image
@@ -32,20 +26,7 @@ export default function OurSuccess() {
                     <SuccessCard />
                 </Marquee>
                 <GenericButton mainClasses="my-2 3xl:my-4" title="Discover our bespoke solutions" />
-                <Marquee>
-                    {[...logos, ...logos, ...logos]?.map((item, index) => {
-                        return (
-                            <Image
-                                key={index}
-                                src={item}
-                                alt="Success Background"
-                                width={226}
-                                height={224}
-                                className="me-5 3xl:me-10 w-40 3xl:w-56.5 h-40 3xl:h-56.5 object-contain"
-                            />
-                        )
-                    })}
-                </Marquee>
+                <LogosMarquee />
             </div>
         </div>
     )

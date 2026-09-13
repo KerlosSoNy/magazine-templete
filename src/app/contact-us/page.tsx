@@ -2,7 +2,6 @@ import GetInTouchSection from "@/components/pages/contactUs/getInTouch/GetInTouc
 import LocationMap from "@/components/shared/map/LocationMap";
 import SmallBanner from "@/components/shared/smallBanner";
 
-// Approximate coordinates for 3640 King Faisal Rd, Al Khalidiyah, Dammam — replace with the exact office location.
 const OFFICE_LOCATION = {
     latitude: 26.4048,
     longitude: 50.0898,

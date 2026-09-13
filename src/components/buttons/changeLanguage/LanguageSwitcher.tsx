@@ -2,9 +2,9 @@
 
 import { useSyncExternalStore } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { useNavTheme } from "@/lib/hooks/useNavTheme";
 import { resolveLocale, type Locale } from "@/lib/i18n/locale";
 import Image from "next/image";
+import { useNavTheme } from "@/components/providers/NavThemeProvider";
 
 const LOCALE_LABELS: Record<Locale, string> = {
     en: "English",

@@ -6,10 +6,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import TransitionLink from "@/components/buttons/transitionsLink/TransitionLink";
 import LanguageSwitcher from "@/components/buttons/changeLanguage/LanguageSwitcher";
 import { Links } from "@/lib/constant/links";
-import { useNavTheme } from "@/lib/hooks/useNavTheme";
 import { MenuIcon } from "@/components/icons/menuIcon";
 import { cn } from "@/lib/functions/utils";
 import MobileMenu from "./mobileMenu";
+import { useNavTheme } from "@/components/providers/NavThemeProvider";
 
 const listVariants = {
     hidden: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },

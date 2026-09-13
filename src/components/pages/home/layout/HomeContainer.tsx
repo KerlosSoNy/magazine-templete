@@ -17,7 +17,7 @@ export default function HomeContainer() {
 
     if (isDesktop) {
         return (
-            <div suppressHydrationWarning className="hide-scrollbar w-full max-w-full overflow-hidden">
+            <div className="hide-scrollbar w-full max-w-full overflow-hidden">
                 <div key="Desktop-View" className="hidden md:block">
                     <CoverflowSlider
                         slides={[
@@ -38,7 +38,7 @@ export default function HomeContainer() {
         )
     }
     return (
-        <div suppressHydrationWarning className="hide-scrollbar w-full max-w-full overflow-hidden">
+        <div className="hide-scrollbar w-full max-w-full overflow-hidden">
             <div key="Mobile-View" className="flex flex-col md:hidden">
                 <HeroSection key='11' />,
                 <Welcome key='12' />,

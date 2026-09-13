@@ -1,14 +1,15 @@
 'use client'
 import BookCall from "@/components/buttons/bookCall/bookCall";
-import { useNavTheme } from "@/lib/hooks/useNavTheme";
 import Image from "next/image";
 import Link from "next/link";
 import NavbarMenu from "./navbarMenu";
 import { usePathname } from "next/navigation";
+import { useNavTheme } from "@/components/providers/NavThemeProvider";
 
 export default function Navbar() {
     const isWhiteBg = useNavTheme();
     const pathname = usePathname();
+    console.log(isWhiteBg)
     return (
         <div className={`w-full px-4 2xs:px-6 md:px-10 3xl:px-50 justify-between flex flex-row items-center z-100 fixed ${pathname === "/" ? "py-4 3xl:py-14 " : "py-4 xl:py-9 bg-white"}`}>
             <Link

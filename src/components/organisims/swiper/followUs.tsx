@@ -1,4 +1,4 @@
-import { useNavTheme } from "@/lib/hooks/useNavTheme";
+import { useNavTheme } from "@/components/providers/NavThemeProvider";
 
 const SOCIALS = [
     {

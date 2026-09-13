@@ -1,6 +1,5 @@
 import { cookies } from 'next/headers';
 import AnimationWrapper from '@/components/providers/AnimationWrapper';
-import { NavThemeProvider } from '@/components/providers/NavThemeProvider';
 import { NextIntlClientProvider } from 'next-intl';
 import './globals.css';
 import Footer from '@/components/organisims/footer/footer';
@@ -8,6 +7,7 @@ import Navbar from '@/components/organisims/navbar/navbar';
 import { inter, namian, notoKufiArabic } from '@/lib/fonts/fonts';
 import { resolveLocale } from '@/lib/i18n/locale';
 import { Viewport } from 'next';
+import { NavThemeProvider } from '@/components/providers/NavThemeProvider';
 
 const metadata = {
   title: 'Minds Advisor',
@@ -39,13 +39,13 @@ export default async function LocaleLayout({
       </head>
       <body suppressHydrationWarning className={locale === "ar" ? "font-ar" : "font-en"}>
         <NextIntlClientProvider>
-          <NavThemeProvider>
-            <AnimationWrapper>
+          <AnimationWrapper>
+            <NavThemeProvider>
               <Navbar />
               {children}
               <Footer />
-            </AnimationWrapper>
-          </NavThemeProvider>
+            </NavThemeProvider>
+          </AnimationWrapper>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,9 +1,9 @@
 "use client"
 import React, { FC } from 'react';
 import Link from "next/link";
-import { useNavTheme } from '@/lib/hooks/useNavTheme';
 import { cn } from '@/lib/functions/utils';
 import { usePageTransition } from '@/lib/hooks/UsePageTransition';
+import { useNavTheme } from '@/components/providers/NavThemeProvider';
 
 interface Props {
     active?: boolean,

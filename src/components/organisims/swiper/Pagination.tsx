@@ -1,4 +1,4 @@
-import { useNavTheme } from '@/lib/hooks/useNavTheme';
+import { useNavTheme } from '@/components/providers/NavThemeProvider';
 import React from 'react'
 
 export default function CoverFlowPagination({ slides, activeIndex, currentDisplay, totalDisplay }: { slides: React.ReactNode[], activeIndex: number, currentDisplay: string, totalDisplay: string }) {

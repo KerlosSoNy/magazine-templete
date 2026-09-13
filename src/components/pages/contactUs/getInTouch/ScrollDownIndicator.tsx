@@ -16,7 +16,7 @@ export default function ScrollDownIndicator({ id }: ScrollDownIndicatorProps) {
         <button
             type="button"
             onClick={handleScroll}
-            className="fixed top-80 md:top-[490.5px]  inset-e-2 lg:inset-e-10 3xl:inset-e-30 z-10 flex cursor-pointer flex-col items-center gap-4 text-black"
+            className="fixed top-80 md:top-60 3xl:top-[490.5px]  inset-e-2 lg:inset-e-10 3xl:inset-e-30 z-10 flex cursor-pointer flex-col items-center gap-4 text-black"
             aria-label={`Scroll to ${id}`}
         >
             <span

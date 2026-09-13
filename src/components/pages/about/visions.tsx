@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Visions() {
     return (
-        <div className="min-h-125 md:h-auto xl:h-202.5 w-screen px-4 sm:px-8 md:px-12 xl:ps-75 xl:pe-30 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6 relative py-14 md:py-20 xl:pt-25 xl:pb-35">
+        <div className="min-h-125 md:h-auto xl:h-202.5 w-screen px-4 sm:px-8 md:px-12 xl:ps-25 3xl:ps-60 xl:pe-30 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6 relative py-14 md:py-20 xl:pt-25 xl:pb-35">
             <Image
                 fill
                 src="/images/about/bgSecondSection.jpg"

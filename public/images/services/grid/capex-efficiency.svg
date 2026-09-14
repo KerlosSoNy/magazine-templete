@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="dollar-sign">
+<rect x="0.5" y="0.5" width="63" height="63" rx="31.5" fill="white"/>
+<rect x="0.5" y="0.5" width="63" height="63" rx="31.5" stroke="#145048"/>
+<path id="Vector" d="M32 18.6656V45.3344M38.6667 22.6659H28.6667C27.429 22.6659 26.242 23.1576 25.3668 24.0329C24.4917 24.9081 24 26.0952 24 27.333C24 28.5707 24.4917 29.7578 25.3668 30.6331C26.242 31.5083 27.429 32 28.6667 32H35.3333C36.571 32 37.758 32.4917 38.6332 33.3669C39.5083 34.2422 40 35.4293 40 36.667C40 37.9048 39.5083 39.0919 38.6332 39.9671C37.758 40.8424 36.571 41.3341 35.3333 41.3341H24" stroke="#145048" stroke-width="2" stroke-linecap="round"/>
+</g>
+</svg>

@@ -20,7 +20,7 @@ export default function GetInTouchSection({
     socialLinks = defaultSocialLinks,
 }: GetInTouchSectionProps) {
     return (
-        <div className="relative w-full overflow-hidden bg-white px-10 py-20 md:py-35.25 xl:px-25">
+        <div className="relative w-full overflow-hidden bg-white px-10 py-20 lg:py-35.25 xl:px-25">
             <Image
                 alt="Success Background"
                 src="/images/home/successBg.png"

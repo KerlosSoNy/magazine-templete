@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="grid">
+<rect x="0.5" y="0.5" width="63" height="63" rx="31.5" fill="white"/>
+<rect x="0.5" y="0.5" width="63" height="63" rx="31.5" stroke="#145048"/>
+<path id="Vector" d="M20 28H44M20 36H44M28 20V44M36 20V44M22.6667 20H41.3333C42.8061 20 44 21.1939 44 22.6667V41.3333C44 42.8061 42.8061 44 41.3333 44H22.6667C21.1939 44 20 42.8061 20 41.3333V22.6667C20 21.1939 21.1939 20 22.6667 20Z" stroke="#145048" stroke-width="2" stroke-linecap="round"/>
+</g>
+</svg>

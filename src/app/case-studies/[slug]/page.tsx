@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     }
 
     return (
-        <div className="pt-18 xl:pt-32">
+        <div className="pt-18 xl:pt-32 max-w-screen overflow-hidden">
             <SmallBanner title={item.title} />
             <SocialSidebar links={defaultSocialLinks} />
             <ScrollDownIndicator id="case-study-overview" />

@@ -53,7 +53,7 @@ export default function CaseStudyResults() {
                         </h2>
                     </div>
                     <p className="text-6 md:text-5 text-text-placeholder max-w-140">
-                        The redesign wasn&aps;t just about aesthetics; it was about creating a foundation for future growth. By establishing a robust design system, we enabled the internal product team to launch new features 30% faster than before, ensuring Apex Financial stays competitive in a rapidly evolving fintech landscape.
+                        The redesign wasn&apos;t just about aesthetics; it was about creating a foundation for future growth. By establishing a robust design system, we enabled the internal product team to launch new features 30% faster than before, ensuring Apex Financial stays competitive in a rapidly evolving fintech landscape.
                     </p>
                 </div>
 

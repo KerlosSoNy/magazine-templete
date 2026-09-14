@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="trending-up">
+<rect x="0.5" y="0.5" width="63" height="63" rx="31.5" fill="white"/>
+<rect x="0.5" y="0.5" width="63" height="63" rx="31.5" stroke="#145048"/>
+<path id="Vector" d="M45.3344 33.3331V25.3344H37.3338M45.3344 25.3344L34.0002 36.6659L27.333 30.0003L18.6656 38.6656" stroke="#145048" stroke-width="2" stroke-linecap="round"/>
+</g>
+</svg>

@@ -1,3 +1,4 @@
+'use client'
 import { ReactNode } from "react";
 import { LinkedInOutlineIcon, XOutlineIcon } from "./icons";
 
@@ -14,7 +15,7 @@ export const defaultSocialLinks: SocialLink[] = [
 
 export default function SocialSidebar({ links = defaultSocialLinks }: { links?: SocialLink[] }) {
     return (
-        <div className="fixed top-80 md:top-60 3xl:top-[490.5px] inset-s-2 lg:inset-s-10 3xl:inset-s-30 z-10 flex flex-col items-center gap-4">
+        <div className={`fixed top-80 md:top-60 3xl:top-[490.5px] inset-s-2 lg:inset-s-10 3xl:inset-s-30 z-10 flex flex-col items-center gap-4`}>
             <div className="flex flex-col items-center gap-4 text-black">
                 {links.map((social, index) => (
                     <a

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { serviceCategories } from './dummy'
+import ServiceSubItemCard from './ServiceSubItemCard'
 
 export default function BespokeSolutions() {
     const [activeIndex, setActiveIndex] = useState(0)
@@ -61,13 +62,7 @@ export default function BespokeSolutions() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
                 {category.items.map((item) => (
-                    <div key={item.title} className="flex gap-3 items-start">
-                        <Image src={item.icon} alt="" width={64} height={64} className="size-16 shrink-0" />
-                        <div className="flex flex-col gap-4">
-                            <span className="text-4 font-bold text-text-placeholder">{item.title}</span>
-                            <p className="text-6 text-text-disabled">{item.description}</p>
-                        </div>
-                    </div>
+                    <ServiceSubItemCard key={item.title} item={item} />
                 ))}
             </div>
         </div>

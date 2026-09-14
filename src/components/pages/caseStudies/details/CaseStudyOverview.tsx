@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import type { CaseStudyItem } from '../types'
+import CaseStudyStatCard from './CaseStudyStatCard'
+import QuoteCard from './QuoteCard'
 
 export default function CaseStudyOverview({ item }: { item: CaseStudyItem }) {
     const { stats, challenge } = item.detail
@@ -15,10 +17,7 @@ export default function CaseStudyOverview({ item }: { item: CaseStudyItem }) {
         <div className="container mx-auto flex flex-col gap-16 py-16 lg:py-20">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 {statItems.map((stat) => (
-                    <div key={stat.label} className="bg-secondary-bg rounded-lg p-6 gap-1 flex flex-col">
-                        <span className="text-6 md:text-5 font-inter text-text-secondary">{stat.label}</span>
-                        <span className="text-5 md:text-4 font-bold capitalize text-text-secondary">{stat.value}</span>
-                    </div>
+                    <CaseStudyStatCard key={stat.label} stat={stat} />
                 ))}
             </div>
 
@@ -43,13 +42,7 @@ export default function CaseStudyOverview({ item }: { item: CaseStudyItem }) {
                     <div className="relative w-full md:w-142 h-100 lg:h-133.75 place-self-end  rounded-xl overflow-hidden">
                         <Image src={item.image} alt={item.title} fill className="object-cover" />
                     </div>
-                    <div className="relative lg:absolute -mt-16 lg:mt-0 mx-4 lg:mx-0 lg:bottom-0 2xl:bottom-8 lg:inset-s-0 bg-[#0E3832] rounded-lg p-6 md:p-8 flex flex-col gap-3 max-w-142.75">
-                        <p className="text-4 md:text-3 font-bold leading-2 text-white">{`"${challenge.quote}"`}</p>
-                        <div className="flex flex-col">
-                            <span className="text-5 font-bold uppercase text-white">{challenge.quoteAuthor}</span>
-                            <span className="text-6 text-text-disabled">{challenge.quoteRole}</span>
-                        </div>
-                    </div>
+                    <QuoteCard quote={challenge.quote} author={challenge.quoteAuthor} role={challenge.quoteRole} />
                 </div>
             </div>
         </div>

@@ -4,15 +4,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { whyJoinUsSteps } from './dummy'
-import { ChecklistIcon, FileIcon, UserCircleIcon, VideoIcon } from './icons'
-import type { WhyJoinUsStep } from './types'
-
-const STEP_ICONS: Record<WhyJoinUsStep['icon'], typeof FileIcon> = {
-    file: FileIcon,
-    video: VideoIcon,
-    checklist: ChecklistIcon,
-    user: UserCircleIcon,
-}
+import WhyJoinUsStepCard from './WhyJoinUsStepCard'
 
 export default function WhyJoinUs() {
     const sectionRef = useRef<HTMLDivElement>(null)
@@ -65,15 +57,15 @@ export default function WhyJoinUs() {
                 className="relative container mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 py-16 lg:py-20 lg:items-start"
             >
                 <div className="lg:w-1/2 flex flex-col gap-8 lg:gap-10">
-                    <h2 className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-white capitalize">
-                        Why join us ?
-                    </h2>
 
                     <motion.div
                         ref={stickyRef}
                         style={{ translateY }}
                         className="lg:sticky lg:top-24 flex flex-col gap-8 lg:gap-10"
                     >
+                        <h2 className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-white capitalize">
+                            Why join us ?
+                        </h2>
                         <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden">
                             <motion.div className="absolute inset-x-0 -top-20 -bottom-20">
                                 <Image
@@ -94,26 +86,13 @@ export default function WhyJoinUs() {
                 </div>
 
                 <div ref={rightColRef} className="lg:w-1/2 flex flex-col">
-                    {whyJoinUsSteps.map((step, index) => {
-                        const Icon = STEP_ICONS[step.icon]
-                        const isLast = index === whyJoinUsSteps.length - 1
-
-                        return (
-                            <div
-                                key={step.number}
-                                className={`relative flex flex-col gap-6 py-8 md:py-10 ${isLast ? '' : 'border-b border-[#9fb7b4]'}`}
-                            >
-                                <span className="text-[56px] md:text-[80px] leading-[0.9] font-bold uppercase text-white">
-                                    {step.number}
-                                </span>
-                                <h3 className="text-4 md:text-3 font-bold leading-3 text-white capitalize max-w-120 pr-14">
-                                    {step.title}
-                                </h3>
-                                <p className="text-6 md:text-5 text-white max-w-120">{step.description}</p>
-                                <Icon className="absolute inset-e-0 top-8 md:top-10 size-8 md:size-10 text-white" />
-                            </div>
-                        )
-                    })}
+                    {whyJoinUsSteps.map((step, index) => (
+                        <WhyJoinUsStepCard
+                            key={step.number}
+                            step={step}
+                            isLast={index === whyJoinUsSteps.length - 1}
+                        />
+                    ))}
                 </div>
             </div>
         </div>

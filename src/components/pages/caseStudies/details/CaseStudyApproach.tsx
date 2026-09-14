@@ -1,3 +1,5 @@
+import ApproachStepCard from './ApproachStepCard'
+
 const steps = [
     {
         number: '1',
@@ -34,18 +36,7 @@ export default function CaseStudyApproach() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
                     {steps.map((step) => (
-                        <div
-                            key={step.number}
-                            className="bg-white border border-text-disabled/40 rounded-lg p-6 flex flex-col gap-6"
-                        >
-                            <div className="flex gap-4 items-center">
-                                <span className="bg-[#0E3832] rounded-full size-8 flex items-center justify-center text-6 font-bold text-white">
-                                    {step.number}
-                                </span>
-                                <span className="text-4 font-bold text-text-secondary">{step.title}</span>
-                            </div>
-                            <p className="text-6 text-text-disabled">{step.description}</p>
-                        </div>
+                        <ApproachStepCard key={step.number} step={step} />
                     ))}
                 </div>
             </div>

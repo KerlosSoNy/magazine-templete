@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react'
 import { jobPositions } from './dummy'
 import { useCareerApply } from '@/components/providers/CareerApplyProvider'
-import { ArrowUpRightIcon, SuitcaseIcon } from './icons'
+import JobPositionCard from './JobPositionCard'
 
 const PAGE_SIZE = 3
 const ALL_DEPARTMENTS = 'All Department'
@@ -59,40 +59,7 @@ export default function OpenPositions() {
 
                 <div className="flex flex-col w-full">
                     {visibleJobs.map((job) => (
-                        <div
-                            key={job.id}
-                            className="border-b border-text-placeholder group hover:bg-main hover:shadow-xl hover:-translate-y-1 relative transition-all duration-500 ease-out"
-                        >
-                            <div className="container flex lg:h-60 2xl:h-55 flex-col lg:flex-row md:items-start justify-between gap-6 py-8 mx-auto">
-                                <div className="flex flex-col h-full justify-between items-start gap-4 md:w-55 shrink-0">
-                                    <p className={`text-3 font-bold capitalize transition-colors duration-500 ${job.isOpen ? 'text-main group-hover:text-white' : 'text-text-disabled'}`}>
-                                        {job.isOpen ? 'Open' : 'Closed'} <br className="lg:block hidden" /> Position
-                                    </p>
-                                    <div className="flex gap-2 items-center text-text-secondary group-hover:text-white flex-wrap transition-colors duration-500">
-                                        <SuitcaseIcon className="size-6 transition-transform duration-500 group-hover:scale-110" />
-                                        <span className="text-5">{job.employmentType}</span>
-                                        <span className="text-5">/</span>
-                                        <span className="text-5">{job.workMode}</span>
-                                    </div>
-                                </div>
-
-                                <div className="flex flex-col gap-4 md:gap-9 flex-1">
-                                    <h3 className="text-3 font-bold text-text-secondary group-hover:text-white capitalize transition-colors duration-500">{job.title}</h3>
-                                    <p title={job.description} className="text-5 text-text-disabled line-clamp-4 2xl:line-clamp-3 transition-colors duration-500">{job.description}</p>
-                                </div>
-
-                                <div className="shrink-0 self-start">
-                                    {job.isOpen ? (
-                                        <button type="button" onClick={() => openApplyForm(job)} className="flex items-center gap-4">
-                                            <span className="text-3 font-bold text-black group-hover:text-white capitalize transition-colors duration-500">Apply</span>
-                                            <ArrowUpRightIcon className="size-6 text-black group-hover:text-white transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                                        </button>
-                                    ) : (
-                                        <span className="text-3 font-bold text-text-disabled capitalize">Closed</span>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
+                        <JobPositionCard key={job.id} job={job} onApply={openApplyForm} />
                     ))}
                 </div>
 

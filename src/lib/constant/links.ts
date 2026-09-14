@@ -14,7 +14,7 @@ export const Links = [
     },
     {
         name: 'Cases',
-        href: '/cases'
+        href: '/case-studies'
     },
     {
         name: 'Articles',

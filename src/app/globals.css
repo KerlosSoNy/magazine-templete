@@ -103,5 +103,5 @@ button{
 
 
 .container{
-  @apply max-w-160 lg:max-w-220 xl:max-w-260 2xl:max-w-300 3xl:max-w-350.25 w-full! lg:w-220 xl:w-260 2xl:w-300 3xl:w-350.25
+  @apply max-w-[84%] md:max-w-160 lg:max-w-220 xl:max-w-260 2xl:max-w-300 3xl:max-w-350.25 w-full! lg:w-220 xl:w-260 2xl:w-300 3xl:w-350.25
 }

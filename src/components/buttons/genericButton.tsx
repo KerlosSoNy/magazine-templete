@@ -27,7 +27,7 @@ export default function GenericButton({
     revertColors?: boolean
 }) {
     const colorClasses = revertColors
-        ? "bg-white text-main border border-main hover:bg-white/30 hover:text-white"
+        ? "bg-white text-main border border-main hover:bg-main hover:text-white"
         : "bg-main text-white hover:bg-white hover:text-main hover:border hover:border-main"
 
     const backgroundClasses = withoutBg

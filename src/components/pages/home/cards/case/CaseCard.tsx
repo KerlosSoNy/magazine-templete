@@ -48,14 +48,14 @@ export default function CaseCard({ item }: any) {
                     className="absolute bottom-0 bg-[#0E3832] w-full text-start h-fit z-10 rounded-xl p-6 flex flex-col">
                     <span className="font-bold text-white text-7 lg:text-5">{item?.subTitle}</span>
                     <p className="text-text-disabled leading-[12px] lg:text-6 lg:leading-6 line-clamp-3 mt-2 mb-4">{item?.description}</p>
-                    <GenericButton title="Discover More" />
+                    <GenericButton title="Discover More" href={item?.href} />
                 </motion.div>
             </div>
             <motion.div
                 variants={bottomButton}
                 transition={{ duration: 0.8, ease: 'easeInOut' }}
             >
-                <GenericButton mainClasses="p-0! lg:mt-3" svgColor="stroke-main" titleClasses="text-main!" title="Discover More" withoutBg withoutBorder />
+                <GenericButton mainClasses="p-0! lg:mt-3" svgColor="stroke-main" titleClasses="text-main!" title="Discover More" href={item?.href} withoutBg withoutBorder />
             </motion.div>
         </motion.div>
     )

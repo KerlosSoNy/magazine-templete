@@ -18,7 +18,7 @@ export default function OurSuccess() {
             <div className="w-full container flex flex-col items-center">
                 <span className="text-center mb-4 3xl:mb-2 text-main font-bold text-3 3xl:text-1 leading-3 3xl:leading-1 ">
                     <span className="text-black">Our Success is Measured </span> <br /> <span className="text-black">by</span> the Success of Our Clients</span>
-                <Marquee pauseOnHover>
+                <Marquee>
                     <SuccessCard />
                     <SuccessCard />
                     <SuccessCard />

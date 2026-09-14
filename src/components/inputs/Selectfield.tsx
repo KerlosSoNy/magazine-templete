@@ -7,6 +7,7 @@ export interface SelectOption {
 
 interface SelectFieldProps {
     id: string;
+    srOnly?: boolean
     label: string;
     value: string;
     name: string;
@@ -31,12 +32,12 @@ function SelectChevron() {
     );
 }
 
-export default function SelectField({ id, label, name, value, onChange, options, error }: SelectFieldProps) {
+export default function SelectField({ id, label, name, value, onChange, options, error, srOnly = true }: SelectFieldProps) {
     const errorId = `${id}-error`;
 
     return (
         <div className="flex flex-col">
-            <label htmlFor={id} className="sr-only">
+            <label htmlFor={id} className={`${srOnly ? "sr-only" : "text-5 text-text-disabled font-inter mb-2.5"}`}>
                 {label}
             </label>
             <div className="relative">

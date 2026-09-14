@@ -19,18 +19,11 @@ export function NavThemeProvider({
   const pathname = usePathname();
 
   useEffect(() => {
-    const sections = Array.from(
-      document.querySelectorAll<HTMLElement>('[data-nav-bg]')
-    );
-
-    if (!sections.length) return;
-
     const updateTheme = () => {
+      const sections = document.querySelectorAll<HTMLElement>('[data-nav-bg]');
+      if (!sections.length) return;
       const navbarOffset = 20;
-
       let activeSection: HTMLElement | null = null;
-
-      // First: find the section directly underneath the navbar
       for (const section of sections) {
         const rect = section.getBoundingClientRect();
 
@@ -39,8 +32,6 @@ export function NavThemeProvider({
           break;
         }
       }
-
-      // Fallback: find the section closest to the navbar
       if (!activeSection) {
         let closestDistance = Infinity;
 
@@ -82,12 +73,15 @@ export function NavThemeProvider({
     });
 
     window.addEventListener('resize', updateTheme);
+    const observer = new MutationObserver(handleScroll);
+    observer.observe(document.body, { childList: true, subtree: true });
 
     updateTheme();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateTheme);
+      observer.disconnect();
     };
   }, [pathname]);
 

@@ -1,16 +1,22 @@
 'use client';
-import CoverflowSlider from '@/components/organisims/swiper/CoverflowSwiper';
-import Creative from '@/components/pages/home/slides/creative';
-import DiscoverBusiness from '@/components/pages/home/slides/discoverBusiness';
-import DownloadFile from '@/components/pages/home/slides/downloadFile';
-import GetInTouch from '@/components/pages/home/slides/getInTouch';
-import HeroSection from '@/components/pages/home/slides/heroSections';
-import LatestNews from '@/components/pages/home/slides/latestNews';
-import OurCase from '@/components/pages/home/slides/ourCase';
-import OurSuccess from '@/components/pages/home/slides/ourSuccess';
-import OurValues from '@/components/pages/home/slides/ourValues';
-import Welcome from '@/components/pages/home/slides/welcome';
+import dynamic from 'next/dynamic';
 import useIsDesktop from '@/lib/functions/isDesktop';
+
+const CoverflowSlider = dynamic(
+    () => import('@/components/organisims/swiper/CoverflowSwiper'),
+    { ssr: false }
+);
+
+const HeroSection = dynamic(() => import('@/components/pages/home/slides/heroSections'));
+const Welcome = dynamic(() => import('@/components/pages/home/slides/welcome'));
+const OurValues = dynamic(() => import('@/components/pages/home/slides/ourValues'));
+const OurCase = dynamic(() => import('@/components/pages/home/slides/ourCase'));
+const DownloadFile = dynamic(() => import('@/components/pages/home/slides/downloadFile'));
+const OurSuccess = dynamic(() => import('@/components/pages/home/slides/ourSuccess'));
+const Creative = dynamic(() => import('@/components/pages/home/slides/creative'));
+const DiscoverBusiness = dynamic(() => import('@/components/pages/home/slides/discoverBusiness'));
+const LatestNews = dynamic(() => import('@/components/pages/home/slides/latestNews'));
+const GetInTouch = dynamic(() => import('@/components/pages/home/slides/getInTouch'));
 
 export default function HomeContainer() {
     const isDesktop = useIsDesktop();
@@ -35,20 +41,21 @@ export default function HomeContainer() {
                     />
                 </div>
             </div>
-        )
+        );
     }
+
     return (
         <div className="hide-scrollbar w-full max-w-full overflow-hidden">
             <div key="Mobile-View" className="flex flex-col md:hidden">
-                <HeroSection key='11' />,
-                <Welcome key='12' />,
-                <OurValues key='13' />,
-                <OurCase key='14' />,
-                <DownloadFile key='15' />,
-                <OurSuccess key='16' />,
-                <Creative key='17' />,
-                <DiscoverBusiness key='18' />,
-                <LatestNews key='19' />,
+                <HeroSection key='11' />
+                <Welcome key='12' />
+                <OurValues key='13' />
+                <OurCase key='14' />
+                <DownloadFile key='15' />
+                <OurSuccess key='16' />
+                <Creative key='17' />
+                <DiscoverBusiness key='18' />
+                <LatestNews key='19' />
                 <GetInTouch key='20' />
             </div>
         </div>

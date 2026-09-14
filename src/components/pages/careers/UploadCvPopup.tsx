@@ -1,0 +1,118 @@
+'use client'
+
+import { useRef, useState } from 'react'
+import Image from 'next/image'
+import Popup from '@/components/shared/popup'
+import { ClearIcon, UploadIcon } from './icons'
+
+interface UploadCvPopupProps {
+    isOpen: boolean
+    onClose: () => void
+}
+
+const MAX_SIZE_MB = 20
+const ACCEPTED_TYPES = ['application/pdf', 'image/jpeg', 'image/png']
+
+export default function UploadCvPopup({ isOpen, onClose }: UploadCvPopupProps) {
+    const inputRef = useRef<HTMLInputElement>(null)
+    const [file, setFile] = useState<File | null>(null)
+    const [isDragging, setIsDragging] = useState(false)
+    const [error, setError] = useState('')
+
+    function handleFile(selected: File | null) {
+        if (!selected) return
+        if (!ACCEPTED_TYPES.includes(selected.type)) {
+            setError('Please upload a PDF, JPG or PNG file')
+            return
+        }
+        if (selected.size > MAX_SIZE_MB * 1024 * 1024) {
+            setError(`File must be smaller than ${MAX_SIZE_MB} MB`)
+            return
+        }
+        setError('')
+        setFile(selected)
+    }
+
+    function handleClose() {
+        setFile(null)
+        setError('')
+        setIsDragging(false)
+        onClose()
+    }
+
+    function handleSubmit() {
+        if (!file) {
+            setError('Please select a file to upload')
+            return
+        }
+        console.log('Uploading CV', file.name)
+        handleClose()
+    }
+
+    return (
+        <Popup isOpen={isOpen} onClose={handleClose} animationKey="career-upload-cv">
+            <div className="bg-white flex flex-col gap-8 p-6 md:p-10 rounded-2xl w-[92vw] max-w-150 relative">
+                <button
+                    type="button"
+                    onClick={handleClose}
+                    aria-label="Close"
+                    className="absolute right-3 top-3 md:right-5 md:top-5 p-2 rounded"
+                >
+                    <ClearIcon />
+                </button>
+
+                <div className="flex flex-col gap-5 pr-8">
+                    <span className="text-5 text-main">Apply Now</span>
+                    <h2 className="text-3 font-bold text-text-secondary">Upload Your CV</h2>
+                    <p className="text-6 text-text-disabled">Help us get to know you better by sharing your resume.</p>
+                </div>
+
+                <input
+                    ref={inputRef}
+                    type="file"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    className="hidden"
+                    onChange={(e) => handleFile(e.target.files?.[0] ?? null)}
+                />
+
+                <button
+                    type="button"
+                    onClick={() => inputRef.current?.click()}
+                    onDragOver={(e) => {
+                        e.preventDefault()
+                        setIsDragging(true)
+                    }}
+                    onDragLeave={() => setIsDragging(false)}
+                    onDrop={(e) => {
+                        e.preventDefault()
+                        setIsDragging(false)
+                        handleFile(e.dataTransfer.files?.[0] ?? null)
+                    }}
+                    className={`bg-secondary-bg border border-dashed rounded-lg h-68 flex flex-col items-center justify-center gap-5 text-center px-6 transition-colors ${isDragging ? 'border-main' : 'border-text-disabled'}`}
+                >
+                    <div className="relative w-17.5 h-16.5 shrink-0">
+                        <Image src="/images/careers/pdf-icon.svg" alt="" fill sizes="64px" className="object-contain" />
+                        <span className="absolute left-11 top-10 bg-white rounded-lg p-1 shadow-sm flex items-center justify-center">
+                            <UploadIcon className="size-4.5 text-main" />
+                        </span>
+                    </div>
+                    <span className="text-5 text-text-secondary break-all">
+                        {file ? file.name : 'Click to upload or drag and drop files here'}
+                    </span>
+                    <span className="text-7 text-text-disabled">Support format PDF, JPG, PNG ( 20 MB Max)</span>
+                </button>
+
+                {error && <p className="text-6 text-red-500">{error}</p>}
+
+                <button
+                    type="button"
+                    onClick={handleSubmit}
+                    className="bg-main rounded-lg h-14 w-full flex items-center justify-center gap-2 font-bold text-5 text-white capitalize"
+                >
+                    <UploadIcon />
+                    Upload Your CV
+                </button>
+            </div>
+        </Popup>
+    )
+}

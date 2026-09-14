@@ -2,7 +2,14 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { FreeMode, Thumbs } from 'swiper/modules'
+import type { Swiper as SwiperType } from 'swiper/types'
 import type { MediaCoverageItem } from './types'
+
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/thumbs'
 
 const ArrowLeft = () => (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,9 +37,15 @@ export default function MediaCoverageGallery({
     onClose: () => void
 }) {
     const [index, setIndex] = useState(0)
+    const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
     const total = item.images.length
 
-    const step = (dir: 1 | -1) => setIndex((current) => (current + dir + total) % total)
+    const goTo = (i: number) => {
+        setIndex(i)
+        thumbsSwiper?.slideTo(i)
+    }
+
+    const step = (dir: 1 | -1) => goTo((index + dir + total) % total)
 
     return (
         <div className="relative bg-white rounded-2xl p-6 md:p-10 flex flex-col gap-6 md:gap-9.5 items-end w-[92vw] max-w-190 max-h-[90vh] overflow-y-auto">
@@ -56,8 +69,8 @@ export default function MediaCoverageGallery({
                 <Image src={item.images[index]} alt={item.title} fill className="object-cover" />
             </div>
 
-            <div className="flex gap-3 md:gap-4.25 h-20 md:h-30.25 items-center justify-end w-full">
-                {total > 1 && (
+            {total > 1 && (
+                <div className="flex gap-3 md:gap-4.25 h-20 md:h-30.25 items-center justify-end w-full">
                     <button
                         type="button"
                         aria-label="Previous image"
@@ -66,20 +79,31 @@ export default function MediaCoverageGallery({
                     >
                         <ArrowLeft />
                     </button>
-                )}
-                {item.images.map((image, i) => (
-                    <button
-                        key={image}
-                        type="button"
-                        aria-label={`Show image ${i + 1}`}
-                        onClick={() => setIndex(i)}
-                        className="relative h-full w-27 md:w-40.25 shrink-0 rounded-lg overflow-hidden"
+
+                    <Swiper
+                        modules={[FreeMode, Thumbs]}
+                        onSwiper={setThumbsSwiper}
+                        watchSlidesProgress
+                        freeMode
+                        slidesPerView="auto"
+                        spaceBetween={12}
+                        className="h-full min-w-0 flex-1"
                     >
-                        <Image src={image} alt={`${item.title} ${i + 1}`} fill className="object-cover" />
-                        {i === index && <span className="absolute inset-0 bg-black/40" />}
-                    </button>
-                ))}
-                {total > 1 && (
+                        {item.images.map((image, i) => (
+                            <SwiperSlide key={image} className="w-27! md:w-40.25! h-full!">
+                                <button
+                                    type="button"
+                                    aria-label={`Show image ${i + 1}`}
+                                    onClick={() => goTo(i)}
+                                    className="relative h-full w-full shrink-0 min-h-30 rounded-lg overflow-hidden"
+                                >
+                                    <Image src={image} alt={`${item.title} ${i + 1}`} fill className="object-cover" />
+                                    {i === index && <span className="absolute inset-0 bg-black/40" />}
+                                </button>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+
                     <button
                         type="button"
                         aria-label="Next image"
@@ -88,8 +112,8 @@ export default function MediaCoverageGallery({
                     >
                         <ArrowRight />
                     </button>
-                )}
-            </div>
+                </div>
+            )}
         </div>
     )
 }

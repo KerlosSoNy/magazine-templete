@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function GirlSection() {
-    const t = useTranslations("AboutPage.girlSection");
+export default async function GirlSection() {
+    const t = await getTranslations("AboutPage.girlSection");
 
     return (
         <div id="story" className="w-screen flex flex-col xl:flex-row items-center justify-center gap-8 lg:gap-17.5 px-4 sm:px-8 md:px-16 lg:px-0 py-12 lg:py-23.25 text-center lg:text-start">

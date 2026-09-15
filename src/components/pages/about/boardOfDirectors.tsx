@@ -1,4 +1,4 @@
-import { useLocale, useTranslations } from 'next-intl'
+import { getLocale, getTranslations } from 'next-intl/server'
 import type { Locale } from '@/lib/i18n/locale'
 import type { LocalizedText } from '@/lib/i18n/pickLocale'
 import { pickLocale } from '@/lib/i18n/pickLocale'
@@ -32,9 +32,9 @@ const executiveManagement: { name: string; title: LocalizedText; image: string }
     { name: 'Mourad Ashour', title: { en: 'Managing Partner', ar: 'شريك إداري' }, image: '/images/about/board/Mourad.png' },
 ]
 
-export default function BoardOfDirectors() {
-    const t = useTranslations('AboutPage.boardOfDirectors')
-    const locale = useLocale() as Locale
+export default async function BoardOfDirectors() {
+    const t = await getTranslations('AboutPage.boardOfDirectors')
+    const locale = (await getLocale()) as Locale
 
     return (
         <div data-nav-bg="black" className="w-screen flex flex-col items-center py-16 xl:py-24 px-4 sm:px-8 lg:px-0 bg-main relative max-w-full overflow-hidden">

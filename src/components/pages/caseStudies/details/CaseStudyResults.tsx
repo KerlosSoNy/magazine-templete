@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import CaseStudyResultCard from './CaseStudyResultCard'
 
 interface ResultStat {
@@ -8,8 +8,8 @@ interface ResultStat {
     description: string
 }
 
-export default function CaseStudyResults() {
-    const t = useTranslations('CaseStudiesPage.results')
+export default async function CaseStudyResults() {
+    const t = await getTranslations('CaseStudiesPage.results')
     const stats = t.raw('stats') as ResultStat[]
 
     return (

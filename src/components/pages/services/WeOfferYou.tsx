@@ -1,12 +1,12 @@
-import { useLocale, useTranslations } from 'next-intl'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { pickLocale } from '@/lib/i18n/pickLocale'
 import type { Locale } from '@/lib/i18n/locale'
 import { legend, offerStages } from './dummy'
 import OfferStageCard from './OfferStageCard'
 
-export default function WeOfferYou() {
-    const locale = useLocale() as Locale
-    const t = useTranslations('ServicesPage.weOfferYou')
+export default async function WeOfferYou() {
+    const locale = (await getLocale()) as Locale
+    const t = await getTranslations('ServicesPage.weOfferYou')
 
     return (
         <div className="container mx-auto flex flex-col gap-10 py-16 lg:py-20">

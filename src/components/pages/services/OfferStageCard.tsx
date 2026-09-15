@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import { useLocale, useTranslations } from 'next-intl'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { pickLocale } from '@/lib/i18n/pickLocale'
 import type { Locale } from '@/lib/i18n/locale'
 import type { OfferStage } from './types'
 
-export default function OfferStageCard({ stage }: { stage: OfferStage }) {
-    const locale = useLocale() as Locale
-    const t = useTranslations('ServicesPage.weOfferYou')
+export default async function OfferStageCard({ stage }: { stage: OfferStage }) {
+    const locale = (await getLocale()) as Locale
+    const t = await getTranslations('ServicesPage.weOfferYou')
     const title = pickLocale(stage.title, locale)
     const description = pickLocale(stage.description, locale)
     const outcomes = pickLocale(stage.outcomes, locale)

@@ -1,13 +1,13 @@
 import Image from 'next/image'
-import { useLocale, useTranslations } from 'next-intl'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { pickLocale } from '@/lib/i18n/pickLocale'
 import type { CaseStudyItem } from '../types'
 import CaseStudyStatCard from './CaseStudyStatCard'
 import QuoteCard from './QuoteCard'
 
-export default function CaseStudyOverview({ item }: { item: CaseStudyItem }) {
-    const locale = useLocale()
-    const t = useTranslations('CaseStudiesPage.overview')
+export default async function CaseStudyOverview({ item }: { item: CaseStudyItem }) {
+    const locale = await getLocale()
+    const t = await getTranslations('CaseStudiesPage.overview')
     const { stats, challenge } = item.detail
     const title = pickLocale(item.title, locale)
 

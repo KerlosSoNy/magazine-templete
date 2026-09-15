@@ -1,7 +1,7 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-export default function Loading() {
-  const t = useTranslations('ErrorPages.loading');
+export default async function Loading() {
+  const t = await getTranslations('ErrorPages.loading');
 
   return (
     <div className="flex min-h-[70vh] w-full items-center justify-center">

@@ -1,6 +1,5 @@
-'use client'
 import { ReactNode } from "react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { LinkedInOutlineIcon, XOutlineIcon } from "./icons";
 
 export interface SocialLink {
@@ -14,8 +13,8 @@ export const defaultSocialLinks: SocialLink[] = [
     { icon: <LinkedInOutlineIcon />, href: "#", labelKey: "linkedin" },
 ];
 
-export default function SocialSidebar({ links = defaultSocialLinks }: { links?: SocialLink[] }) {
-    const t = useTranslations("Common.social");
+export default async function SocialSidebar({ links = defaultSocialLinks }: { links?: SocialLink[] }) {
+    const t = await getTranslations("Common.social");
     return (
         <div className={`fixed top-80 md:top-60 3xl:top-[490.5px] inset-s-2 lg:inset-s-10 3xl:inset-s-30 z-10 flex flex-col items-center gap-4`}>
             <div className="flex flex-col items-center gap-4 text-black">

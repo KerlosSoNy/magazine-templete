@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { clientLogos } from './dummy'
 
-export default function ClientsSection() {
-    const t = useTranslations('ServicesPage.clientsSection')
-    const tCommon = useTranslations('Common.logosMarquee')
+export default async function ClientsSection() {
+    const t = await getTranslations('ServicesPage.clientsSection')
+    const tCommon = await getTranslations('Common.logosMarquee')
 
     return (
         <div data-nav-bg="white" className="w-full bg-main">

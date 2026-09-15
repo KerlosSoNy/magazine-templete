@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { LocalizedText, pickLocale } from "@/lib/i18n/pickLocale";
 import { resolveLocale } from "@/lib/i18n/locale";
 import { EmailOutlineIcon, GlobeOutlineIcon, LinkedInOutlineIcon, LocationOutlineIcon, MailboxOutlineIcon, PhoneOutlineIcon, XOutlineIcon } from "./icons";
@@ -98,9 +98,9 @@ export const defaultSocialLinks: SocialLink[] = [
     { icon: <XOutlineIcon />, href: "#", labelKey: "x" },
 ];
 
-export default function ContactDetails({ items = defaultContactDetails }: { items?: ContactDetailItem[] }) {
-    const tSocial = useTranslations("Common.social");
-    const locale = resolveLocale(useLocale());
+export default async function ContactDetails({ items = defaultContactDetails }: { items?: ContactDetailItem[] }) {
+    const tSocial = await getTranslations("Common.social");
+    const locale = resolveLocale(await getLocale());
     return (
         <div className="flex flex-col gap-4">
             {items.map((item, index) => {

@@ -1,15 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useTranslations, useLocale } from 'next-intl'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { XOutlineIcon, LinkedInOutlineIcon } from '@/components/pages/contactUs/getInTouch/icons'
 import type { ArticleItem } from '../types'
 import { pickLocale } from '@/lib/i18n/pickLocale'
 
-export default function ArticleHero({ item }: { item: ArticleItem }) {
-    const locale = useLocale()
-    const tNav = useTranslations('Common.nav')
-    const tArticles = useTranslations('ArticlesPage')
-    const tDetail = useTranslations('ArticlesPage.detail')
+export default async function ArticleHero({ item }: { item: ArticleItem }) {
+    const locale = await getLocale()
+    const tNav = await getTranslations('Common.nav')
+    const tArticles = await getTranslations('ArticlesPage')
+    const tDetail = await getTranslations('ArticlesPage.detail')
 
     const title = pickLocale(item.title, locale)
 

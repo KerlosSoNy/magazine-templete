@@ -1,9 +1,9 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import GenericButton from '@/components/buttons/genericButton';
 
-export default function NotFound() {
-  const t = useTranslations('ErrorPages.notFound');
-  const tCommon = useTranslations('Common.buttons');
+export default async function NotFound() {
+  const t = await getTranslations('ErrorPages.notFound');
+  const tCommon = await getTranslations('Common.buttons');
 
   return (
     <div className="flex min-h-[70vh] w-full items-center justify-center px-4">

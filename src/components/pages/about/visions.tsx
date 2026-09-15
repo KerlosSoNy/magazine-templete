@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function Visions() {
-    const t = useTranslations("AboutPage.visions");
+export default async function Visions() {
+    const t = await getTranslations("AboutPage.visions");
 
     return (
         <div className="min-h-125 md:h-auto xl:h-202.5 w-screen  px-4 sm:px-8 md:px-12 xl:ps-25 3xl:ps-60 xl:pe-30 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6 relative py-14 md:py-20 xl:pt-25 xl:pb-35">

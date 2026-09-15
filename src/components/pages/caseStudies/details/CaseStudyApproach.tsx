@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import ApproachStepCard from './ApproachStepCard'
 
 interface ApproachStep {
@@ -7,8 +7,8 @@ interface ApproachStep {
     description: string
 }
 
-export default function CaseStudyApproach() {
-    const t = useTranslations('CaseStudiesPage.approach')
+export default async function CaseStudyApproach() {
+    const t = await getTranslations('CaseStudiesPage.approach')
     const steps = t.raw('steps') as ApproachStep[]
 
     return (

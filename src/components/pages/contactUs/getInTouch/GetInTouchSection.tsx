@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import ContactBookingForm from "./ContactBookingForm";
 import ContactDetails, { ContactDetailItem, defaultContactDetails } from "./ContactDetails";
 import ScrollDownIndicator from "./ScrollDownIndicator";
@@ -13,14 +13,14 @@ interface GetInTouchSectionProps {
     socialLinks?: SocialLink[];
 }
 
-export default function GetInTouchSection({
+export default async function GetInTouchSection({
     title,
     highlight,
     subtitle,
     contactDetails = defaultContactDetails,
     socialLinks = defaultSocialLinks,
 }: GetInTouchSectionProps) {
-    const t = useTranslations("ContactUsPage.getInTouch");
+    const t = await getTranslations("ContactUsPage.getInTouch");
     const resolvedTitle = title ?? t("title");
     const resolvedHighlight = highlight ?? t("highlight");
     const resolvedSubtitle = subtitle ?? t("subtitle");

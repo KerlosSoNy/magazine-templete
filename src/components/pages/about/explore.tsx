@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function Explore() {
-    const t = useTranslations("AboutPage.explore");
+export default async function Explore() {
+    const t = await getTranslations("AboutPage.explore");
 
     return (
         <div className="flex flex-col gap-7 items-center w-screen px-4 sm:px-8 lg:px-0 py-12.5 text-center">

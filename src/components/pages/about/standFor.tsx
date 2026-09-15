@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import StandCard from './Cards/StandFor'
 
 
 
-export default function StandFor() {
-    const t = useTranslations('AboutPage.standFor')
+export default async function StandFor() {
+    const t = await getTranslations('AboutPage.standFor')
 
     return (
         <div className="w-screen flex flex-col items-center py-16 lg:py-24 bg-white px-4 sm:px-8 lg:px-0 text-center lg:text-start">

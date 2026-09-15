@@ -1,0 +1,92 @@
+{
+    "logoAlt": "Mind Advisor Logo",
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "services": "Services",
+        "cases": "Cases",
+        "articles": "Articles",
+        "announcements": "Announcements",
+        "careers": "Careers",
+        "contact": "Contact",
+        "menu": "Menu",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu"
+    },
+    "language": {
+        "english": "English",
+        "arabic": "العربية",
+        "switchTo": "Switch language to {language}"
+    },
+    "buttons": {
+        "submit": "Submit",
+        "bookCall": "Book a 15-Minute Call",
+        "backToHome": "Back to home",
+        "readMore": "Read More",
+        "discoverMore": "Discover More"
+    },
+    "footer": {
+        "tagline": "At Minds Advisory, our commitment is to create enduring value by fostering partnerships that yield meaningful, long-term success",
+        "usefulLinks": "Useful Links",
+        "findUs": "Find us",
+        "workingDays": "Sunday-Thursday",
+        "wantToCreateValue": "Want to create value?",
+        "copyright": "© 2024 Minds Advisory. All rights reserved."
+    },
+    "getInTouch": {
+        "heading": "Get In Touch",
+        "subheading": "Join Forces To Unlock The True Growth Potential Of Your Organization",
+        "address": "3640 King Faisal Rd Al Khalidiyah Dammam 31411, Eastern Province, Saudi Arabia",
+        "linkedInLabel": "LinkedIn",
+        "xLabel": "X",
+        "form": {
+            "fullName": "Full Name",
+            "email": "example@info.com",
+            "company": "Company",
+            "roleInCompany": "Role in Company",
+            "inquiry": "Your Inquiry",
+            "send": "Send A Message"
+        }
+    },
+    "bookForm": {
+        "title": "Book a 15-Minute Call",
+        "subtitle": "Join Forces to Unlock The True Growth Potential of Your Organization",
+        "close": "Close",
+        "fields": {
+            "fullName": "Full Name",
+            "phone": "Phone",
+            "email": "Email",
+            "timeSlot": "Time Slot",
+            "industry": "Industry",
+            "serviceOfInterest": "Service Of Interest",
+            "selectIndustry": "Select Industry",
+            "selectService": "Select Service",
+            "privacyAgree": "I hereby agree to and accept",
+            "privacyPolicy": "Privacy Policy",
+            "privacyPermission": "and give permission to access my personal data.",
+            "submit": "Submit"
+        },
+        "options": {
+            "timeSlots": ["New York", "Los Angeles", "San Francisco"],
+            "industries": ["Agriculture", "Banking", "Construction"],
+            "services": ["Agriculture", "Banking"]
+        }
+    },
+    "popup": {
+        "close": "Close"
+    },
+    "datePicker": {
+        "openDatePicker": "Open date picker",
+        "date": "Date"
+    },
+    "logosMarquee": {
+        "logoAlt": "Client logo"
+    },
+    "social": {
+        "x": "X",
+        "linkedin": "LinkedIn",
+        "followUs": "Follow us",
+        "scrollDown": "Scroll Down",
+        "scrollTo": "Scroll to {section}"
+    }
+}

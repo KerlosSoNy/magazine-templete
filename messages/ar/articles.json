@@ -1,0 +1,19 @@
+{
+    "pageTitle": "المقالات الصناعية",
+    "list": {
+        "eyebrow": "رؤى وابتكارات",
+        "heading": "مقالات",
+        "headingHighlight": "من واقع الممارسة الفعلية",
+        "allHeading": "جميع",
+        "allHeadingHighlight": "قصص القطاعات",
+        "filterIndustry": "تصفية حسب المجال",
+        "filterYear": "تصفية حسب السنة",
+        "loadMore": "عرض المزيد"
+    },
+    "detail": {
+        "shareThisArticle": "شارك هذا المقال",
+        "shareOnX": "شارك على إكس",
+        "shareOnLinkedIn": "شارك على لينكد إن",
+        "relatedArticle": "مقال ذو صلة"
+    }
+}

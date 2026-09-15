@@ -1,0 +1,92 @@
+{
+    "logoAlt": "شعار مايندز أدفايزوري",
+    "nav": {
+        "home": "الرئيسية",
+        "about": "من نحن",
+        "services": "الخدمات",
+        "cases": "دراسات الحالة",
+        "articles": "المقالات",
+        "announcements": "الإعلانات",
+        "careers": "الوظائف",
+        "contact": "تواصل معنا",
+        "menu": "القائمة",
+        "openMenu": "فتح القائمة",
+        "closeMenu": "إغلاق القائمة"
+    },
+    "language": {
+        "english": "English",
+        "arabic": "العربية",
+        "switchTo": "التبديل إلى اللغة {language}"
+    },
+    "buttons": {
+        "submit": "إرسال",
+        "bookCall": "احجز مكالمة لمدة 15 دقيقة",
+        "backToHome": "العودة للرئيسية",
+        "readMore": "اقرأ المزيد",
+        "discoverMore": "اكتشف المزيد"
+    },
+    "footer": {
+        "tagline": "في مايندز أدفايزوري، نلتزم بخلق قيمة دائمة من خلال بناء شراكات تحقق نجاحاً هادفاً وطويل الأمد",
+        "usefulLinks": "روابط مفيدة",
+        "findUs": "كيف تجدنا",
+        "workingDays": "الأحد - الخميس",
+        "wantToCreateValue": "تريد خلق قيمة؟",
+        "copyright": "© 2024 مايندز أدفايزوري. جميع الحقوق محفوظة."
+    },
+    "getInTouch": {
+        "heading": "تواصل معنا",
+        "subheading": "لنوحّد الجهود لإطلاق العنان لإمكانات النمو الحقيقية لمؤسستك",
+        "address": "طريق الملك فيصل 3640، الخالدية، الدمام 31411، المنطقة الشرقية، المملكة العربية السعودية",
+        "linkedInLabel": "لينكد إن",
+        "xLabel": "إكس",
+        "form": {
+            "fullName": "الاسم الكامل",
+            "email": "example@info.com",
+            "company": "الشركة",
+            "roleInCompany": "المنصب في الشركة",
+            "inquiry": "استفسارك",
+            "send": "إرسال الرسالة"
+        }
+    },
+    "bookForm": {
+        "title": "احجز مكالمة لمدة 15 دقيقة",
+        "subtitle": "لنوحّد الجهود لإطلاق العنان لإمكانات النمو الحقيقية لمؤسستك",
+        "close": "إغلاق",
+        "fields": {
+            "fullName": "الاسم الكامل",
+            "phone": "رقم الهاتف",
+            "email": "البريد الإلكتروني",
+            "timeSlot": "الوقت المتاح",
+            "industry": "المجال",
+            "serviceOfInterest": "الخدمة المطلوبة",
+            "selectIndustry": "اختر المجال",
+            "selectService": "اختر الخدمة",
+            "privacyAgree": "أوافق على",
+            "privacyPolicy": "سياسة الخصوصية",
+            "privacyPermission": "وأمنح الإذن بالوصول إلى بياناتي الشخصية.",
+            "submit": "إرسال"
+        },
+        "options": {
+            "timeSlots": ["نيويورك", "لوس أنجلوس", "سان فرانسيسكو"],
+            "industries": ["الزراعة", "الخدمات المصرفية", "الإنشاءات"],
+            "services": ["الزراعة", "الخدمات المصرفية"]
+        }
+    },
+    "popup": {
+        "close": "إغلاق"
+    },
+    "datePicker": {
+        "openDatePicker": "فتح منتقي التاريخ",
+        "date": "التاريخ"
+    },
+    "logosMarquee": {
+        "logoAlt": "شعار العميل"
+    },
+    "social": {
+        "x": "إكس",
+        "linkedin": "لينكد إن",
+        "followUs": "تابعنا",
+        "scrollDown": "مرر للأسفل",
+        "scrollTo": "التمرير إلى {section}"
+    }
+}

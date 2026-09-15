@@ -1,4 +1,5 @@
 import { useNavTheme } from "@/components/providers/NavThemeProvider";
+import { useTranslations } from "next-intl";
 
 const SOCIALS = [
     {
@@ -27,6 +28,7 @@ const SOCIALS = [
 
 export default function FollowUs() {
     const isWhite = useNavTheme();
+    const t = useTranslations("Common.social");
     return (
         <div className={`absolute top-1/2 -translate-y-1/2 inset-s-5 xl:inset-s-10 3xl:inset-s-40 z-30 hidden md:flex flex-col items-center gap-4 ${isWhite && "filter-teal"}`}>
             <div className="flex flex-col items-center gap-5">
@@ -46,7 +48,7 @@ export default function FollowUs() {
                 className="text-6 tracking-[0.3em] mt-2 text-white uppercase"
                 style={{ writingMode: 'vertical-rl', transform: 'rotate(-360deg)' }}
             >
-                Follow us
+                {t("followUs")}
             </span>
             <div className="h-5 w-0.5 bg-white -mt-2" />
         </div>

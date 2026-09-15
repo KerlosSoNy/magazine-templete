@@ -1,16 +1,18 @@
+import type { LocalizedText } from '@/lib/i18n/pickLocale'
+
 export interface CaseStudyStats {
-    timeline: string
-    industry: string
-    serviceLine: string
-    client: string
+    timeline: LocalizedText
+    industry: LocalizedText
+    serviceLine: LocalizedText
+    client: LocalizedText
 }
 
 export interface CaseStudyChallenge {
-    title: string
-    paragraphs: string[]
-    quote: string
+    title: LocalizedText
+    paragraphs: LocalizedText[]
+    quote: LocalizedText
     quoteAuthor: string
-    quoteRole: string
+    quoteRole: LocalizedText
 }
 
 export interface CaseStudyDetail {
@@ -19,12 +21,12 @@ export interface CaseStudyDetail {
 }
 
 export interface CaseStudyItem {
-    tags: string[]
-    title: string
+    tags: [string, LocalizedText, LocalizedText]
+    title: LocalizedText
     href: string
     slug: string
-    description: string
-    subTitle: string
+    description: LocalizedText
+    subTitle: LocalizedText
     image: string
     detail: CaseStudyDetail
 }

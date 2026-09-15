@@ -1,23 +1,34 @@
 'use client'
 
 import { ChangeEvent, useMemo, useState } from 'react'
+import { useTranslations, useLocale } from 'next-intl'
 import SelectField from '@/components/inputs/Selectfield'
 import GenericButton from '@/components/buttons/genericButton'
 import { articles } from './dummy'
 import ArticleCard from './ArticleCard'
+import { pickLocale } from '@/lib/i18n/pickLocale'
 
 const PAGE_SIZE = 6
 const FEATURED_COUNT = 3
 
 export default function ArticlesList() {
+    const t = useTranslations('ArticlesPage.list')
+    const locale = useLocale()
+
     const [industry, setIndustry] = useState('')
     const [year, setYear] = useState('')
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
-    const industryOptions = useMemo(
-        () => Array.from(new Set(articles.map((item) => item.industry))).map((value) => ({ value, label: value })),
-        []
-    )
+    const industryOptions = useMemo(() => {
+        const seen = new Map<string, string>()
+        articles.forEach((item) => {
+            if (!seen.has(item.industry.en)) {
+                seen.set(item.industry.en, pickLocale(item.industry, locale))
+            }
+        })
+        return Array.from(seen.entries()).map(([value, label]) => ({ value, label }))
+    }, [locale])
+
     const yearOptions = useMemo(
         () => Array.from(new Set(articles.map((item) => item.year))).map((value) => ({ value, label: value })),
         []
@@ -27,7 +38,7 @@ export default function ArticlesList() {
         () =>
             articles.filter(
                 (item) =>
-                    (!industry || item.industry === industry) &&
+                    (!industry || item.industry.en === industry) &&
                     (!year || item.year === year)
             ),
         [industry, year]
@@ -46,9 +57,9 @@ export default function ArticlesList() {
     return (
         <div id="articles" className="container mx-auto flex flex-col gap-16 py-16 lg:py-20">
             <div className="flex flex-col gap-8 md:gap-11">
-                <span className="text-5 text-text-placeholder">Insights & Innovations</span>
+                <span className="text-5 text-text-placeholder">{t('eyebrow')}</span>
                 <h1 className="text-2 md:text-1 font-bold leading-2 md:leading-1 text-text-secondary max-w-220">
-                    Real Practice <span className="text-main">Articles</span>
+                    {t('heading')} <span className="text-main">{t('headingHighlight')}</span>
                 </h1>
             </div>
 
@@ -63,14 +74,14 @@ export default function ArticlesList() {
             <div className="flex flex-col gap-16 border-t border-text-disabled pt-4 lg:pt-16">
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
                     <h2 className="text-2 md:text-1 font-bold leading-2 md:leading-1 text-text-secondary">
-                        All <span className="text-main">Industry Stories</span>
+                        {t('allHeading')} <span className="text-main">{t('allHeadingHighlight')}</span>
                     </h2>
                     <div className="flex flex-col sm:flex-row gap-4 max-w-140">
                         <SelectField
                             srOnly={false}
                             id="articles-industry"
                             name="industry"
-                            label="Filter by Industry"
+                            label={t('filterIndustry')}
                             value={industry}
                             onChange={handleFilterChange(setIndustry)}
                             options={industryOptions}
@@ -79,7 +90,7 @@ export default function ArticlesList() {
                             srOnly={false}
                             id="articles-year"
                             name="year"
-                            label="Filter by Year"
+                            label={t('filterYear')}
                             value={year}
                             onChange={handleFilterChange(setYear)}
                             options={yearOptions}
@@ -97,7 +108,7 @@ export default function ArticlesList() {
 
                 {hasMore && (
                     <GenericButton
-                        title="Load More"
+                        title={t('loadMore')}
                         withoutIcon
                         revertColors
                         mainClasses="self-center px-10!"

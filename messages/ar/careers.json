@@ -1,0 +1,107 @@
+{
+    "bannerTitle": "الوظائف",
+    "hero": {
+        "heading": "هل ترغب في الانضمام إلى فريقنا؟",
+        "description": "انضم إلى فريقنا الديناميكي واكتشف إمكاناتك الحقيقية من خلال مزايا تنافسية، وفرص تعلّم مستمرة، وبيئة عمل داعمة مصممة لمساعدتك على النمو والتميز. نحن نقدّر الابتكار ونشجع الإبداع في كل مشروع. يتمتع أعضاء فريقنا بجداول عمل مرنة وثقافة تعزز التوازن بين العمل والحياة. معًا، نسعى لتحقيق أثر حقيقي في صناعتنا ومجتمعنا.",
+        "seeOpenRoles": "استعرض الوظائف الشاغرة",
+        "uploadYourCv": "ارفع سيرتك الذاتية",
+        "image1Alt": "فريق مايندز أدفايزوري يتعاون في قاعة اجتماعات",
+        "image2Alt": "أعضاء فريق مايندز أدفايزوري في نقاش"
+    },
+    "whyJoinUs": {
+        "heading": "لماذا تنضم إلينا؟",
+        "description": "تعرّف على أبرز المحطات والتطورات التي تمر بها في كل مرحلة من مراحل العملية. سيساعدك هذا الدليل على فهم ما هو متوقع منك والاستعداد لما هو قادم. ابقَ على اطلاع واستفد من كل مرحلة بفضل رؤانا الشاملة.",
+        "imageAlt": "مكتب مايندز أدفايزوري"
+    },
+    "openPositions": {
+        "eyebrow": "نحن نوظف",
+        "headingPrefix": "كن جزءًا من",
+        "headingHighlight": "مهمتنا",
+        "allDepartments": "جميع الأقسام",
+        "loadMore": "عرض المزيد",
+        "statusOpen": "مفتوحة",
+        "statusClosed": "مغلقة",
+        "position": "وظيفة",
+        "apply": "تقدم"
+    },
+    "employmentType": {
+        "Full time": "دوام كامل",
+        "Part time": "دوام جزئي",
+        "Contract": "عقد"
+    },
+    "workMode": {
+        "On Site": "في الموقع",
+        "Remote": "عن بُعد",
+        "Hybrid": "مختلط"
+    },
+    "applyForm": {
+        "applyNow": "تقدم الآن",
+        "basicInfo": "المعلومات الأساسية",
+        "workExperience": "الخبرة العملية",
+        "uploadCvButton": "رفع السيرة الذاتية",
+        "submit": "إرسال",
+        "otherOption": "أخرى",
+        "fields": {
+            "fullName": "الاسم الكامل",
+            "email": "البريد الإلكتروني",
+            "phone": "رقم الهاتف",
+            "address": "العنوان",
+            "university": "الجامعة",
+            "major": "التخصص",
+            "graduationYear": "سنة التخرج",
+            "birthday": "تاريخ الميلاد",
+            "genderMale": "ذكر",
+            "genderFemale": "أنثى",
+            "yearsOfExperience": "سنوات الخبرة",
+            "employer": "جهة العمل",
+            "currentJobTitle": "المسمى الوظيفي الحالي",
+            "availability": "التوفر",
+            "currentSalary": "الراتب الحالي",
+            "expectedSalary": "الراتب المتوقع",
+            "englishProficiency": "إتقان اللغة الإنجليزية",
+            "otherLanguages": "لغات أخرى..",
+            "linkedin": "لينكد إن",
+            "whatMakesYouPartOfTeam": "ما الذي يجعلك جزءًا من فريقنا؟",
+            "howDidYouKnowAboutUs": "كيف تعرفت علينا"
+        },
+        "universityOptions": {
+            "kingSaud": "جامعة الملك سعود",
+            "kingAbdulaziz": "جامعة الملك عبدالعزيز",
+            "kfupm": "جامعة الملك فهد للبترول والمعادن",
+            "princessNourah": "جامعة الأميرة نورة بنت عبدالرحمن"
+        },
+        "englishProficiencyOptions": {
+            "basic": "أساسي",
+            "intermediate": "متوسط",
+            "advanced": "متقدم",
+            "fluent": "طليق",
+            "native": "لغة أم"
+        },
+        "otherLanguagesOptions": {
+            "none": "بدون",
+            "arabic": "العربية",
+            "french": "الفرنسية",
+            "german": "الألمانية"
+        },
+        "referralSourceOptions": {
+            "linkedin": "لينكد إن",
+            "companyWebsite": "الموقع الإلكتروني للشركة",
+            "employeeReferral": "ترشيح موظف",
+            "jobBoard": "منصات التوظيف",
+            "socialMedia": "وسائل التواصل الاجتماعي"
+        }
+    },
+    "uploadCvPopup": {
+        "applyNow": "تقدم الآن",
+        "title": "ارفع سيرتك الذاتية",
+        "subtitle": "ساعدنا على التعرف عليك بشكل أفضل من خلال مشاركة سيرتك الذاتية.",
+        "dropzoneCta": "انقر للرفع أو اسحب الملفات وأفلتها هنا",
+        "supportFormat": "الصيغ المدعومة: PDF، JPG، PNG (بحد أقصى 20 ميجابايت)",
+        "uploadButton": "ارفع سيرتك الذاتية",
+        "errors": {
+            "invalidType": "يرجى رفع ملف بصيغة PDF أو JPG أو PNG",
+            "tooLarge": "يجب ألا يتجاوز حجم الملف {size} ميجابايت",
+            "required": "يرجى اختيار ملف للرفع"
+        }
+    }
+}

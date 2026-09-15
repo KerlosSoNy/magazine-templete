@@ -1,10 +1,13 @@
 import { ReactNode } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { LocalizedText, pickLocale } from "@/lib/i18n/pickLocale";
+import { resolveLocale } from "@/lib/i18n/locale";
 import { EmailOutlineIcon, GlobeOutlineIcon, LinkedInOutlineIcon, LocationOutlineIcon, MailboxOutlineIcon, PhoneOutlineIcon, XOutlineIcon } from "./icons";
 import { SocialLink } from "./SocialSidebar";
 
 export interface ContactDetailItem {
     icon: ReactNode;
-    label: string;
+    label: string | LocalizedText;
     href?: string;
 }
 
@@ -66,7 +69,10 @@ export const defaultContactDetails: ContactDetailItem[] = [
             </defs>
         </svg>
         ,
-        label: "PO Box 30, Kingdom of Saudi Arabia",
+        label: {
+            en: "PO Box 30, Kingdom of Saudi Arabia",
+            ar: "صندوق بريد 30، المملكة العربية السعودية",
+        },
     },
     {
         icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,23 +86,35 @@ export const defaultContactDetails: ContactDetailItem[] = [
             </defs>
         </svg>
         ,
-        label: "3640 King Faisal Rd Al Khalidiyah Dammam 31411, Eastern Province, Saudi Arabia",
+        label: {
+            en: "3640 King Faisal Rd Al Khalidiyah Dammam 31411, Eastern Province, Saudi Arabia",
+            ar: "3640 طريق الملك فيصل، الخالدية، الدمام 31411، المنطقة الشرقية، المملكة العربية السعودية",
+        },
     },
 ];
 
 export const defaultSocialLinks: SocialLink[] = [
-    { icon: <LinkedInOutlineIcon />, href: "#", label: "LinkedIn" },
-    { icon: <XOutlineIcon />, href: "#", label: "X" },
+    { icon: <LinkedInOutlineIcon />, href: "#", labelKey: "linkedin" },
+    { icon: <XOutlineIcon />, href: "#", labelKey: "x" },
 ];
 
 export default function ContactDetails({ items = defaultContactDetails }: { items?: ContactDetailItem[] }) {
+    const tSocial = useTranslations("Common.social");
+    const locale = resolveLocale(useLocale());
     return (
         <div className="flex flex-col gap-4">
             {items.map((item, index) => {
+                const isPlainText = typeof item.label === "string";
+                const label = typeof item.label === "string" ? item.label : pickLocale(item.label, locale);
                 const content = (
                     <>
                         <span className="text-main shrink-0">{item.icon}</span>
-                        <span className="text-6 font-inter text-text-secondary max-w-84">{item.label}</span>
+                        <span
+                            dir={isPlainText ? "ltr" : undefined}
+                            className={`text-6 font-inter text-text-secondary max-w-84 ${isPlainText ? "text-start" : ""}`}
+                        >
+                            {label}
+                        </span>
                     </>
                 );
 
@@ -119,7 +137,7 @@ export default function ContactDetails({ items = defaultContactDetails }: { item
                     <a
                         key={index}
                         href={social.href}
-                        aria-label={social.label}
+                        aria-label={tSocial(social.labelKey)}
                         className="hover:opacity-70 transition-opacity"
                     >
                         {social.icon}

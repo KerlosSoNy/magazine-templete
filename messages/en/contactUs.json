@@ -1,0 +1,27 @@
+{
+  "bannerTitle": "Contact Us",
+  "getInTouch": {
+    "title": "Get In",
+    "highlight": "Touch",
+    "subtitle": "We're Available To Answer Your Inquiries And Provide The Support You Need. Contact Us Through The Following Channels",
+    "backgroundAlt": "Success background"
+  },
+  "contactDetails": {
+    "poBox": "PO Box 30, Kingdom of Saudi Arabia",
+    "address": "3640 King Faisal Rd Al Khalidiyah Dammam 31411, Eastern Province, Saudi Arabia"
+  },
+  "form": {
+    "fields": {
+      "date": "Pick a date",
+      "timeSlot": "Choose a time slot",
+      "industry": "Select Industry"
+    },
+    "options": {
+      "services": [
+        "Strategy Consulting",
+        "Digital Transformation",
+        "Talent & Organization"
+      ]
+    }
+  }
+}

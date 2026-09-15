@@ -3,10 +3,12 @@
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { whyJoinUsSteps } from './dummy'
 import WhyJoinUsStepCard from './WhyJoinUsStepCard'
 
 export default function WhyJoinUs() {
+    const t = useTranslations('CareersPage.whyJoinUs')
     const sectionRef = useRef<HTMLDivElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
     const stickyRef = useRef<HTMLDivElement>(null)
@@ -64,13 +66,13 @@ export default function WhyJoinUs() {
                         className="lg:sticky lg:top-24 flex flex-col gap-8 lg:gap-10"
                     >
                         <h2 className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-white capitalize">
-                            Why join us ?
+                            {t('heading')}
                         </h2>
                         <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden">
                             <motion.div className="absolute inset-x-0 -top-20 -bottom-20">
                                 <Image
                                     src="/images/careers/why-join-us.png"
-                                    alt="Minds Advisory office"
+                                    alt={t('imageAlt')}
                                     fill
                                     sizes="(min-width: 1024px) 50vw, 100vw"
                                     className="object-cover"
@@ -78,9 +80,7 @@ export default function WhyJoinUs() {
                             </motion.div>
                         </div>
                         <p className="text-6 md:text-5 text-white">
-                            Discover the key milestones and developments that occur at every stage of the process. This guide
-                            will help you navigate through expectations and prepare for what lies ahead. Stay informed and make
-                            the most of each phase with our comprehensive insights.
+                            {t('description')}
                         </p>
                     </motion.div>
                 </div>

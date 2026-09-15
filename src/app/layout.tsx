@@ -37,7 +37,7 @@ export default async function LocaleLayout({
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body suppressHydrationWarning className={locale === "ar" ? "font-ar" : "font-en"}>
+      <body className={locale === "ar" ? "font-ar" : "font-en"}>
         <NextIntlClientProvider>
           <AnimationWrapper>
             <NavThemeProvider>

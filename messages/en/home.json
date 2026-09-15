@@ -1,0 +1,66 @@
+{
+    "hero": {
+        "partOf": "Part of:",
+        "tagline": "Your Partner in Value Creation",
+        "title": "Transforming Businesses with Innovative, Sustainable Solutions",
+        "cta": "Get In Touch",
+        "partnerLogoAlt": "Muhaidib Group logo"
+    },
+    "welcome": {
+        "titleLead": "Welcome to",
+        "titleBrand": "Minds Advisory by AMG",
+        "paragraph1": "At Minds Advisory, our commitment is to create enduring value by fostering partnerships that yield meaningful, long-term success",
+        "paragraph2": "With a team of seasoned professionals boasting extensive experience across the GCC, North Africa, and Europe, we offer bespoke solutions that address internal inefficiencies and unlock the latent potential within your organization",
+        "paragraph3": "Whether you are looking to optimize your operations, execute transformative strategies, or harness the power of data, we are here to guide you every step of the way",
+        "storyLink": "Discover the Minds Advisory Story"
+    },
+    "ourValues": {
+        "title": "Our value creation services",
+        "description": "Explore our meticulously-tailored solutions and our four principal areas of focus, designed to meet the unique needs of your business",
+        "logoAlt": "Minds Advisory mark"
+    },
+    "ourCase": {
+        "eyebrow": "Our Case studies",
+        "headingHighlight": "Custom Solutions",
+        "headingRest": "That Accelerate Your Success"
+    },
+    "downloadFile": {
+        "title": "Downloadable Materials",
+        "description": "Explore our comprehensive business offerings deck, detailing innovative solutions tailored to your needs. Download now to discover how we can drive your success forward.",
+        "downloadNow": "Download Now",
+        "imageAlt": "Downloadable Materials"
+    },
+    "ourSuccess": {
+        "titleBlack1": "Our Success is Measured",
+        "titleBlack2": "by",
+        "titleHighlight": "the Success of Our Clients",
+        "cta": "Discover our bespoke solutions",
+        "backgroundAlt": "Success background"
+    },
+    "creative": {
+        "backgroundAlt": "Success background",
+        "heading1": "Creating Value Begins With",
+        "heading1Highlight": "Understanding",
+        "paragraph1": "At Minds Advisory, we pride ourselves on offering more than just consulting services. Our approach is deeply rooted not only in understanding your business from the ground up and ensuring that our solutions are innovative, practical and sustainable. But also fostering maximum value acclamation. Our proven track record across diverse industries underscores our capability to deliver tangible results",
+        "paragraph2": "With a strong presence across the GCC, North Africa, North America and Europe, Minds Advisory combines global best practices with local insights helps us in understanding the nuances of each market, allowing us to alter our services to meet the specific challenges and opportunities within each region",
+        "heading2": "Global Reach",
+        "heading2Highlight": "Local Expertise"
+    },
+    "discoverBusiness": {
+        "title": "Discover where your business stands in the AI transformation journey",
+        "subtitle": "Get a personalized AI maturity score and identify the exact gaps in your organization's strategy, data infrastructure, and innovation culture.",
+        "currentMaturity": "Current Maturity",
+        "cta": "Start your free assessment",
+        "footnote": "Takes only 8 minutes • Instant results • No sign-up required"
+    },
+    "latestNews": {
+        "eyebrow": "News & Insight",
+        "headingLead": "Latest News &",
+        "headingHighlight": "Announcement",
+        "prevAria": "Previous news",
+        "nextAria": "Next news"
+    },
+    "pagination": {
+        "goToSlide": "Go to slide {number}"
+    }
+}

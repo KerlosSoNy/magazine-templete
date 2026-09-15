@@ -9,11 +9,14 @@ import SocialSidebar, { defaultSocialLinks } from "@/components/pages/contactUs/
 import GetInTouch from "@/components/pages/home/slides/getInTouch";
 import LogosMarquee from "@/components/shared/logosMarquee/LogosMarquee";
 import SmallBanner from "@/components/shared/smallBanner";
+import { getTranslations } from "next-intl/server";
 
-export default function page() {
+export default async function Page() {
+    const t = await getTranslations("AboutPage");
+
     return (
         <div className="pt-18 xl:pt-32">
-            <SmallBanner title="About" />
+            <SmallBanner title={t("bannerTitle")} />
             <SocialSidebar links={defaultSocialLinks} />
             <ScrollDownIndicator id="story" />
             <GirlSection />

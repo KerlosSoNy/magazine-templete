@@ -4,6 +4,7 @@ import { useEffect, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import BookCall from "@/components/buttons/bookCall/bookCall";
 import LanguageSwitcher from "@/components/buttons/changeLanguage/LanguageSwitcher";
 import { Links } from "@/lib/constant/links";
@@ -23,6 +24,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     const mounted = useSyncExternalStore(subscribeToNothing, () => true, () => false);
     const pathname = usePathname();
     const transition = usePageTransition();
+    const tCommon = useTranslations("Common");
+    const t = useTranslations("Common.nav");
 
     useEffect(() => {
         if (!isOpen) return;
@@ -71,14 +74,14 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <div className="flex flex-row items-center justify-between px-6 py-5">
                     <Image
                         src="/images/logos/logo.png"
-                        alt="Mind Advisor Logo"
+                        alt={tCommon("logoAlt")}
                         width={158}
                         height={40}
                         className="filter-teal h-auto w-24"
                     />
                     <button
                         type="button"
-                        aria-label="Close menu"
+                        aria-label={t("closeMenu")}
                         onClick={onClose}
                         className="flex h-9 w-9 items-center justify-center text-text-secondary"
                     >
@@ -105,7 +108,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                             active && "font-bold text-main"
                                         )}
                                     >
-                                        {link.name}
+                                        {t(link.key)}
                                     </a>
                                 </li>
                             );

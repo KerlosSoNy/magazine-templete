@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import Popup from '@/components/shared/popup'
 import { ClearIcon, UploadIcon } from './icons'
 
@@ -14,6 +15,8 @@ const MAX_SIZE_MB = 20
 const ACCEPTED_TYPES = ['application/pdf', 'image/jpeg', 'image/png']
 
 export default function UploadCvPopup({ isOpen, onClose }: UploadCvPopupProps) {
+    const t = useTranslations('CareersPage.uploadCvPopup')
+    const tCommonPopup = useTranslations('Common.popup')
     const inputRef = useRef<HTMLInputElement>(null)
     const [file, setFile] = useState<File | null>(null)
     const [isDragging, setIsDragging] = useState(false)
@@ -22,11 +25,11 @@ export default function UploadCvPopup({ isOpen, onClose }: UploadCvPopupProps) {
     function handleFile(selected: File | null) {
         if (!selected) return
         if (!ACCEPTED_TYPES.includes(selected.type)) {
-            setError('Please upload a PDF, JPG or PNG file')
+            setError(t('errors.invalidType'))
             return
         }
         if (selected.size > MAX_SIZE_MB * 1024 * 1024) {
-            setError(`File must be smaller than ${MAX_SIZE_MB} MB`)
+            setError(t('errors.tooLarge', { size: MAX_SIZE_MB }))
             return
         }
         setError('')
@@ -42,7 +45,7 @@ export default function UploadCvPopup({ isOpen, onClose }: UploadCvPopupProps) {
 
     function handleSubmit() {
         if (!file) {
-            setError('Please select a file to upload')
+            setError(t('errors.required'))
             return
         }
         console.log('Uploading CV', file.name)
@@ -55,16 +58,16 @@ export default function UploadCvPopup({ isOpen, onClose }: UploadCvPopupProps) {
                 <button
                     type="button"
                     onClick={handleClose}
-                    aria-label="Close"
-                    className="absolute right-3 top-3 md:right-5 md:top-5 p-2 rounded"
+                    aria-label={tCommonPopup('close')}
+                    className="absolute inset-e-3 top-3 md:inset-e-5 md:top-5 p-2 rounded"
                 >
                     <ClearIcon />
                 </button>
 
-                <div className="flex flex-col gap-5 pr-8">
-                    <span className="text-5 text-main">Apply Now</span>
-                    <h2 className="text-3 font-bold text-text-secondary">Upload Your CV</h2>
-                    <p className="text-6 text-text-disabled">Help us get to know you better by sharing your resume.</p>
+                <div className="flex flex-col gap-5 pe-8">
+                    <span className="text-5 text-main">{t('applyNow')}</span>
+                    <h2 className="text-3 font-bold text-text-secondary">{t('title')}</h2>
+                    <p className="text-6 text-text-disabled">{t('subtitle')}</p>
                 </div>
 
                 <input
@@ -92,14 +95,14 @@ export default function UploadCvPopup({ isOpen, onClose }: UploadCvPopupProps) {
                 >
                     <div className="relative w-17.5 h-16.5 shrink-0">
                         <Image src="/images/careers/pdf-icon.svg" alt="" fill sizes="64px" className="object-contain" />
-                        <span className="absolute left-11 top-10 bg-white rounded-lg p-1 shadow-sm flex items-center justify-center">
+                        <span className="absolute inset-s-11 top-10 bg-white rounded-lg p-1 shadow-sm flex items-center justify-center">
                             <UploadIcon className="size-4.5 text-main" />
                         </span>
                     </div>
                     <span className="text-5 text-text-secondary break-all">
-                        {file ? file.name : 'Click to upload or drag and drop files here'}
+                        {file ? file.name : t('dropzoneCta')}
                     </span>
-                    <span className="text-7 text-text-disabled">Support format PDF, JPG, PNG ( 20 MB Max)</span>
+                    <span className="text-7 text-text-disabled">{t('supportFormat')}</span>
                 </button>
 
                 {error && <p className="text-6 text-red-500">{error}</p>}
@@ -110,7 +113,7 @@ export default function UploadCvPopup({ isOpen, onClose }: UploadCvPopupProps) {
                     className="bg-main rounded-lg h-14 w-full flex items-center justify-center gap-2 font-bold text-5 text-white capitalize"
                 >
                     <UploadIcon />
-                    Upload Your CV
+                    {t('uploadButton')}
                 </button>
             </div>
         </Popup>

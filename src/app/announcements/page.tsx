@@ -4,11 +4,14 @@ import SocialSidebar, { defaultSocialLinks } from '@/components/pages/contactUs/
 import GetInTouch from '@/components/pages/home/slides/getInTouch'
 import LatestNews from '@/components/pages/home/slides/latestNews'
 import SmallBanner from '@/components/shared/smallBanner'
+import { getTranslations } from 'next-intl/server'
 
-export default function Page() {
+export default async function Page() {
+    const t = await getTranslations('AnnouncementsPage')
+
     return (
         <div className="pt-18 xl:pt-32 max-w-screen overflow-hidden">
-            <SmallBanner title="Announcement" />
+            <SmallBanner title={t('bannerTitle')} />
             <SocialSidebar links={defaultSocialLinks} />
             <ScrollDownIndicator id="media-coverage" />
             <LatestNews />

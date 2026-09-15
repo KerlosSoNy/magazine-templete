@@ -4,8 +4,9 @@ import { useRef, useState, useEffect } from 'react'
 import ArticleContent from './ArticleContent'
 import RelatedArticles from './RelatedArticles'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import type { ArticleItem } from '../types'
 
-export default function ArticleDetailsContainer({ item }: any) {
+export default function ArticleDetailsContainer({ item }: { item: ArticleItem }) {
     const sectionRef = useRef<HTMLDivElement>(null)
     const [isLargeScreen, setIsLargeScreen] = useState(false)
 

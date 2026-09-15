@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { resolveLocale, type Locale } from "@/lib/i18n/locale";
 import Image from "next/image";
 import { useNavTheme } from "@/components/providers/NavThemeProvider";
@@ -45,6 +46,7 @@ export default function LanguageSwitcher({ forceDark = false }: { forceDark?: bo
     const locale = useSyncExternalStore(subscribeToNothing, readLocaleCookie, getServerLocale);
     const targetLocale: Locale = locale === "en" ? "ar" : "en";
     const isDark = useNavTheme();
+    const t = useTranslations("Common.language");
     const switchLocale = () => {
         setLocaleCookie(targetLocale);
         router.refresh();
@@ -55,7 +57,7 @@ export default function LanguageSwitcher({ forceDark = false }: { forceDark?: bo
             type="button"
             onClick={switchLocale}
             className={`flex flex-row items-center gap-2 text-white font-inter text-6 3xl:text-5 no-focus-ring ${(forceDark || isDark || pathname !== "/") && "text-black!"}`}
-            aria-label={`Switch language to ${LOCALE_LABELS[targetLocale]}`}
+            aria-label={t("switchTo", { language: LOCALE_LABELS[targetLocale] })}
         >
             <FlagIcon locale={targetLocale} />
             <span>{LOCALE_LABELS[targetLocale]}</span>

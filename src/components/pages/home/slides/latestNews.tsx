@@ -1,17 +1,18 @@
 'use client'
 import { useEffect, useState } from "react"
+import { useTranslations } from "next-intl"
 import { AnimatePresence, motion } from "framer-motion"
 import NewsCard from "../cards/news/NewsCard"
 import { latestNews } from "../cards/news/dummy"
 
 const ArrowLeft = () => (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="rtl:rotate-180">
         <path d="M13.3334 8H2.66675M2.66675 8L7.33341 3.33334M2.66675 8L7.33341 12.6667" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
 )
 
 const ArrowRight = () => (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="rtl:rotate-180">
         <path d="M2.66675 8H13.3334M13.3334 8L8.66675 3.33334M13.3334 8L8.66675 12.6667" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
 )
@@ -58,6 +59,7 @@ function useVisibleCount() {
 }
 
 export default function LatestNews() {
+    const t = useTranslations("HomePage.latestNews")
     const total = latestNews.length
     const [[index, direction], setIndex] = useState<[number, number]>([0, 0])
     const VISIBLE = useVisibleCount()
@@ -80,15 +82,15 @@ export default function LatestNews() {
             <div className="container flex flex-col">
                 <div className="flex items-center justify-between px-4 md:px-0">
                     <div className="flex flex-col items-start">
-                        <span className="text-7 3xl:text-5 text-text-placeholder">News & Insight</span>
+                        <span className="text-7 3xl:text-5 text-text-placeholder">{t("eyebrow")}</span>
                         <h2 className="text-3 3xl:text-1 font-bold leading-3 3xl:leading-1 text-text-secondary mt-2 3xl:mt-4">
-                            Latest News & <span className="text-main">Announcement</span>
+                            {t("headingLead")} <span className="text-main">{t("headingHighlight")}</span>
                         </h2>
                     </div>
                     <div className="flex items-center gap-3">
                         <button
                             type="button"
-                            aria-label="Previous news"
+                            aria-label={t("prevAria")}
                             onClick={() => step(-1)}
                             className="w-8 md:w-11 h-8 md:h-11 rounded-lg bg-main flex items-center justify-center"
                         >
@@ -96,7 +98,7 @@ export default function LatestNews() {
                         </button>
                         <button
                             type="button"
-                            aria-label="Next news"
+                            aria-label={t("nextAria")}
                             onClick={() => step(1)}
                             className="w-8 md:w-11 h-8 md:h-11 rounded-lg bg-main flex items-center justify-center"
                         >

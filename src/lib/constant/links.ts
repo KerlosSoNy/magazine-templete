@@ -1,35 +1,35 @@
 
 export const Links = [
     {
-        name: 'Home',
+        key: 'home',
         href: '/'
     },
     {
-        name: 'About',
+        key: 'about',
         href: '/about'
     },
     {
-        name: 'Services',
+        key: 'services',
         href: '/services'
     },
     {
-        name: 'Cases',
+        key: 'cases',
         href: '/case-studies'
     },
     {
-        name: 'Articles',
+        key: 'articles',
         href: '/articles'
     },
     {
-        name: 'Announcements',
+        key: 'announcements',
         href: '/announcements'
     },
     {
-        name: 'Careers',
+        key: 'careers',
         href: '/careers'
     },
     {
-        name: 'Contact',
+        key: 'contact',
         href: '/contact-us'
     }
-]
+] as const;

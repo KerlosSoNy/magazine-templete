@@ -44,7 +44,7 @@ export default function GenericButton({
         if (withoutIcon) return ""
         if (icon) return icon
         return (
-            <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="rtl:rotate-180">
                 <path
                     d="M0.750041 5.75L14.0834 5.75M9.08338 0.75L14.0834 5.75L9.08337 10.75"
                     stroke="currentColor"

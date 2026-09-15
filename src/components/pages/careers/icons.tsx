@@ -10,7 +10,7 @@ export function ClearIcon({ className = 'size-6 text-text-secondary' }: IconProp
     )
 }
 
-export function ArrowRightIcon({ className = 'size-6' }: IconProps) {
+export function ArrowRightIcon({ className = 'size-6 rtl:rotate-180' }: IconProps) {
     return (
         <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M5 12H19M13 6L19 12L13 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -18,7 +18,7 @@ export function ArrowRightIcon({ className = 'size-6' }: IconProps) {
     )
 }
 
-export function ArrowUpRightIcon({ className = 'size-6' }: IconProps) {
+export function ArrowUpRightIcon({ className = 'size-6 rtl:rotate-180' }: IconProps) {
     return (
         <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 17L17 7M9 7H17V15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

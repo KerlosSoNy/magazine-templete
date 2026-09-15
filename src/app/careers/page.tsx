@@ -5,11 +5,14 @@ import { CareerApplyProvider } from '@/components/providers/CareerApplyProvider'
 import ScrollDownIndicator from '@/components/pages/contactUs/getInTouch/ScrollDownIndicator'
 import SocialSidebar, { defaultSocialLinks } from '@/components/pages/contactUs/getInTouch/SocialSidebar'
 import SmallBanner from '@/components/shared/smallBanner'
+import { getTranslations } from 'next-intl/server'
 
-export default function Page() {
+export default async function Page() {
+    const t = await getTranslations("ContactUsPage");
+
     return (
         <div className="pt-18 xl:pt-32 max-w-screen overflow-hidden">
-            <SmallBanner title="Careers" />
+            <SmallBanner title={t('bannerTitle')} />
             <SocialSidebar links={defaultSocialLinks} />
             <ScrollDownIndicator id="open-positions" />
             <CareerApplyProvider>

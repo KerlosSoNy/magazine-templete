@@ -1,16 +1,21 @@
 import Image from 'next/image'
+import { useLocale, useTranslations } from 'next-intl'
+import { pickLocale } from '@/lib/i18n/pickLocale'
 import type { CaseStudyItem } from '../types'
 import CaseStudyStatCard from './CaseStudyStatCard'
 import QuoteCard from './QuoteCard'
 
 export default function CaseStudyOverview({ item }: { item: CaseStudyItem }) {
+    const locale = useLocale()
+    const t = useTranslations('CaseStudiesPage.overview')
     const { stats, challenge } = item.detail
+    const title = pickLocale(item.title, locale)
 
     const statItems = [
-        { label: 'Timeline', value: stats.timeline },
-        { label: 'Industry', value: stats.industry },
-        { label: 'Service line', value: stats.serviceLine },
-        { label: 'Client', value: stats.client },
+        { label: t('labels.timeline'), value: pickLocale(stats.timeline, locale) },
+        { label: t('labels.industry'), value: pickLocale(stats.industry, locale) },
+        { label: t('labels.serviceLine'), value: pickLocale(stats.serviceLine, locale) },
+        { label: t('labels.client'), value: pickLocale(stats.client, locale) },
     ]
 
     return (
@@ -24,15 +29,15 @@ export default function CaseStudyOverview({ item }: { item: CaseStudyItem }) {
             <div className="flex flex-col lg:flex-row gap-10 items-stretch">
                 <div className="flex flex-col justify-between max-w-169.75 gap-8 w-full lg:flex-1">
                     <div className="flex flex-col gap-6">
-                        <span className="text-5 text-text-secondary">The Challenge</span>
+                        <span className="text-5 text-text-secondary">{t('challengeEyebrow')}</span>
                         <h2 className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-text-secondary">
-                            {challenge.title}
+                            {pickLocale(challenge.title, locale)}
                         </h2>
                     </div>
                     <div className="flex flex-col gap-6 text-text-disabled">
                         {challenge.paragraphs.map((paragraph, index) => (
                             <p key={index} className="text-6 md:text-5">
-                                {paragraph}
+                                {pickLocale(paragraph, locale)}
                             </p>
                         ))}
                     </div>
@@ -40,9 +45,9 @@ export default function CaseStudyOverview({ item }: { item: CaseStudyItem }) {
 
                 <div className="relative w-full lg:flex-1 min-h-100">
                     <div className="relative w-full md:w-142 h-100 lg:h-133.75 place-self-end  rounded-xl overflow-hidden">
-                        <Image src={item.image} alt={item.title} fill className="object-cover" />
+                        <Image src={item.image} alt={title} fill className="object-cover" />
                     </div>
-                    <QuoteCard quote={challenge.quote} author={challenge.quoteAuthor} role={challenge.quoteRole} />
+                    <QuoteCard quote={pickLocale(challenge.quote, locale)} author={challenge.quoteAuthor} role={pickLocale(challenge.quoteRole, locale)} />
                 </div>
             </div>
         </div>

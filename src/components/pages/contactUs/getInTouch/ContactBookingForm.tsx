@@ -4,6 +4,7 @@ import SelectField from "@/components/inputs/Selectfield";
 import TextField from "@/components/inputs/Textfield";
 import { contactBookingSchema } from "@/lib/validation/contactBookingValidation";
 import { useFormik } from "formik";
+import { useTranslations } from "next-intl";
 import DateField from "./DateField";
 import { CallOutlineIcon, EmailOutlineIcon } from "./icons";
 
@@ -33,19 +34,18 @@ const TIME_SLOT_OPTIONS = [
     { value: "11:00 - 12:00", label: "11:00 - 12:00" },
 ];
 
-const INDUSTRY_OPTIONS = [
-    { value: "Agriculture", label: "Agriculture" },
-    { value: "Banking", label: "Banking" },
-    { value: "Construction", label: "Construction" },
-];
-
-const SERVICE_OPTIONS = [
-    { value: "Strategy Consulting", label: "Strategy Consulting" },
-    { value: "Digital Transformation", label: "Digital Transformation" },
-    { value: "Talent & Organization", label: "Talent & Organization" },
-];
-
 export default function ContactBookingForm() {
+    const tCommonFields = useTranslations("Common.bookForm.fields");
+    const tCommonBookForm = useTranslations("Common.bookForm");
+    const tCommonOptions = useTranslations("Common.bookForm.options");
+    const t = useTranslations("ContactUsPage.form");
+
+    const industries = tCommonOptions.raw("industries") as string[];
+    const services = t.raw("options.services") as string[];
+
+    const INDUSTRY_OPTIONS = industries.map((label) => ({ value: label, label }));
+    const SERVICE_OPTIONS = services.map((label) => ({ value: label, label }));
+
     const formik = useFormik<FormValues>({
         initialValues,
         validationSchema: contactBookingSchema,
@@ -65,8 +65,8 @@ export default function ContactBookingForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <TextField
                     name="fullName"
-                    label="Full Name"
-                    placeholder="Full Name"
+                    label={tCommonFields("fullName")}
+                    placeholder={tCommonFields("fullName")}
                     value={formik.values.fullName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -74,7 +74,7 @@ export default function ContactBookingForm() {
                 />
                 <TextField
                     name="phone"
-                    label="Phone"
+                    label={tCommonFields("phone")}
                     type="tel"
                     placeholder="+966"
                     value={formik.values.phone}
@@ -84,7 +84,7 @@ export default function ContactBookingForm() {
                 />
                 <TextField
                     name="email"
-                    label="Email"
+                    label={tCommonFields("email")}
                     icon={<EmailOutlineIcon />}
                     placeholder="example@info.com"
                     value={formik.values.email}
@@ -94,7 +94,7 @@ export default function ContactBookingForm() {
                 />
                 <DateField
                     name="date"
-                    label="Pick a date"
+                    label={t("fields.date")}
                     value={formik.values.date}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -103,7 +103,7 @@ export default function ContactBookingForm() {
                 <SelectField
                     id="timeSlot"
                     name="timeSlot"
-                    label="Choose a time slot"
+                    label={t("fields.timeSlot")}
                     value={formik.values.timeSlot}
                     onChange={formik.handleChange}
                     options={TIME_SLOT_OPTIONS}
@@ -112,7 +112,7 @@ export default function ContactBookingForm() {
                 <SelectField
                     id="industry"
                     name="industry"
-                    label="Select Industry"
+                    label={t("fields.industry")}
                     value={formik.values.industry}
                     onChange={formik.handleChange}
                     options={INDUSTRY_OPTIONS}
@@ -123,7 +123,7 @@ export default function ContactBookingForm() {
             <SelectField
                 id="serviceOfInterest"
                 name="serviceOfInterest"
-                label="Service of interest"
+                label={tCommonFields("serviceOfInterest")}
                 value={formik.values.serviceOfInterest}
                 onChange={formik.handleChange}
                 options={SERVICE_OPTIONS}
@@ -136,7 +136,7 @@ export default function ContactBookingForm() {
                 className="bg-main rounded-lg h-14 w-full flex items-center justify-center gap-2 disabled:opacity-70"
             >
                 <span className="text-white"><CallOutlineIcon /></span>
-                <span className="font-bold text-5 text-white">Book A 15-Minute Call</span>
+                <span className="font-bold text-5 text-white">{tCommonBookForm("title")}</span>
             </button>
         </form>
     );

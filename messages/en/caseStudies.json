@@ -1,0 +1,81 @@
+{
+    "banner": {
+        "title": "Case studies"
+    },
+    "list": {
+        "eyebrow": "Our Case studies",
+        "headingHighlight": "Custom Solutions",
+        "headingRest": "That Accelerate Your Success",
+        "filters": {
+            "serviceLabel": "Filter by Services",
+            "yearLabel": "Filter by Year"
+        },
+        "loadMore": "Load More"
+    },
+    "overview": {
+        "labels": {
+            "timeline": "Timeline",
+            "industry": "Industry",
+            "serviceLine": "Service line",
+            "client": "Client"
+        },
+        "challengeEyebrow": "The Challenge"
+    },
+    "approach": {
+        "eyebrow": "Our Approach",
+        "heading": "A Methodical Path to Clarity",
+        "steps": [
+            {
+                "number": "1",
+                "title": "Diagnose",
+                "description": "Conducted comprehensive stakeholder interviews and workflow assessments to uncover inefficiencies in the core business process."
+            },
+            {
+                "number": "2",
+                "title": "Design",
+                "description": "Created a scalable design framework and detailed prototypes tailored to streamline core operations."
+            },
+            {
+                "number": "3",
+                "title": "Deploy",
+                "description": "Performed iterative usability and A/B testing to validate that the redesigned solution aligned with industry needs and user expectations."
+            },
+            {
+                "number": "4",
+                "title": "Sustain",
+                "description": "Implemented continuous usability evaluations and split testing to ensure sustained alignment with business objectives."
+            }
+        ]
+    },
+    "results": {
+        "eyebrow": "Results",
+        "headingLead": "Measurable",
+        "headingHighlight": "Success",
+        "summary": "The redesign wasn't just about aesthetics; it was about creating a foundation for future growth. By establishing a robust design system, we enabled the internal product team to launch new features 30% faster than before, ensuring Apex Financial stays competitive in a rapidly evolving fintech landscape.",
+        "stats": [
+            {
+                "label": "Enhanced Customer Retention",
+                "value": "30%",
+                "percent": 30,
+                "description": "Users are more likely to return for repeat purchases, leading to a stable customer base."
+            },
+            {
+                "label": "Boost in Average Order Value",
+                "value": "95%",
+                "percent": 95,
+                "description": "Customers are spending more per transaction due to personalized upselling features."
+            },
+            {
+                "label": "Reduction in Cart Abandonment",
+                "value": "40%",
+                "percent": 40,
+                "description": "Streamlined checkout processes have decreased the number of abandoned carts."
+            },
+            {
+                "label": "Improved User Engagement",
+                "value": "2X",
+                "description": "Increased interaction with promotional content and product suggestions has enhanced overall engagement."
+            }
+        ]
+    }
+}

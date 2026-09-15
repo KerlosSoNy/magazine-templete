@@ -1,6 +1,7 @@
 'use client'
 
 import { useFormik } from 'formik'
+import { useLocale, useTranslations } from 'next-intl'
 import Popup from '@/components/shared/popup'
 import TextField from '@/components/inputs/Textfield'
 import SelectField from '@/components/inputs/Selectfield'
@@ -8,6 +9,7 @@ import TextareaField from '@/components/inputs/Textareafield'
 import CheckboxField from '@/components/inputs/checkBox'
 import DateField from '@/components/pages/contactUs/getInTouch/DateField'
 import { careerApplySchema } from '@/lib/validation/careerApplyValidation'
+import { pickLocale } from '@/lib/i18n/pickLocale'
 import type { JobPosition } from './types'
 import { ArrowRightIcon, ClearIcon, EmailIcon, SuitcaseIcon, UploadIcon } from './icons'
 
@@ -18,44 +20,11 @@ interface ApplyFormPopupProps {
     onContinue: () => void
 }
 
-const UNIVERSITY_OPTIONS = [
-    { value: 'King Saud University', label: 'King Saud University' },
-    { value: 'King Abdulaziz University', label: 'King Abdulaziz University' },
-    { value: 'King Fahd University of Petroleum & Minerals', label: 'King Fahd University of Petroleum & Minerals' },
-    { value: 'Princess Nourah bint Abdulrahman University', label: 'Princess Nourah bint Abdulrahman University' },
-    { value: 'Other', label: 'Other' },
-]
-
 const currentYear = new Date().getFullYear()
 const GRADUATION_YEAR_OPTIONS = Array.from({ length: 10 }, (_, index) => {
     const year = String(currentYear - index)
     return { value: year, label: year }
 })
-
-const ENGLISH_PROFICIENCY_OPTIONS = [
-    { value: 'Basic', label: 'Basic' },
-    { value: 'Intermediate', label: 'Intermediate' },
-    { value: 'Advanced', label: 'Advanced' },
-    { value: 'Fluent', label: 'Fluent' },
-    { value: 'Native', label: 'Native' },
-]
-
-const OTHER_LANGUAGES_OPTIONS = [
-    { value: 'None', label: 'None' },
-    { value: 'Arabic', label: 'Arabic' },
-    { value: 'French', label: 'French' },
-    { value: 'German', label: 'German' },
-    { value: 'Other', label: 'Other' },
-]
-
-const REFERRAL_SOURCE_OPTIONS = [
-    { value: 'LinkedIn', label: 'LinkedIn' },
-    { value: 'Company Website', label: 'Company Website' },
-    { value: 'Employee Referral', label: 'Employee Referral' },
-    { value: 'Job Board', label: 'Job Board' },
-    { value: 'Social Media', label: 'Social Media' },
-    { value: 'Other', label: 'Other' },
-]
 
 const initialValues = {
     fullName: '',
@@ -81,6 +50,53 @@ const initialValues = {
 }
 
 export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: ApplyFormPopupProps) {
+    const locale = useLocale()
+    const t = useTranslations('CareersPage.applyForm')
+    const tFields = useTranslations('CareersPage.applyForm.fields')
+    const tUniversity = useTranslations('CareersPage.applyForm.universityOptions')
+    const tEnglishProficiency = useTranslations('CareersPage.applyForm.englishProficiencyOptions')
+    const tOtherLanguages = useTranslations('CareersPage.applyForm.otherLanguagesOptions')
+    const tReferralSource = useTranslations('CareersPage.applyForm.referralSourceOptions')
+    const tEmploymentType = useTranslations('CareersPage.employmentType')
+    const tWorkMode = useTranslations('CareersPage.workMode')
+    const tCommonGetInTouch = useTranslations('Common.getInTouch.form')
+    const tCommonBook = useTranslations('Common.bookForm.fields')
+    const tCommonSocial = useTranslations('Common.social')
+    const tCommonPopup = useTranslations('Common.popup')
+
+    const UNIVERSITY_OPTIONS = [
+        { value: 'King Saud University', label: tUniversity('kingSaud') },
+        { value: 'King Abdulaziz University', label: tUniversity('kingAbdulaziz') },
+        { value: 'King Fahd University of Petroleum & Minerals', label: tUniversity('kfupm') },
+        { value: 'Princess Nourah bint Abdulrahman University', label: tUniversity('princessNourah') },
+        { value: 'Other', label: t('otherOption') },
+    ]
+
+    const ENGLISH_PROFICIENCY_OPTIONS = [
+        { value: 'Basic', label: tEnglishProficiency('basic') },
+        { value: 'Intermediate', label: tEnglishProficiency('intermediate') },
+        { value: 'Advanced', label: tEnglishProficiency('advanced') },
+        { value: 'Fluent', label: tEnglishProficiency('fluent') },
+        { value: 'Native', label: tEnglishProficiency('native') },
+    ]
+
+    const OTHER_LANGUAGES_OPTIONS = [
+        { value: 'None', label: tOtherLanguages('none') },
+        { value: 'Arabic', label: tOtherLanguages('arabic') },
+        { value: 'French', label: tOtherLanguages('french') },
+        { value: 'German', label: tOtherLanguages('german') },
+        { value: 'Other', label: t('otherOption') },
+    ]
+
+    const REFERRAL_SOURCE_OPTIONS = [
+        { value: 'LinkedIn', label: tReferralSource('linkedin') },
+        { value: 'Company Website', label: tReferralSource('companyWebsite') },
+        { value: 'Employee Referral', label: tReferralSource('employeeReferral') },
+        { value: 'Job Board', label: tReferralSource('jobBoard') },
+        { value: 'Social Media', label: tReferralSource('socialMedia') },
+        { value: 'Other', label: t('otherOption') },
+    ]
+
     const formik = useFormik({
         initialValues,
         validationSchema: careerApplySchema,
@@ -100,32 +116,32 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                 <button
                     type="button"
                     onClick={onClose}
-                    aria-label="Close"
-                    className="absolute right-3 top-3 md:right-5 md:top-5 p-2 rounded"
+                    aria-label={tCommonPopup('close')}
+                    className="absolute inset-e-3 top-3 md:inset-e-5 md:top-5 p-2 rounded"
                 >
                     <ClearIcon />
                 </button>
 
-                <div className="flex flex-col gap-3.5 pr-8">
-                    <span className="text-5 text-main">Apply Now</span>
-                    <h2 className="text-3 font-bold text-text-secondary">{job.title}</h2>
+                <div className="flex flex-col gap-3.5 pe-8">
+                    <span className="text-5 text-main">{t('applyNow')}</span>
+                    <h2 className="text-3 font-bold text-text-secondary">{pickLocale(job.title, locale)}</h2>
                     <div className="flex items-center gap-2 text-text-secondary">
                         <SuitcaseIcon className="size-6" />
-                        <span className="text-5">{job.employmentType}</span>
+                        <span className="text-5">{tEmploymentType(job.employmentType)}</span>
                         <span className="text-5">/</span>
-                        <span className="text-5">{job.workMode}</span>
+                        <span className="text-5">{tWorkMode(job.workMode)}</span>
                     </div>
                 </div>
 
-                <form onSubmit={formik.handleSubmit} className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-8 pr-1">
+                <form onSubmit={formik.handleSubmit} className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-8 pe-1">
                     <div className="flex flex-col gap-6">
-                        <p className="text-3 font-bold text-text-secondary capitalize">Basic Info</p>
+                        <p className="text-3 font-bold text-text-secondary capitalize">{t('basicInfo')}</p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <TextField
                                 name="fullName"
-                                label="Your Name"
-                                placeholder="Your Name"
+                                label={tFields('fullName')}
+                                placeholder={tFields('fullName')}
                                 value={formik.values.fullName}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -133,9 +149,9 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             />
                             <TextField
                                 name="email"
-                                label="Email"
+                                label={tFields('email')}
                                 icon={<EmailIcon />}
-                                placeholder="example@info.com"
+                                placeholder={tCommonGetInTouch('email')}
                                 value={formik.values.email}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -146,7 +162,7 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <TextField
                                 name="phone"
-                                label="Phone"
+                                label={tCommonBook('phone')}
                                 type="tel"
                                 placeholder="+966"
                                 value={formik.values.phone}
@@ -156,8 +172,8 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             />
                             <TextField
                                 name="address"
-                                label="Address"
-                                placeholder="Your Address"
+                                label={tFields('address')}
+                                placeholder={tFields('address')}
                                 value={formik.values.address}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -169,7 +185,7 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             <SelectField
                                 id="university"
                                 name="university"
-                                label="University"
+                                label={tFields('university')}
                                 value={formik.values.university}
                                 onChange={formik.handleChange}
                                 options={UNIVERSITY_OPTIONS}
@@ -177,8 +193,8 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             />
                             <TextField
                                 name="major"
-                                label="Major"
-                                placeholder="Major"
+                                label={tFields('major')}
+                                placeholder={tFields('major')}
                                 value={formik.values.major}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -190,7 +206,7 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             <SelectField
                                 id="graduationYear"
                                 name="graduationYear"
-                                label="Graduation Year"
+                                label={tFields('graduationYear')}
                                 value={formik.values.graduationYear}
                                 onChange={formik.handleChange}
                                 options={GRADUATION_YEAR_OPTIONS}
@@ -198,7 +214,7 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             />
                             <DateField
                                 name="birthday"
-                                label="Birthday"
+                                label={tFields('birthday')}
                                 value={formik.values.birthday}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -211,14 +227,14 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                                 <CheckboxField
                                     id="gender-male"
                                     name="gender"
-                                    label="Male"
+                                    label={tFields('genderMale')}
                                     checked={formik.values.gender === 'male'}
                                     onChange={() => formik.setFieldValue('gender', 'male')}
                                 />
                                 <CheckboxField
                                     id="gender-female"
                                     name="gender"
-                                    label="Female"
+                                    label={tFields('genderFemale')}
                                     checked={formik.values.gender === 'female'}
                                     onChange={() => formik.setFieldValue('gender', 'female')}
                                 />
@@ -230,13 +246,13 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                     </div>
 
                     <div className="flex flex-col gap-6">
-                        <p className="text-3 font-bold text-text-secondary capitalize">Work Experience</p>
+                        <p className="text-3 font-bold text-text-secondary capitalize">{t('workExperience')}</p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <TextField
                                 name="yearsOfExperience"
-                                label="Years Of Experience"
-                                placeholder="Years Of Experience"
+                                label={tFields('yearsOfExperience')}
+                                placeholder={tFields('yearsOfExperience')}
                                 value={formik.values.yearsOfExperience}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -244,8 +260,8 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             />
                             <TextField
                                 name="employer"
-                                label="Employer"
-                                placeholder="Employer"
+                                label={tFields('employer')}
+                                placeholder={tFields('employer')}
                                 value={formik.values.employer}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -256,8 +272,8 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <TextField
                                 name="currentJobTitle"
-                                label="Current Job Title"
-                                placeholder="Current Job Title"
+                                label={tFields('currentJobTitle')}
+                                placeholder={tFields('currentJobTitle')}
                                 value={formik.values.currentJobTitle}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -265,8 +281,8 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             />
                             <TextField
                                 name="availability"
-                                label="Availability"
-                                placeholder="Availability"
+                                label={tFields('availability')}
+                                placeholder={tFields('availability')}
                                 value={formik.values.availability}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -277,9 +293,9 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <TextField
                                 name="currentSalary"
-                                label="Current Salary"
+                                label={tFields('currentSalary')}
                                 type="number"
-                                placeholder="Current Salary"
+                                placeholder={tFields('currentSalary')}
                                 value={formik.values.currentSalary}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -287,9 +303,9 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             />
                             <TextField
                                 name="expectedSalary"
-                                label="Expected Salary"
+                                label={tFields('expectedSalary')}
                                 type="number"
-                                placeholder="Expected Salary"
+                                placeholder={tFields('expectedSalary')}
                                 value={formik.values.expectedSalary}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
@@ -301,7 +317,7 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             <SelectField
                                 id="englishProficiency"
                                 name="englishProficiency"
-                                label="English proficiency"
+                                label={tFields('englishProficiency')}
                                 value={formik.values.englishProficiency}
                                 onChange={formik.handleChange}
                                 options={ENGLISH_PROFICIENCY_OPTIONS}
@@ -310,7 +326,7 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             <SelectField
                                 id="otherLanguages"
                                 name="otherLanguages"
-                                label="Other Languages.."
+                                label={tFields('otherLanguages')}
                                 value={formik.values.otherLanguages}
                                 onChange={formik.handleChange}
                                 options={OTHER_LANGUAGES_OPTIONS}
@@ -320,8 +336,8 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
 
                         <TextField
                             name="linkedin"
-                            label="LinkedIn"
-                            placeholder="LinkedIn"
+                            label={tCommonSocial('linkedin')}
+                            placeholder={tCommonSocial('linkedin')}
                             value={formik.values.linkedin}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
@@ -330,8 +346,8 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
 
                         <TextareaField
                             id="whatMakesYouPartOfTeam"
-                            label="What Makes you part of our team?"
-                            placeholder="What Makes you part of our team?"
+                            label={tFields('whatMakesYouPartOfTeam')}
+                            placeholder={tFields('whatMakesYouPartOfTeam')}
                             value={formik.values.whatMakesYouPartOfTeam}
                             onChange={(value) => formik.setFieldValue('whatMakesYouPartOfTeam', value)}
                             maxLength={200}
@@ -341,7 +357,7 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                         <SelectField
                             id="howDidYouKnowAboutUs"
                             name="howDidYouKnowAboutUs"
-                            label="How did you know about us"
+                            label={tFields('howDidYouKnowAboutUs')}
                             value={formik.values.howDidYouKnowAboutUs}
                             onChange={formik.handleChange}
                             options={REFERRAL_SOURCE_OPTIONS}
@@ -356,14 +372,14 @@ export default function ApplyFormPopup({ isOpen, job, onClose, onContinue }: App
                             className="flex-1 h-14 rounded-lg border border-[#9fb7b4] bg-[#e8eeed] flex items-center justify-center gap-2 font-bold text-5 text-main capitalize"
                         >
                             <UploadIcon />
-                            Upload CV
+                            {t('uploadCvButton')}
                         </button>
                         <button
                             type="submit"
                             disabled={formik.isSubmitting}
                             className="flex-1 h-14 rounded-lg bg-main flex items-center justify-center gap-2 font-bold text-5 text-white capitalize disabled:opacity-70"
                         >
-                            Submit
+                            {t('submit')}
                             <ArrowRightIcon />
                         </button>
                     </div>

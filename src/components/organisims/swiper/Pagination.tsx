@@ -1,8 +1,10 @@
 import { useNavTheme } from '@/components/providers/NavThemeProvider';
+import { useTranslations } from 'next-intl';
 import React from 'react'
 
 export default function CoverFlowPagination({ slides, activeIndex, currentDisplay, totalDisplay }: { slides: React.ReactNode[], activeIndex: number, currentDisplay: string, totalDisplay: string }) {
     const isWhite = useNavTheme();
+    const t = useTranslations('HomePage.pagination');
 
     return (
         <div className={`${isWhite && "filter-teal"} absolute top-[95%] md:top-1/2 md:-translate-y-1/2 inset-e-3 md:inset-e-3 xl:inset-e-10 3xl:inset-e-40 z-30 flex flex-row md:flex-col items-center gap-4 3xl:gap-8 `}>
@@ -14,7 +16,7 @@ export default function CoverFlowPagination({ slides, activeIndex, currentDispla
                 {slides.map((_, i) => (
                     <div
                         key={i}
-                        aria-label={`Go to slide ${i + 1}`}
+                        aria-label={t('goToSlide', { number: i + 1 })}
                         aria-current={i === activeIndex}
                         className="group flex items-center justify-center p-1.5"
                     >

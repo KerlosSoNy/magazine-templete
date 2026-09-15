@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation'
+import { getLocale } from 'next-intl/server'
 import { ourCase } from '@/components/pages/home/cards/case/dummy'
+import { pickLocale } from '@/lib/i18n/pickLocale'
 import CaseStudyOverview from '@/components/pages/caseStudies/details/CaseStudyOverview'
 import CaseStudyApproach from '@/components/pages/caseStudies/details/CaseStudyApproach'
 import CaseStudyResults from '@/components/pages/caseStudies/details/CaseStudyResults'
@@ -21,9 +23,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         notFound()
     }
 
+    const locale = await getLocale()
+
     return (
         <div className="pt-18 xl:pt-32 max-w-screen overflow-hidden">
-            <SmallBanner title={item.title} />
+            <SmallBanner title={pickLocale(item.title, locale)} />
             <SocialSidebar links={defaultSocialLinks} />
             <ScrollDownIndicator id="case-study-overview" />
             <div id="case-study-overview">

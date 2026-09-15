@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import ContactBookingForm from "./ContactBookingForm";
 import ContactDetails, { ContactDetailItem, defaultContactDetails } from "./ContactDetails";
 import ScrollDownIndicator from "./ScrollDownIndicator";
@@ -13,16 +14,21 @@ interface GetInTouchSectionProps {
 }
 
 export default function GetInTouchSection({
-    title = "Get In",
-    highlight = "Touch",
-    subtitle = "We're Available To Answer Your Inquiries And Provide The Support You Need. Contact Us Through The Following Channels",
+    title,
+    highlight,
+    subtitle,
     contactDetails = defaultContactDetails,
     socialLinks = defaultSocialLinks,
 }: GetInTouchSectionProps) {
+    const t = useTranslations("ContactUsPage.getInTouch");
+    const resolvedTitle = title ?? t("title");
+    const resolvedHighlight = highlight ?? t("highlight");
+    const resolvedSubtitle = subtitle ?? t("subtitle");
+
     return (
         <div className="relative w-full overflow-hidden bg-white px-10 py-20 lg:py-35.25 xl:px-25">
             <Image
-                alt="Success Background"
+                alt={t("backgroundAlt")}
                 src="/images/home/successBg.png"
                 width={764}
                 height={726}
@@ -34,13 +40,13 @@ export default function GetInTouchSection({
 
             <div className="relative z-1 mx-auto flex w-full max-w-330 xl:max-w-355.5 flex-col items-center">
                 <span className="text-2 md:text-1 font-bold leading-1 text-center text-text-secondary">
-                    {title} <span className="text-main">{highlight}</span>
+                    {resolvedTitle} <span className="text-main">{resolvedHighlight}</span>
                 </span>
 
                 <div className="mt-16 flex w-full flex-col-reverse items-center justify-center gap-12 xl:flex-row lg:gap-18">
                     <div className="flex max-w-200 xl:max-w-175 flex-col items-start">
                         <span className="max-w-200 xl:max-w-175 text-4 2xl:text-2 font-bold leading-3 2xl:leading-2 text-[#171918]">
-                            {subtitle}
+                            {resolvedSubtitle}
                         </span>
 
                         <div className="mt-8">

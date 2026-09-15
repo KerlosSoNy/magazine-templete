@@ -1,0 +1,107 @@
+{
+    "bannerTitle": "Careers",
+    "hero": {
+        "heading": "Interested in becoming part of our team?",
+        "description": "Join our dynamic team and unlock your potential with competitive benefits, continuous learning opportunities, and a supportive work environment designed to help you thrive and grow. We value innovation and encourage creativity in every project. Our team members enjoy flexible schedules and a culture that promotes work-life balance. Together, we strive to make a meaningful impact in our industry and community.",
+        "seeOpenRoles": "See open roles",
+        "uploadYourCv": "Upload Your CV",
+        "image1Alt": "Minds Advisory team collaborating in a meeting room",
+        "image2Alt": "Minds Advisory team members in a discussion"
+    },
+    "whyJoinUs": {
+        "heading": "Why join us ?",
+        "description": "Discover the key milestones and developments that occur at every stage of the process. This guide will help you navigate through expectations and prepare for what lies ahead. Stay informed and make the most of each phase with our comprehensive insights.",
+        "imageAlt": "Minds Advisory office"
+    },
+    "openPositions": {
+        "eyebrow": "We are Hiring",
+        "headingPrefix": "Be part of",
+        "headingHighlight": "our mission",
+        "allDepartments": "All Department",
+        "loadMore": "Load More",
+        "statusOpen": "Open",
+        "statusClosed": "Closed",
+        "position": "Position",
+        "apply": "Apply"
+    },
+    "employmentType": {
+        "Full time": "Full time",
+        "Part time": "Part time",
+        "Contract": "Contract"
+    },
+    "workMode": {
+        "On Site": "On Site",
+        "Remote": "Remote",
+        "Hybrid": "Hybrid"
+    },
+    "applyForm": {
+        "applyNow": "Apply Now",
+        "basicInfo": "Basic Info",
+        "workExperience": "Work Experience",
+        "uploadCvButton": "Upload CV",
+        "submit": "Submit",
+        "otherOption": "Other",
+        "fields": {
+            "fullName": "Your Name",
+            "email": "Email",
+            "phone": "Phone",
+            "address": "Address",
+            "university": "University",
+            "major": "Major",
+            "graduationYear": "Graduation Year",
+            "birthday": "Birthday",
+            "genderMale": "Male",
+            "genderFemale": "Female",
+            "yearsOfExperience": "Years Of Experience",
+            "employer": "Employer",
+            "currentJobTitle": "Current Job Title",
+            "availability": "Availability",
+            "currentSalary": "Current Salary",
+            "expectedSalary": "Expected Salary",
+            "englishProficiency": "English proficiency",
+            "otherLanguages": "Other Languages..",
+            "linkedin": "LinkedIn",
+            "whatMakesYouPartOfTeam": "What Makes you part of our team?",
+            "howDidYouKnowAboutUs": "How did you know about us"
+        },
+        "universityOptions": {
+            "kingSaud": "King Saud University",
+            "kingAbdulaziz": "King Abdulaziz University",
+            "kfupm": "King Fahd University of Petroleum & Minerals",
+            "princessNourah": "Princess Nourah bint Abdulrahman University"
+        },
+        "englishProficiencyOptions": {
+            "basic": "Basic",
+            "intermediate": "Intermediate",
+            "advanced": "Advanced",
+            "fluent": "Fluent",
+            "native": "Native"
+        },
+        "otherLanguagesOptions": {
+            "none": "None",
+            "arabic": "Arabic",
+            "french": "French",
+            "german": "German"
+        },
+        "referralSourceOptions": {
+            "linkedin": "LinkedIn",
+            "companyWebsite": "Company Website",
+            "employeeReferral": "Employee Referral",
+            "jobBoard": "Job Board",
+            "socialMedia": "Social Media"
+        }
+    },
+    "uploadCvPopup": {
+        "applyNow": "Apply Now",
+        "title": "Upload Your CV",
+        "subtitle": "Help us get to know you better by sharing your resume.",
+        "dropzoneCta": "Click to upload or drag and drop files here",
+        "supportFormat": "Support format PDF, JPG, PNG ( 20 MB Max)",
+        "uploadButton": "Upload Your CV",
+        "errors": {
+            "invalidType": "Please upload a PDF, JPG or PNG file",
+            "tooLarge": "File must be smaller than {size} MB",
+            "required": "Please select a file to upload"
+        }
+    }
+}

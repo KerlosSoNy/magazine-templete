@@ -1,25 +1,27 @@
+import type { LocalizedText } from '@/lib/i18n/pickLocale'
+
 export interface OfferStage {
-    title: string
-    description: string
+    title: LocalizedText
+    description: LocalizedText
     icon: string
-    outcomes: string
-    gains: string
+    outcomes: LocalizedText
+    gains: LocalizedText
     iconBg?: string
 }
 
 export interface ServiceSubItem {
     icon: string
-    title: string
-    description: string
+    title: LocalizedText
+    description: LocalizedText
 }
 
 export interface ServiceCategory {
     key: string
-    label: string
+    label: LocalizedText
     tabIcon: string
     bigIcon: string
     photo: string
-    subtitle: string
-    description: string
+    subtitle: LocalizedText
+    description: LocalizedText
     items: ServiceSubItem[]
 }

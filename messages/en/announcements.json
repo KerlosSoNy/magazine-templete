@@ -1,0 +1,13 @@
+{
+    "bannerTitle": "Announcements",
+    "mediaCoverage": {
+        "headingLine1": "Media",
+        "headingLine2": "Coverage",
+        "description": "Explore a diverse collection of videos, podcasts, and articles that showcase our latest innovations and industry insights. Stay informed with expert interviews and behind-the-scenes content. Dive into media that brings our story to life and keeps you connected.",
+        "gallery": {
+            "previousImage": "Previous image",
+            "nextImage": "Next image",
+            "showImage": "Show image {index}"
+        }
+    }
+}

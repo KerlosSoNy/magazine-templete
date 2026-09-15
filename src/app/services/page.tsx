@@ -5,11 +5,13 @@ import ScrollDownIndicator from '@/components/pages/contactUs/getInTouch/ScrollD
 import SocialSidebar, { defaultSocialLinks } from '@/components/pages/contactUs/getInTouch/SocialSidebar'
 import SmallBanner from '@/components/shared/smallBanner'
 import GetInTouchSection from '@/components/pages/contactUs/getInTouch/GetInTouchSection'
+import { getTranslations } from 'next-intl/server'
 
-export default function Page() {
+export default async function Page() {
+    const t = await getTranslations("ContactUsPage");
     return (
         <div className="pt-18 xl:pt-32">
-            <SmallBanner title="Services" />
+            <SmallBanner title={t('bannerTitle')} />
             <SocialSidebar links={defaultSocialLinks} />
             <ScrollDownIndicator id="services" />
             <div id="services">

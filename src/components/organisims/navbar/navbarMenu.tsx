@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import TransitionLink from "@/components/buttons/transitionsLink/TransitionLink";
 import LanguageSwitcher from "@/components/buttons/changeLanguage/LanguageSwitcher";
 import { Links } from "@/lib/constant/links";
@@ -29,6 +30,7 @@ export default function NavbarMenu() {
     const pathname = usePathname();
     const isHome = pathname === "/";
     const showLinks = isHome ? isOpen : true;
+    const t = useTranslations("Common.nav");
 
     return (
         <div className="relative flex flex-row items-center">
@@ -40,16 +42,9 @@ export default function NavbarMenu() {
                             animate="visible"
                             exit="hidden"
                             variants={listVariants}
-                            className="flex flex-row-reverse items-center gap-3 2xl:gap-6 me-6"
+                            className="flex flex-row items-center gap-3 2xl:gap-6 me-6"
                         >
-                            <motion.li
-                                variants={itemVariants}
-                                transition={{ duration: 0.3, ease: "easeOut" }}
-                                className="list-none whitespace-nowrap"
-                            >
-                                <LanguageSwitcher />
-                            </motion.li>
-                            {Links.slice().reverse().map((link, index) => (
+                            {Links.map((link, index) => (
                                 <motion.li
                                     key={link.href ?? index}
                                     variants={itemVariants}
@@ -59,6 +54,13 @@ export default function NavbarMenu() {
                                     <TransitionLink pathname={pathname} link={link} />
                                 </motion.li>
                             ))}
+                            <motion.li
+                                variants={itemVariants}
+                                transition={{ duration: 0.3, ease: "easeOut" }}
+                                className="list-none whitespace-nowrap"
+                            >
+                                <LanguageSwitcher />
+                            </motion.li>
                         </motion.ul>
                     )}
                 </AnimatePresence>
@@ -68,7 +70,7 @@ export default function NavbarMenu() {
                         className={`flex flex-row items-center gap-3 me-6 cursor-pointer select-none ${(isDark || pathname !== "/") && "filter-teal"}`}
                         onClick={() => setIsOpen((prev) => !prev)}
                     >
-                        <span className="text-white text-5">Menu</span>
+                        <span className="text-white text-5">{t("menu")}</span>
                         <MenuIcon isOpen={isOpen} />
                     </div>
                 )}
@@ -76,7 +78,7 @@ export default function NavbarMenu() {
 
             <button
                 type="button"
-                aria-label="Open menu"
+                aria-label={t("openMenu")}
                 onClick={() => setIsDrawerOpen(true)}
                 className={cn(
                     "flex h-10 w-10 items-center justify-center xl:hidden",

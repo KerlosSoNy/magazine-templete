@@ -1,10 +1,13 @@
 'use client';
 
+import { useTranslations } from "next-intl";
+
 type ScrollDownIndicatorProps = {
     id: string;
 };
 
 export default function ScrollDownIndicator({ id }: ScrollDownIndicatorProps) {
+    const t = useTranslations("Common.social");
     const handleScroll = () => {
         document.getElementById(id)?.scrollIntoView({
             behavior: "smooth",
@@ -17,7 +20,7 @@ export default function ScrollDownIndicator({ id }: ScrollDownIndicatorProps) {
             type="button"
             onClick={handleScroll}
             className="fixed top-80 md:top-60 3xl:top-[490.5px]  inset-e-2 lg:inset-e-10 3xl:inset-e-30 z-10 flex cursor-pointer flex-col items-center gap-4 text-black"
-            aria-label={`Scroll to ${id}`}
+            aria-label={t("scrollTo", { section: id })}
         >
             <span
                 className="text-7  uppercase"
@@ -26,7 +29,7 @@ export default function ScrollDownIndicator({ id }: ScrollDownIndicatorProps) {
                     transform: "rotate(180deg)",
                 }}
             >
-                Scroll Down
+                {t("scrollDown")}
             </span>
 
             <span className="h-2 w-2 rounded-full bg-black" />

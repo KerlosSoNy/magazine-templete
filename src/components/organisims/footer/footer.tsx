@@ -3,11 +3,14 @@
 import { Links } from "@/lib/constant/links";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 export default function Footer() {
     const ref = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(false);
+    const t = useTranslations("Common");
+    const tNav = useTranslations("Common.nav");
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -34,25 +37,25 @@ export default function Footer() {
                 <div className="flex flex-col gap-4">
                     <Image
                         src="/images/logos/logo-tele.png"
-                        alt="Mind Advisor Logo"
+                        alt={t("logoAlt")}
                         width={278}
                         height={70}
                         loading="eager"
                         className="w-40 2xs:w-48 md:w-69.5 h-auto"
                     />
                     <span className="text-5 max-w-101 mt-7">
-                        At Minds Advisory, our commitment is to create enduring value by fostering partnerships that yield meaningful, long-term success
+                        {t("footer.tagline")}
                     </span>
                 </div>
                 <div className="flex flex-col ">
-                    <span className="text-text-secondary font-bold text-5">Useful Links</span>
+                    <span className="text-text-secondary font-bold text-5">{t("footer.usefulLinks")}</span>
                     <div className="w-full grid grid-cols-2 gap-2.5 mt-8 max-w-84.25">
                         <div className="flex flex-col gap-5">
                             {
                                 Links?.slice(0, 5).map((link, index) => {
                                     return (
                                         <Link href={link?.href} key={index} className="text-6 w-full max-w-41 text-text-placeholder hover:text-main transition-colors">
-                                            {link?.name}
+                                            {tNav(link.key)}
                                         </Link>
                                     )
                                 })
@@ -63,7 +66,7 @@ export default function Footer() {
                                 Links?.slice(5, 8).map((link, index) => {
                                     return (
                                         <Link href={link?.href} key={index} className="text-6 w-full max-w-41 text-text-placeholder hover:text-main transition-colors">
-                                            {link?.name}
+                                            {tNav(link.key)}
                                         </Link>
                                     )
                                 })
@@ -72,18 +75,18 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="flex flex-col">
-                    <span className="text-text-secondary font-bold text-5">Find us</span>
+                    <span className="text-text-secondary font-bold text-5">{t("footer.findUs")}</span>
                     <div className="flex flex-col mt-7">
                         <span className="text-6 text-text-disabled">
-                            Sunday-Thursday
+                            {t("footer.workingDays")}
                         </span>
-                        <Link href="tel:+966138455555" className="text-6 mt-2.5 text-text-secondary hover:text-main transition-colors"   >
+                        <Link href="tel:+966138455555" dir="ltr" className="text-6 mt-2.5 text-text-secondary hover:text-main transition-colors text-end"   >
                             +966 13 845 5555
                         </Link>
                     </div>
                     <div className="flex flex-col mt-8">
                         <span className="text-6 text-text-disabled">
-                            Want to create value?
+                            {t("footer.wantToCreateValue")}
                         </span>
                         <Link href="mailto:discover@mindsadvisory.com" className="text-6 mt-2.5 text-text-secondary hover:text-main transition-colors"   >
                             discover@mindsadvisory.com
@@ -92,7 +95,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="w-full h-px bg-[#D2D2D2]" />
-            <span className="text-6 text-text-disabled mx-auto text-center">© 2024 Minds Advisory. All rights reserved.</span>
+            <span className="text-6 text-text-disabled mx-auto text-center">{t("footer.copyright")}</span>
         </div>
     );
 }

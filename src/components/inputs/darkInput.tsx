@@ -21,7 +21,7 @@ export default function DarkField({
             <label htmlFor={name} className="sr-only">
                 {placeholder}
             </label>
-            <div className={`relative h-14 max-h-14 rounded-lg border flex items-center ${icon ? "pl-15" : "pl-6"} pe-6 ${error ? "border-red-400" : "border-white/15"} bg-[#0E3832]`}>
+            <div className={`relative h-14 max-h-14 rounded-lg border flex items-center ${icon ? "ps-15" : "ps-6"} pe-6 ${error ? "border-red-400" : "border-white/15"} bg-[#0E3832]`}>
                 {icon && (
                     <div className="absolute top-1/2 -translate-y-1/2 inset-s-6 text-white/60">
                         {icon}

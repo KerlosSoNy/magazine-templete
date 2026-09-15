@@ -2,22 +2,27 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { useLocale, useTranslations } from 'next-intl'
+import { pickLocale } from '@/lib/i18n/pickLocale'
+import type { Locale } from '@/lib/i18n/locale'
 import { serviceCategories } from './dummy'
 import ServiceSubItemCard from './ServiceSubItemCard'
 
 export default function BespokeSolutions() {
     const [activeIndex, setActiveIndex] = useState(0)
     const category = serviceCategories[activeIndex]
+    const locale = useLocale() as Locale
+    const t = useTranslations('ServicesPage.bespokeSolutions')
+    const categoryLabel = pickLocale(category.label, locale)
 
     return (
         <div className="container mx-auto flex flex-col gap-10 py-16 lg:py-20">
             <div className="flex flex-col gap-8 items-center text-center max-w-220 mx-auto">
                 <h2 className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-text-secondary">
-                    Bespoke Solutions <br /> <span className="text-main">For Your Success</span>
+                    {t('headingLine1')} <br /> <span className="text-main">{t('headingLine2')}</span>
                 </h2>
                 <p className="text-6 md:text-5 text-text-placeholder max-w-140">
-                    Every business is unique. Facing its own set of challenges and opportunities. That&apos;s why we
-                    offer a comprehensive range of services designed to address your specific needs
+                    {t('description')}
                 </p>
             </div>
 
@@ -37,7 +42,7 @@ export default function BespokeSolutions() {
                                 className={`text-6 md:text-3 font-bold capitalize ${isActive ? 'text-main' : 'text-text-secondary'
                                     }`}
                             >
-                                {item.label}
+                                {pickLocale(item.label, locale)}
                             </span>
                         </button>
                     )
@@ -46,23 +51,23 @@ export default function BespokeSolutions() {
 
             <div className="flex flex-col lg:flex-row gap-10 lg:gap-22.5 items-center">
                 <div className="relative w-full lg:flex-1 h-98 rounded-xl overflow-hidden shrink-0 lg:max-w-113.75">
-                    <Image src={category.photo} alt={category.label} fill className="object-cover" />
+                    <Image src={category.photo} alt={categoryLabel} fill className="object-cover" />
                 </div>
                 <div className="flex flex-col gap-6 w-full lg:flex-1">
                     <div className="flex flex-row lg:flex-col items-center lg:items-start gap-6">
                         <Image src={category.bigIcon} alt="" width={48} height={48} className="size-12 filter-teal" />
                         <h3 className="text-2 md:text-1 font-bold leading-2 md:leading-1 text-main capitalize">
-                            {category.label}
+                            {categoryLabel}
                         </h3>
                     </div>
-                    <p className="text-5 font-bold text-text-secondary">{category.subtitle}</p>
-                    <p className="text-5 text-text-placeholder">{category.description}</p>
+                    <p className="text-5 font-bold text-text-secondary">{pickLocale(category.subtitle, locale)}</p>
+                    <p className="text-5 text-text-placeholder">{pickLocale(category.description, locale)}</p>
                 </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
                 {category.items.map((item) => (
-                    <ServiceSubItemCard key={item.title} item={item} />
+                    <ServiceSubItemCard key={item.title.en} item={item} />
                 ))}
             </div>
         </div>

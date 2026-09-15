@@ -1,44 +1,29 @@
+import { useTranslations } from 'next-intl'
 import CaseStudyResultCard from './CaseStudyResultCard'
 
-const stats = [
-    {
-        label: 'Enhanced Customer Retention',
-        value: '30%',
-        percent: 30,
-        description: 'Users are more likely to return for repeat purchases, leading to a stable customer base.',
-    },
-    {
-        label: 'Boost in Average Order Value',
-        value: '95%',
-        percent: 95,
-        description: 'Customers are spending more per transaction due to personalized upselling features.',
-    },
-    {
-        label: 'Reduction in Cart Abandonment',
-        value: '40%',
-        percent: 40,
-        description: 'Streamlined checkout processes have decreased the number of abandoned carts.',
-    },
-    {
-        label: 'Improved User Engagement',
-        value: '2X',
-        description: 'Increased interaction with promotional content and product suggestions has enhanced overall engagement.',
-    },
-]
+interface ResultStat {
+    label: string
+    value: string
+    percent?: number
+    description: string
+}
 
 export default function CaseStudyResults() {
+    const t = useTranslations('CaseStudiesPage.results')
+    const stats = t.raw('stats') as ResultStat[]
+
     return (
         <div className="w-full bg-secondary-bg">
             <div className="container mx-auto flex flex-col gap-16 py-16 lg:py-20">
                 <div className="flex flex-col lg:flex-row gap-8 lg:items-center lg:justify-between">
                     <div className="flex flex-col gap-6 lg:max-w-160">
-                        <span className="text-5 text-text-placeholder">Results</span>
+                        <span className="text-5 text-text-placeholder">{t('eyebrow')}</span>
                         <h2 className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-text-secondary">
-                            Measurable <span className="text-main">Success</span>
+                            {t('headingLead')} <span className="text-main">{t('headingHighlight')}</span>
                         </h2>
                     </div>
                     <p className="text-6 md:text-5 text-text-placeholder max-w-140">
-                        The redesign wasn&apos;t just about aesthetics; it was about creating a foundation for future growth. By establishing a robust design system, we enabled the internal product team to launch new features 30% faster than before, ensuring Apex Financial stays competitive in a rapidly evolving fintech landscape.
+                        {t('summary')}
                     </p>
                 </div>
 

@@ -3,6 +3,7 @@
 import DarkField from "@/components/inputs/darkInput";
 import { getInTouchSchema } from "@/lib/validation/getInTouchValidation";
 import { useFormik } from "formik";
+import { useTranslations } from "next-intl";
 import { EmailIcon } from "../../../icons/getInTouch";
 
 interface FormValues {
@@ -27,6 +28,7 @@ const INQUIRY_MAX_LENGTH = 200;
 
 
 export default function GetInTouchForm() {
+    const t = useTranslations("Common.getInTouch.form");
     const formik = useFormik<FormValues>({
         initialValues,
         validationSchema: getInTouchSchema,
@@ -46,7 +48,7 @@ export default function GetInTouchForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-4">
                 <DarkField
                     name="fullName"
-                    placeholder="Full Name"
+                    placeholder={t("fullName")}
                     value={formik.values.fullName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -54,7 +56,7 @@ export default function GetInTouchForm() {
                 />
                 <DarkField
                     name="email"
-                    placeholder="example@info.com"
+                    placeholder={t("email")}
                     icon={<EmailIcon />}
                     value={formik.values.email}
                     onChange={formik.handleChange}
@@ -63,7 +65,7 @@ export default function GetInTouchForm() {
                 />
                 <DarkField
                     name="company"
-                    placeholder="Company"
+                    placeholder={t("company")}
                     value={formik.values.company}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -71,7 +73,7 @@ export default function GetInTouchForm() {
                 />
                 <DarkField
                     name="roleInCompany"
-                    placeholder="Role in Company"
+                    placeholder={t("roleInCompany")}
                     value={formik.values.roleInCompany}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -81,14 +83,14 @@ export default function GetInTouchForm() {
 
             <div className="flex flex-col -mt-3 md:mt-0">
                 <label htmlFor="inquiry" className="sr-only">
-                    Your Inquiry
+                    {t("inquiry")}
                 </label>
                 <textarea
                     id="inquiry"
                     name="inquiry"
                     rows={5}
                     maxLength={INQUIRY_MAX_LENGTH}
-                    placeholder="Your Inquiry"
+                    placeholder={t("inquiry")}
                     value={formik.values.inquiry}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -104,14 +106,14 @@ export default function GetInTouchForm() {
                     ) : (
                         <span />
                     )}
-                    <p className="text-right text-7 text-text-disabled">
+                    <p dir="ltr" className="text-end text-7 text-text-disabled">
                         {formik.values.inquiry.length}/{INQUIRY_MAX_LENGTH}
                     </p>
                 </div>
             </div>
 
             <button type="submit" className="bg-white rounded-lg h-14 w-full flex items-center justify-center">
-                <span className="font-bold text-5 text-main">Send A Message</span>
+                <span className="font-bold text-5 text-main">{t("send")}</span>
             </button>
         </form>
     );

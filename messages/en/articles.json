@@ -1,0 +1,19 @@
+{
+    "pageTitle": "Industry Articles",
+    "list": {
+        "eyebrow": "Insights & Innovations",
+        "heading": "Real Practice",
+        "headingHighlight": "Articles",
+        "allHeading": "All",
+        "allHeadingHighlight": "Industry Stories",
+        "filterIndustry": "Filter by Industry",
+        "filterYear": "Filter by Year",
+        "loadMore": "Load More"
+    },
+    "detail": {
+        "shareThisArticle": "Share this article",
+        "shareOnX": "Share on X",
+        "shareOnLinkedIn": "Share on LinkedIn",
+        "relatedArticle": "Related Article"
+    }
+}

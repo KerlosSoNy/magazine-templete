@@ -1,7 +1,19 @@
-export const maturityData = [
+import type { LocalizedText } from '@/lib/i18n/pickLocale'
+
+export interface MaturityItem {
+    title: LocalizedText
+    description: LocalizedText
+    percentage: number
+    icon: React.ReactNode
+}
+
+export const maturityData: MaturityItem[] = [
     {
-        title: "Strategy & Vision",
-        description: "Align AI with core business goals and define a clear roadmap.",
+        title: { en: "Strategy & Vision", ar: "الاستراتيجية والرؤية" },
+        description: {
+            en: "Align AI with core business goals and define a clear roadmap.",
+            ar: "مواءمة الذكاء الاصطناعي مع أهداف العمل الأساسية وتحديد خارطة طريق واضحة.",
+        },
         percentage: 65,
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,8 +24,11 @@ export const maturityData = [
         ),
     },
     {
-        title: "Data & Infrastructure",
-        description: "Evaluate your data quality and cloud infrastructure readiness.",
+        title: { en: "Data & Infrastructure", ar: "البيانات والبنية التحتية" },
+        description: {
+            en: "Evaluate your data quality and cloud infrastructure readiness.",
+            ar: "تقييم جودة بياناتك ومدى جاهزية البنية التحتية السحابية لديك.",
+        },
         percentage: 45,
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,8 +39,11 @@ export const maturityData = [
         ),
     },
     {
-        title: "Talent & Skills",
-        description: "Assess your workforce's AI literacy and technical capabilities.",
+        title: { en: "Talent & Skills", ar: "المواهب والمهارات" },
+        description: {
+            en: "Assess your workforce's AI literacy and technical capabilities.",
+            ar: "تقييم إلمام فريق عملك بالذكاء الاصطناعي وقدراته التقنية.",
+        },
         percentage: 30,
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,8 +55,11 @@ export const maturityData = [
         ),
     },
     {
-        title: "Processes & Automation",
-        description: "Identify opportunities for RPA and intelligent process automation.",
+        title: { en: "Processes & Automation", ar: "العمليات والأتمتة" },
+        description: {
+            en: "Identify opportunities for RPA and intelligent process automation.",
+            ar: "تحديد فرص أتمتة العمليات الآلية والأتمتة الذكية للعمليات.",
+        },
         percentage: 80,
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,8 +69,11 @@ export const maturityData = [
         ),
     },
     {
-        title: "Innovation Culture",
-        description: "Measure your organization's ability to experiment and scale AI.",
+        title: { en: "Innovation Culture", ar: "ثقافة الابتكار" },
+        description: {
+            en: "Measure your organization's ability to experiment and scale AI.",
+            ar: "قياس قدرة مؤسستك على تجربة الذكاء الاصطناعي وتوسيع نطاقه.",
+        },
         percentage: 55,
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

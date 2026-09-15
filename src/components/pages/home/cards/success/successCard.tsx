@@ -1,6 +1,19 @@
 import Image from 'next/image'
+import { useLocale } from 'next-intl'
+import { pickLocale, type LocalizedText } from '@/lib/i18n/pickLocale'
+
+const testimonial: { quote: LocalizedText; author: string; role: LocalizedText } = {
+    quote: {
+        en: '“The Value additions you have given Al Maha, is unparalleled. Your knowledge, professionalism, and ability to integrate & operate in a very complex & challenging environment are your biggest assets and I value your contributions and outcomes to help make Al Maha be one of the best establishments in Iraq and the region. We are extremely pleased with the results. I am expecting the same level of support for more projects to come.”',
+        ar: '«القيمة المضافة التي قدمتموها لشركة المها لا مثيل لها. إن معرفتكم واحترافيتكم وقدرتكم على الدمج والتشغيل في بيئة بالغة التعقيد والتحدي هي أكبر ما تملكون من أصول، وإنني أقدّر إسهاماتكم ونتائجكم التي ساعدت في جعل المها واحدة من أفضل المؤسسات في العراق والمنطقة. نحن سعداء للغاية بالنتائج، وأتطلع إلى المستوى نفسه من الدعم في المزيد من المشاريع المقبلة.»',
+    },
+    author: 'Khaled Sharif',
+    role: { en: 'CEO, Al Maha Trading Iraq', ar: 'الرئيس التنفيذي، شركة المها للتجارة، العراق' },
+}
 
 export default function SuccessCard() {
+    const locale = useLocale()
+
     return (
         <div className="flex flex-row h-70 3xl:h-107 p-4 items-center gap-5 lg:gap-16 me-12.5">
             <Image
@@ -16,10 +29,10 @@ export default function SuccessCard() {
                     <path d="M7.68 20.88C6.18667 20.88 4.85333 20.5867 3.68 20C2.50667 19.4133 1.6 18.6133 0.96 17.6C0.32 16.5333 0 15.3333 0 14C0 12.72 0.24 11.28 0.72 9.68C1.25333 8.02667 1.92 6.37333 2.72 4.72C3.57333 3.01334 4.42667 1.44 5.28 0L12.88 3.6C12.3467 4.56 11.84 5.6 11.36 6.72C10.88 7.78667 10.4533 8.74667 10.08 9.6C9.76 10.4 9.57333 10.96 9.52 11.28C10.9067 11.6533 11.9733 12.24 12.72 13.04C13.4667 13.7867 13.84 14.7733 13.84 16C13.84 17.6 13.2533 18.8267 12.08 19.68C10.96 20.48 9.49333 20.88 7.68 20.88Z" fill="#145048" />
                 </svg>
                 <span className="text-[10px] md:text-6 3xl:text-5 text-text-placeholder leading-3.5 md:leading-7 3xl:leading-5 mt-3 3xl:mt-5">
-                    “The Value additions you have given Al Maha, is unparalleled. Your knowledge, professionalism, and ability to integrate & operate in a very complex & challenging environment are your biggest assets and I value your contributions and outcomes to help make Al Maha be one of the best establishments in Iraq and the region. We are extremely pleased with the results. I am expecting the same level of support for more projects to come.”
+                    {pickLocale(testimonial.quote, locale)}
                 </span>
-                <h1 className="font-bold text-4 3xl:text-3 text-text-secondary mt-2 3xl:mt-5">Khaled Sharif</h1>
-                <span className="mt-0 text-5 text-text-disabled">CEO, Al Maha Trading Iraq</span>
+                <h1 className="font-bold text-4 3xl:text-3 text-text-secondary mt-2 3xl:mt-5">{testimonial.author}</h1>
+                <span className="mt-0 text-5 text-text-disabled">{pickLocale(testimonial.role, locale)}</span>
             </div>
         </div>
     )

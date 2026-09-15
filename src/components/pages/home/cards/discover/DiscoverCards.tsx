@@ -1,8 +1,10 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { useLocale, useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { pickLocale } from '@/lib/i18n/pickLocale'
 import { dummyData } from './dummy'
 import {
     cardVariants,
@@ -14,6 +16,8 @@ import GenericButton from '@/components/buttons/genericButton'
 export default function DiscoverCards() {
     const [activeIndex, setActiveIndex] = useState<number | null>(null)
     const containerRef = useRef<HTMLDivElement>(null)
+    const locale = useLocale()
+    const t = useTranslations('Common.buttons')
 
     useEffect(() => {
         function handleOutsideClick(e: MouseEvent | TouchEvent) {
@@ -44,7 +48,7 @@ export default function DiscoverCards() {
 
                 return (
                     <motion.div
-                        key={item.title + ' - ' + index}
+                        key={item.title.en + ' - ' + index}
                         initial="rest"
                         whileHover="hover"
                         animate={isActive ? 'hover' : 'rest'}
@@ -67,7 +71,7 @@ export default function DiscoverCards() {
                         <Image
                             fill
                             src={item.image}
-                            alt={item.title}
+                            alt={pickLocale(item.title, locale)}
                             className="object-cover"
                         />
 
@@ -84,7 +88,7 @@ export default function DiscoverCards() {
                             <div className="mb-2">{item.icon}</div>
 
                             <h3 className="text-2 font-bold text-white">
-                                {item.title}
+                                {pickLocale(item.title, locale)}
                             </h3>
 
                             <motion.p
@@ -95,7 +99,7 @@ export default function DiscoverCards() {
                                 }}
                                 className="mt-2 text-center text-7 md:text-5 leading-7 md:leading-5 text-white"
                             >
-                                {item.description}
+                                {pickLocale(item.description, locale)}
                             </motion.p>
 
                             <motion.div
@@ -110,7 +114,7 @@ export default function DiscoverCards() {
                                     svgColor="stroke-white"
                                     titleClasses="text-white!"
                                     withoutBg
-                                    title="Discover More"
+                                    title={t('discoverMore')}
                                 />
                             </motion.div>
                         </motion.div>

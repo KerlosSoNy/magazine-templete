@@ -196,6 +196,7 @@ export default function CoverflowSlider({ slides }: CoverflowSliderProps) {
 
     return (
         <section
+            suppressHydrationWarning
             ref={containerRef}
             className="relative  w-screen h-screen overflow-hidden bg-gray-100"
         >

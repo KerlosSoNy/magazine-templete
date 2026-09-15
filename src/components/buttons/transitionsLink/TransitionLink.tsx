@@ -4,12 +4,13 @@ import Link from "next/link";
 import { cn } from '@/lib/functions/utils';
 import { usePageTransition } from '@/lib/hooks/UsePageTransition';
 import { useNavTheme } from '@/components/providers/NavThemeProvider';
+import { useTranslations } from 'next-intl';
 
 interface Props {
     active?: boolean,
     disableLinks?: boolean,
     link: {
-        name: string,
+        key: string,
         href: string
     }
     pathname?: string
@@ -21,6 +22,8 @@ interface Props {
 const TransitionLink: FC<Props> = ({ active, link, children, onclick, pathname }) => {
     const transition = usePageTransition()
     const isWhiteBg = useNavTheme();
+    const t = useTranslations('Common.nav');
+    const linkName = t(link.key);
 
     const handleTransition = async (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
         e.preventDefault();
@@ -28,7 +31,7 @@ const TransitionLink: FC<Props> = ({ active, link, children, onclick, pathname }
     };
 
     return (
-        <Link aria-label={link.name} onClick={async (e) => {
+        <Link aria-label={linkName} onClick={async (e) => {
             if (onclick) {
                 onclick()
             }
@@ -49,10 +52,10 @@ const TransitionLink: FC<Props> = ({ active, link, children, onclick, pathname }
                     "filter-nav": active
                 })}>
                     {children}
-                    <span className="sr-only">{link.name}</span>
+                    <span className="sr-only">{linkName}</span>
                 </div>
             ) : (
-                link.name
+                linkName
             )}
             {active &&
                 <div className={`xl:opacity-100 opacity-0 absolute w-full h-px bg-white ${isWhiteBg ? "filter-teal" : ""}`} />

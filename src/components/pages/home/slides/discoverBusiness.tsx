@@ -1,7 +1,10 @@
+import { useTranslations } from 'next-intl'
 import MaturityCards from '../cards/maturity/MaturityCards'
 import GenericButton from '@/components/buttons/genericButton'
 
 export default function DiscoverBusiness() {
+    const t = useTranslations('HomePage.discoverBusiness')
+
     return (
         <div data-nav-bg="black" className="w-screen pb-10 md:pb-0 pt-10 3xl:pt-0 flex flex-col items-center justify-center h-fit lg:h-screen bg-main relative max-w-full max-h-full overflow-hidden">
             <svg className="absolute top-1/2  aspect-108/97 -translate-y-1/2 left-1/2 -translate-x-1/2 w-213.5 h-191.75" xmlns="http://www.w3.org/2000/svg" width="787" height="762" viewBox="0 0 787 762" fill="none">
@@ -10,14 +13,14 @@ export default function DiscoverBusiness() {
 
             <div className="w-full container flex flex-col items-center z-2">
                 <span className="text-3 3xl:text-1 text-white font-bold leading-3 3xl:leading-1 max-w-[95%] md:max-w-220 3xl:max-w-297 text-center">
-                    Discover where your business stands in the AI transformation journey
+                    {t('title')}
                 </span>
                 <span className="text-center max-w-[95%] md:max-w-150 3xl:max-w-200 text-7 3xl:text-5 text-text-disabled font-inter leading-6 3xl:leading-5 mt-5">
-                    Get a personalized AI maturity score and identify the exact gaps in your organization&apos;s strategy, data infrastructure, and innovation culture.
+                    {t('subtitle')}
                 </span>
                 <MaturityCards />
-                <GenericButton revertColors withoutIcon mainClasses='mt-10 3xl:mt-10 h-10 3xl:h-[56px]' titleClasses='font-inter font-medium! text-5' title='Start your free assesment' />
-                <span className="text-7 3xl:text-5 font-inter leading-5 text-text-disabled mt-2 3xl:mt-6">Takes only 8 minutes • Instant results • No sign-up required</span>
+                <GenericButton revertColors withoutIcon mainClasses='mt-10 3xl:mt-10 h-10 3xl:h-[56px]' titleClasses='font-inter font-medium! text-5' title={t('cta')} />
+                <span className="text-7 3xl:text-5 font-inter leading-5 text-text-disabled mt-2 3xl:mt-6">{t('footnote')}</span>
             </div>
         </div>
     )

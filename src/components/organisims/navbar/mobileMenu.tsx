@@ -65,7 +65,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <div
                 role="dialog"
                 aria-modal="true"
-                aria-hidden={!isOpen}
+                inert={!isOpen}
                 className={cn(
                     "fixed inset-y-0 inset-s-0 z-210 flex h-dvh w-4/5 max-w-xs 2xs:max-w-sm flex-col overflow-y-auto bg-white shadow-2xl transition-transform duration-300 ease-out xl:hidden",
                     isOpen ? "translate-x-0" : "-translate-x-full rtl:translate-x-full pointer-events-none"

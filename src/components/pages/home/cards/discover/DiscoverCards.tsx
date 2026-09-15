@@ -72,6 +72,7 @@ export default function DiscoverCards() {
                             fill
                             src={item.image}
                             alt={pickLocale(item.title, locale)}
+                            sizes="(min-width: 1024px) 25vw, 50vw"
                             className="object-cover"
                         />
 

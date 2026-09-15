@@ -19,7 +19,7 @@ export default function HeroSection() {
                         alt={t("partnerLogoAlt")}
                         width={262}
                         height={33.8}
-                        className="w-50 md:w-65.5"
+                        className="w-50 md:w-65.5 h-auto"
                     />
                 </div>
                 <span className="text-5 md:text-3 text-white my-3 xl:my-7">{t("tagline")}</span>

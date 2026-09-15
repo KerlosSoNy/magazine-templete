@@ -1,17 +1,21 @@
 import GetInTouchSection from "@/components/pages/contactUs/getInTouch/GetInTouchSection";
 import LocationMap from "@/components/shared/map/LocationMap";
 import SmallBanner from "@/components/shared/smallBanner";
+import JsonLd from "@/components/shared/JsonLd";
+import { contactPageSchema } from "@/lib/seo/schema";
 import { getTranslations } from "next-intl/server";
+import { ORG_GEO } from "@/lib/constant/site";
 
 const OFFICE_LOCATION = {
-    latitude: 26.4048,
-    longitude: 50.0898,
+    latitude: ORG_GEO.latitude,
+    longitude: ORG_GEO.longitude,
 };
 
 export default async function Page() {
     const t = await getTranslations("ContactUsPage");
     return (
         <div className="pt-18 xl:pt-32">
+            <JsonLd data={contactPageSchema()} />
             <SmallBanner title={t("bannerTitle")} />
             <GetInTouchSection />
             <div id="map" className="h-100 md:h-150 xl:h-192 w-full">

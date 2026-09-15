@@ -10,6 +10,7 @@ export default function Visions() {
                 fill
                 src="/images/about/bgSecondSection.jpg"
                 alt={t("backgroundAlt")}
+                sizes="100vw"
                 className=" object-left object-cover rtl:rotate-y-180"
             />
             <div className="flex flex-col self-baseline relative z-2">

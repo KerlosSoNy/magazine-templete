@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { getLocale } from 'next-intl/server'
 import { ourCase } from '@/components/pages/home/cards/case/dummy'
 import { pickLocale } from '@/lib/i18n/pickLocale'
+import { resolveLocale } from '@/lib/i18n/locale'
 import CaseStudyOverview from '@/components/pages/caseStudies/details/CaseStudyOverview'
 import CaseStudyApproach from '@/components/pages/caseStudies/details/CaseStudyApproach'
 import CaseStudyResults from '@/components/pages/caseStudies/details/CaseStudyResults'
@@ -10,6 +11,8 @@ import ScrollDownIndicator from '@/components/pages/contactUs/getInTouch/ScrollD
 import SocialSidebar, { defaultSocialLinks } from '@/components/pages/contactUs/getInTouch/SocialSidebar'
 import GetInTouch from '@/components/pages/home/slides/getInTouch'
 import SmallBanner from '@/components/shared/smallBanner'
+import JsonLd from '@/components/shared/JsonLd'
+import { caseStudySchema } from '@/lib/seo/schema'
 
 export async function generateStaticParams() {
     return ourCase.map((item) => ({ slug: item.slug }))
@@ -23,10 +26,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         notFound()
     }
 
-    const locale = await getLocale()
+    const locale = resolveLocale(await getLocale())
 
     return (
         <div className="pt-18 xl:pt-32 max-w-screen overflow-hidden">
+            <JsonLd data={caseStudySchema(item, locale)} />
             <SmallBanner title={pickLocale(item.title, locale)} />
             <SocialSidebar links={defaultSocialLinks} />
             <ScrollDownIndicator id="case-study-overview" />

@@ -51,7 +51,7 @@ export default function BespokeSolutions() {
 
             <div className="flex flex-col lg:flex-row gap-10 lg:gap-22.5 items-center">
                 <div className="relative w-full lg:flex-1 h-98 rounded-xl overflow-hidden shrink-0 lg:max-w-113.75">
-                    <Image src={category.photo} alt={categoryLabel} fill className="object-cover" />
+                    <Image src={category.photo} alt={categoryLabel} fill sizes="(min-width: 1024px) 455px, 100vw" className="object-cover" />
                 </div>
                 <div className="flex flex-col gap-6 w-full lg:flex-1">
                     <div className="flex flex-row lg:flex-col items-center lg:items-start gap-6">

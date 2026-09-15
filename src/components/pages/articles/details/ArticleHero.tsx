@@ -33,7 +33,14 @@ export default function ArticleHero({ item }: { item: ArticleItem }) {
 
             <div className="flex flex-col xl:flex-row gap-2 lg:gap-14">
                 <div className="relative w-full xl:w-180 2xl:w-215.5 3xl:w-265.5 h-80 md:h-105 lg:-mb-20 xl:h-171.5  overflow-hidden">
-                    <Image src={item.detail.heroImage} alt={title} fill className="object-cover" priority />
+                    <Image
+                        src={item.detail.heroImage}
+                        alt={title}
+                        fill
+                        sizes="(min-width: 1920px) 1062px, (min-width: 1440px) 862px, (min-width: 1280px) 720px, 100vw"
+                        className="object-cover"
+                        priority
+                    />
                 </div>
                 <div className="flex flex-col w-[84%] md:w-[calc(100%-9rem)] mx-auto xl:mx-0 xl:w-121 shrink-0 pt-16 justify-between gap-10 rounded-xl mb-25">
                     <div className="flex flex-col gap-2">

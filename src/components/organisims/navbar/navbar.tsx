@@ -22,7 +22,7 @@ export default function Navbar() {
                     alt={t("logoAlt")}
                     width={158}
                     height={40}
-                    loading="eager"
+                    priority
                     className="w-20 2xs:w-24 h-auto xl:w-35 "
                 />
             </Link>

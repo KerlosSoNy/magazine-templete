@@ -1,22 +1,25 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useSyncExternalStore } from 'react'
 
 function useIsDesktop(breakpoint = 1024, minHeight = 900) {
-  const getQuery = () =>
-    `(min-width: ${breakpoint}px), (min-height: ${minHeight}px)`
+  const query = `(min-width: ${breakpoint}px), (min-height: ${minHeight}px)`
 
-  const [isDesktop, setIsDesktop] = useState(() => {
-    if (typeof window === 'undefined') return false 
-    return window.matchMedia(getQuery()).matches
-  })
+  const subscribe = useCallback(
+    (callback: () => void) => {
+      const mq = window.matchMedia(query)
+      mq.addEventListener('change', callback)
+      return () => mq.removeEventListener('change', callback)
+    },
+    [query]
+  )
 
-  useEffect(() => {
-    const mq = window.matchMedia(getQuery())
-    const listener = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
-    mq.addEventListener('change', listener)
-    return () => mq.removeEventListener('change', listener)
-  }, [breakpoint, minHeight])
+  const getSnapshot = useCallback(
+    () => window.matchMedia(query).matches,
+    [query]
+  )
 
-  return isDesktop
+  const getServerSnapshot = () => false
+
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }
 
 export default useIsDesktop

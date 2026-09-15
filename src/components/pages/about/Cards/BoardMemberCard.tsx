@@ -7,6 +7,7 @@ export default function BoardMemberCard({ name, title, image }: { name: string, 
                 src={image}
                 alt={name}
                 fill
+                sizes="(min-width: 1024px) 25vw, 50vw"
                 className="object-cover"
             />
             <div className="absolute z-1 h-full w-full bg-linear-to-t from-[#155048]/84 to-[#171918]/0" />

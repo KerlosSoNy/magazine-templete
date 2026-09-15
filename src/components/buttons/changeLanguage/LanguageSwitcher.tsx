@@ -31,12 +31,15 @@ function getServerLocale(): Locale {
 
 function FlagIcon({ locale }: { locale: Locale }) {
     return (
-        <Image
-            src={locale === "en" ? "/images/logos/language/english.svg" : "/images/logos/language/saudi.webp"}
-            alt={LOCALE_LABELS[locale]}
-            width={20}
-            height={20}
-        />
+        <span className="relative block size-5 overflow-hidden rounded-full">
+            <Image
+                src={locale === "en" ? "/images/logos/language/english.svg" : "/images/logos/language/saudi.webp"}
+                alt={LOCALE_LABELS[locale]}
+                fill
+                sizes="20px"
+                className="object-cover"
+            />
+        </span>
     )
 }
 

@@ -81,6 +81,7 @@ export default function Legacy() {
                                 src="/images/about/hand.jpg"
                                 alt={t("imageAlt")}
                                 fill
+                                sizes="(min-width: 1024px) 457px, 100vw"
                                 className="object-cover"
                             />
                         </motion.div>

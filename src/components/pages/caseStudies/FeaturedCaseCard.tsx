@@ -14,7 +14,7 @@ export default function FeaturedCaseCard({ item }: { item: CaseStudyItem }) {
     return (
         <div className="w-full flex flex-col lg:flex-row gap-6 lg:gap-10 items-stretch border-t border-text-disabled pt-4 lg:pt-16">
             <div className="relative w-full lg:flex-1 h-70 md:h-128.5  rounded-xl overflow-hidden">
-                <Image src={item.image} alt={title} fill className="object-cover" />
+                <Image src={item.image} alt={title} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div className="flex flex-col items-start justify-center gap-6 w-full lg:flex-1">
                 <CaseStudyPills tags={[year, pickLocale(category, locale)]} />

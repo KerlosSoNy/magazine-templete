@@ -45,7 +45,7 @@ export default function CaseStudyOverview({ item }: { item: CaseStudyItem }) {
 
                 <div className="relative w-full lg:flex-1 min-h-100">
                     <div className="relative w-full md:w-142 h-100 lg:h-133.75 place-self-end  rounded-xl overflow-hidden">
-                        <Image src={item.image} alt={title} fill className="object-cover" />
+                        <Image src={item.image} alt={title} fill sizes="(min-width: 768px) 568px, 100vw" className="object-cover" />
                     </div>
                     <QuoteCard quote={pickLocale(challenge.quote, locale)} author={challenge.quoteAuthor} role={pickLocale(challenge.quoteRole, locale)} />
                 </div>

@@ -30,6 +30,7 @@ export default function NewsCard({ item, large }: { item: NewsItem, large?: bool
                     src={item.image}
                     alt={title}
                     fill
+                    sizes="(min-width: 1024px) 25vw, 50vw"
                     className="object-cover"
                 />
             </div>

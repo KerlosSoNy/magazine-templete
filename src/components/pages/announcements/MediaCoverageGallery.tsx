@@ -74,7 +74,7 @@ export default function MediaCoverageGallery({
             </div>
 
             <div className="relative h-60 md:h-96 w-full rounded-lg overflow-hidden shrink-0">
-                <Image src={item.images[index]} alt={title} fill className="object-cover" />
+                <Image src={item.images[index]} alt={title} fill sizes="(min-width: 768px) 680px, 92vw" className="object-cover" />
             </div>
 
             {total > 1 && (
@@ -105,7 +105,7 @@ export default function MediaCoverageGallery({
                                     onClick={() => goTo(i)}
                                     className="relative h-full w-full shrink-0 min-h-30 rounded-lg overflow-hidden"
                                 >
-                                    <Image src={image} alt={`${title} ${i + 1}`} fill className="object-cover" />
+                                    <Image src={image} alt={`${title} ${i + 1}`} fill sizes="(min-width: 768px) 161px, 108px" className="object-cover" />
                                     {i === index && <span className="absolute inset-0 bg-black/40" />}
                                 </button>
                             </SwiperSlide>

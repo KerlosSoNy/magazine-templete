@@ -4,8 +4,10 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const nextConfig: NextConfig = {
     allowedDevOrigins:['192.168.1.139'],
     cacheComponents:false,
+    experimental: {
+      optimizePackageImports: ['gsap', 'swiper', 'framer-motion', 'leaflet', 'react-leaflet'],
+    },
     images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

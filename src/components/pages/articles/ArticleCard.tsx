@@ -11,7 +11,7 @@ export default function ArticleCard({ item }: { item: ArticleItem }) {
     return (
         <div className="w-full flex flex-col gap-8">
             <div className="relative w-full h-70 md:h-97.5 rounded-xl overflow-hidden">
-                <Image src={item.image} alt={title} fill className="object-cover" />
+                <Image src={item.image} alt={title} fill sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" />
             </div>
             <div className="flex flex-col gap-5">
                 <h3 className="text-3 font-bold leading-3 text-text-secondary line-clamp-2">{title}</h3>

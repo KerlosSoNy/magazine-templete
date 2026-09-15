@@ -7,6 +7,10 @@ import ScrollDownIndicator from '@/components/pages/contactUs/getInTouch/ScrollD
 import SocialSidebar, { defaultSocialLinks } from '@/components/pages/contactUs/getInTouch/SocialSidebar'
 import GetInTouch from '@/components/pages/home/slides/getInTouch'
 import ArticleDetailsContainer from '@/components/pages/articles/details/ArticleDetailsContainer'
+import JsonLd from '@/components/shared/JsonLd'
+import { articleSchema } from '@/lib/seo/schema'
+import { resolveLocale } from '@/lib/i18n/locale'
+import { getLocale } from 'next-intl/server'
 
 export async function generateStaticParams() {
     return articles.map((item) => ({ slug: item.slug }))
@@ -20,8 +24,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         notFound()
     }
 
+    const locale = resolveLocale(await getLocale())
+
     return (
         <div className="pt-18 xl:pt-32 max-w-screen overflow-hidden">
+            <JsonLd data={articleSchema(item, locale)} />
             <ArticleHero item={item} />
             <SocialSidebar links={defaultSocialLinks} />
             <ScrollDownIndicator id="article-content" />

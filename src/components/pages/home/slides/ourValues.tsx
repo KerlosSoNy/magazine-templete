@@ -11,8 +11,8 @@ export default function OurValues() {
                 src="/images/logos/simpleLogo.png"
                 alt={t('logoAlt')}
                 width={109.5}
-                height={107.5}
-                className="absolute w-109.5! h-107.5! top-8! left-1/2 -translate-x-1/2"
+                height={98.33}
+                className="absolute w-109.5! h-98.33! top-8! left-1/2 -translate-x-1/2"
                 loading="eager"
             />
             <div className="flex flex-col w-full items-center text-center z-2">

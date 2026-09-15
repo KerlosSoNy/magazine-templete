@@ -15,7 +15,7 @@ export default function OurSuccess() {
                 src="/images/home/successBg.png"
                 width={764}
                 height={726}
-                className="absolute top-0 inset-e-0 w-191"
+                className="absolute top-0 inset-e-0 w-191 h-auto"
             />
             <div className="w-full container flex flex-col items-center">
                 <span className="text-center mb-4 3xl:mb-2 text-main font-bold text-3 3xl:text-1 leading-3 3xl:leading-1 ">

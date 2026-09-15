@@ -5,13 +5,19 @@ import { CareerApplyProvider } from '@/components/providers/CareerApplyProvider'
 import ScrollDownIndicator from '@/components/pages/contactUs/getInTouch/ScrollDownIndicator'
 import SocialSidebar, { defaultSocialLinks } from '@/components/pages/contactUs/getInTouch/SocialSidebar'
 import SmallBanner from '@/components/shared/smallBanner'
-import { getTranslations } from 'next-intl/server'
+import JsonLd from '@/components/shared/JsonLd'
+import { jobPostingsSchema } from '@/lib/seo/schema'
+import { jobPositions } from '@/components/pages/careers/dummy'
+import { resolveLocale } from '@/lib/i18n/locale'
+import { getLocale, getTranslations } from 'next-intl/server'
 
 export default async function Page() {
-    const t = await getTranslations("ContactUsPage");
+    const t = await getTranslations("CareersPage");
+    const locale = resolveLocale(await getLocale())
 
     return (
         <div className="pt-18 xl:pt-32 max-w-screen overflow-hidden">
+            <JsonLd data={jobPostingsSchema(jobPositions, locale)} />
             <SmallBanner title={t('bannerTitle')} />
             <SocialSidebar links={defaultSocialLinks} />
             <ScrollDownIndicator id="open-positions" />

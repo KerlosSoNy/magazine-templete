@@ -8,6 +8,8 @@ import { inter, namian, notoKufiArabic } from '@/lib/fonts/fonts';
 import { resolveLocale } from '@/lib/i18n/locale';
 import { Viewport } from 'next';
 import { NavThemeProvider } from '@/components/providers/NavThemeProvider';
+import JsonLd from '@/components/shared/JsonLd';
+import { organizationSchema, localBusinessSchema } from '@/lib/seo/schema';
 
 const metadata = {
   title: 'Minds Advisor',
@@ -34,15 +36,17 @@ export default async function LocaleLayout({
       className={`${inter.variable} ${namian.variable} ${notoKufiArabic.variable}`}
     >
       <head>
+        <link rel="icon" href="/favicon.ico" />
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
       <body className={locale === "ar" ? "font-ar" : "font-en"}>
+        <JsonLd data={[organizationSchema(), localBusinessSchema()]} />
         <NextIntlClientProvider>
           <AnimationWrapper>
             <NavThemeProvider>
               <Navbar />
-              {children}
+              <main>{children}</main>
               <Footer />
             </NavThemeProvider>
           </AnimationWrapper>

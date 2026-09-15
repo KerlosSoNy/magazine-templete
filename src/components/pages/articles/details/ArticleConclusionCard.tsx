@@ -18,7 +18,7 @@ export default function ArticleConclusionCard({ conclusion, author }: { conclusi
             </div>
             <div className="flex items-center gap-5">
                 <div className="relative size-14 rounded-full overflow-hidden shrink-0">
-                    <Image src={author.avatar} alt={author.name} fill className="object-cover" />
+                    <Image src={author.avatar} alt={author.name} fill sizes="56px" className="object-cover" />
                 </div>
                 <div className="flex flex-col gap-1">
                     <span className="text-5 font-bold uppercase text-text-secondary">{author.name}</span>

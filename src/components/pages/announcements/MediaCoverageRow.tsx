@@ -35,7 +35,7 @@ export default function MediaCoverageRow({
                         key={image}
                         className="relative h-20 w-27 md:h-30.25 md:w-40.25 shrink-0 rounded-lg overflow-hidden"
                     >
-                        <Image src={image} alt={`${title} ${index + 1}`} fill className="object-cover" />
+                        <Image src={image} alt={`${title} ${index + 1}`} fill sizes="(min-width: 768px) 161px, 108px" className="object-cover" />
                     </div>
                 ))}
             </div>

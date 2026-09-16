@@ -17,7 +17,7 @@ export default function SuccessCard() {
     return (
         <div className="flex flex-row h-70 3xl:h-107 p-4 items-center gap-5 lg:gap-16 me-12.5">
             <Image
-                alt="success card"
+                alt={testimonial.author}
                 src="/images/home/sucessImage.png"
                 width={107}
                 height={107}
@@ -31,7 +31,7 @@ export default function SuccessCard() {
                 <span className="text-[10px] md:text-6 3xl:text-5 text-text-placeholder leading-3.5 md:leading-7 3xl:leading-5 mt-3 3xl:mt-5">
                     {pickLocale(testimonial.quote, locale)}
                 </span>
-                <h1 className="font-bold text-4 3xl:text-3 text-text-secondary mt-2 3xl:mt-5">{testimonial.author}</h1>
+                <p className="font-bold text-4 3xl:text-3 text-text-secondary mt-2 3xl:mt-5">{testimonial.author}</p>
                 <span className="mt-0 text-5 text-text-disabled">{pickLocale(testimonial.role, locale)}</span>
             </div>
         </div>

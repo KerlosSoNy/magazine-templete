@@ -14,5 +14,9 @@
     "clientsSection": {
         "headingLine1": "Some Of",
         "headingLine2": "Minds Advisory's Clients"
+    },
+    "meta": {
+        "title": "Our Services",
+        "description": "Explore Minds Advisory's consulting services, from strategy and operations to data-driven transformation, tailored to your organization's needs."
     }
 }

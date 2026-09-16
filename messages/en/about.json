@@ -22,6 +22,7 @@
         "headingPrefix": "We",
         "headingHighlight": "Stand",
         "headingSuffix": "For",
+        "mapAlt": "Map highlighting Minds Advisory's regional presence",
         "items": {
             "innovation": {
                 "title": "Innovation",
@@ -66,5 +67,9 @@
         "headingPrefix": "Our Professional",
         "headingHighlight": "Exposure",
         "mapAlt": "Map of our regional presence"
+    },
+    "meta": {
+        "title": "About Us",
+        "description": "Learn about Minds Advisory's story, mission, vision, and the leadership team driving sustainable value creation for businesses across the region."
     }
 }

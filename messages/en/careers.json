@@ -103,5 +103,9 @@
             "tooLarge": "File must be smaller than {size} MB",
             "required": "Please select a file to upload"
         }
+    },
+    "meta": {
+        "title": "Careers",
+        "description": "Join Minds Advisory and grow your career with a team that values innovation, collaboration, and meaningful impact across the GCC region."
     }
 }

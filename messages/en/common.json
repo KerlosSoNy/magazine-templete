@@ -88,5 +88,9 @@
         "followUs": "Follow us",
         "scrollDown": "Scroll Down",
         "scrollTo": "Scroll to {section}"
+    },
+    "meta": {
+        "defaultTitle": "Minds Advisory | Business Consulting & Value Creation",
+        "defaultDescription": "Minds Advisory partners with organizations across the GCC, North Africa, and Europe to unlock growth through tailored strategy, operations, and data-driven consulting."
     }
 }

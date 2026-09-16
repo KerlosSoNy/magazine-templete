@@ -13,9 +13,27 @@ import GetInTouch from '@/components/pages/home/slides/getInTouch'
 import SmallBanner from '@/components/shared/smallBanner'
 import JsonLd from '@/components/shared/JsonLd'
 import { caseStudySchema } from '@/lib/seo/schema'
+import { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo/metadata'
 
 export async function generateStaticParams() {
     return ourCase.map((item) => ({ slug: item.slug }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params
+    const item = ourCase.find((caseItem) => caseItem.slug === slug)
+    if (!item) return {}
+
+    const locale = resolveLocale(await getLocale())
+    return pageMetadata({
+        locale,
+        title: pickLocale(item.title, locale),
+        description: pickLocale(item.description, locale),
+        path: `/case-studies/${slug}`,
+        image: item.image,
+        type: 'article',
+    })
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

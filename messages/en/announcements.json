@@ -9,5 +9,9 @@
             "nextImage": "Next image",
             "showImage": "Show image {index}"
         }
+    },
+    "meta": {
+        "title": "Announcements & Media Coverage",
+        "description": "Stay up to date with Minds Advisory's latest announcements, media coverage, and industry insights."
     }
 }

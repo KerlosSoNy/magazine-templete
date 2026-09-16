@@ -11,17 +11,17 @@ export default function Welcome() {
             <div className="flex flex-col lg:flex-row items-center gap-2 lg:gap-15">
                 <Image
                     src="/images/home/welcomeImage.png"
-                    alt="Welcome To Mind Advisor"
+                    alt={t('imageAlt')}
                     width={594}
                     height={715}
                     className="w-80 md:w-80 xl:w-110 3xl:w-148.5 h-80 md:h-100 xl:h-140 3xl:h-178.75"
                 />
                 <div className="flex flex-col items-start max-w-[80%] lg:max-w-100 xl:max-w-135 2xl:max-w-162.5 3xl:max-w-192.5 ovreflow-y-visible">
-                    <h1 className="font-bold text-4 md:text-3 xl:text-2 3xl:text-1 leading-3 xl:leading-2  3xl:leading-1 text-main">
+                    <h2 className="font-bold text-4 md:text-3 xl:text-2 3xl:text-1 leading-3 xl:leading-2  3xl:leading-1 text-main">
                         <span className="text-black">{t('titleLead')} </span>
                         <br />
                         {t('titleBrand')}
-                    </h1>
+                    </h2>
                     <span className="text-text-placeholder md:mt-2 2xxl:mt-4 text-justify text-[12px] md:text-7 xl:text-6 3xl:text-5">
                         {t('paragraph1')}
                     </span>

@@ -15,5 +15,9 @@
         "shareOnX": "Share on X",
         "shareOnLinkedIn": "Share on LinkedIn",
         "relatedArticle": "Related Article"
+    },
+    "meta": {
+        "title": "Industry Articles",
+        "description": "Read Minds Advisory's industry articles and insights on business strategy, transformation, and value creation."
     }
 }

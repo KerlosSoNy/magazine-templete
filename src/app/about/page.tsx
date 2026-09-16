@@ -11,7 +11,16 @@ import LogosMarquee from "@/components/shared/logosMarquee/LogosMarquee";
 import SmallBanner from "@/components/shared/smallBanner";
 import JsonLd from "@/components/shared/JsonLd";
 import { aboutPageSchema } from "@/lib/seo/schema";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { resolveLocale } from "@/lib/i18n/locale";
+
+export async function generateMetadata(): Promise<Metadata> {
+    const t = await getTranslations("AboutPage.meta");
+    const locale = resolveLocale(await getLocale());
+    return pageMetadata({ locale, title: t("title"), description: t("description"), path: "/about" });
+}
 
 export default async function Page() {
     const t = await getTranslations("AboutPage");

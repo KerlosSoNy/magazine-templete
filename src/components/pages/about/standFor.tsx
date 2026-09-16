@@ -18,7 +18,7 @@ export default async function StandFor() {
                 <div className="flex flex-col items-center gap-10 md:gap-18.75 md:pt-18.75">
                     <Image
                         src="/images/about/map.png"
-                        alt='Map Stands'
+                        alt={t('mapAlt')}
                         width={455.5}
                         height={325.51}
                         className="w-full max-w-[455.5px] h-auto"

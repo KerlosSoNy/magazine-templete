@@ -8,6 +8,14 @@ import { articlesCollectionSchema } from "@/lib/seo/schema";
 import { articles } from "@/components/pages/articles/dummy";
 import { resolveLocale } from "@/lib/i18n/locale";
 import { getLocale, getTranslations } from "next-intl/server";
+import { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo/metadata";
+
+export async function generateMetadata(): Promise<Metadata> {
+    const t = await getTranslations("ArticlesPage.meta");
+    const locale = resolveLocale(await getLocale());
+    return pageMetadata({ locale, title: t("title"), description: t("description"), path: "/articles" });
+}
 
 export default async function Page() {
     const t = await getTranslations("ArticlesPage");

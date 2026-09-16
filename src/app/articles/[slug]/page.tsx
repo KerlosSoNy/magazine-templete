@@ -10,10 +10,29 @@ import ArticleDetailsContainer from '@/components/pages/articles/details/Article
 import JsonLd from '@/components/shared/JsonLd'
 import { articleSchema } from '@/lib/seo/schema'
 import { resolveLocale } from '@/lib/i18n/locale'
+import { pickLocale } from '@/lib/i18n/pickLocale'
 import { getLocale } from 'next-intl/server'
+import { Metadata } from 'next'
+import { pageMetadata } from '@/lib/seo/metadata'
 
 export async function generateStaticParams() {
     return articles.map((item) => ({ slug: item.slug }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params
+    const item = articles.find((article) => article.slug === slug)
+    if (!item) return {}
+
+    const locale = resolveLocale(await getLocale())
+    return pageMetadata({
+        locale,
+        title: pickLocale(item.title, locale),
+        description: pickLocale(item.excerpt, locale),
+        path: `/articles/${slug}`,
+        image: item.detail.heroImage,
+        type: 'article',
+    })
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

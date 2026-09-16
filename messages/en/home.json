@@ -7,6 +7,7 @@
         "partnerLogoAlt": "Muhaidib Group logo"
     },
     "welcome": {
+        "imageAlt": "Minds Advisory team members collaborating in the office",
         "titleLead": "Welcome to",
         "titleBrand": "Minds Advisory by AMG",
         "paragraph1": "At Minds Advisory, our commitment is to create enduring value by fostering partnerships that yield meaningful, long-term success",
@@ -62,5 +63,9 @@
     },
     "pagination": {
         "goToSlide": "Go to slide {number}"
+    },
+    "meta": {
+        "title": "Minds Advisory | Your Partner in Value Creation",
+        "description": "Minds Advisory helps businesses optimize operations, execute transformative strategies, and unlock growth through bespoke consulting solutions across the GCC, North Africa, and Europe."
     }
 }

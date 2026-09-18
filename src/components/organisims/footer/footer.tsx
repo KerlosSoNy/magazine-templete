@@ -80,7 +80,7 @@ export default function Footer() {
                         <span className="text-6 text-text-disabled">
                             {t("footer.workingDays")}
                         </span>
-                        <Link href="tel:+966138455555" dir="ltr" className="text-6 mt-2.5 text-text-secondary hover:text-main transition-colors text-end"   >
+                        <Link href="tel:+966138455555" dir="ltr" className="text-6 mt-2.5 text-text-secondary hover:text-main transition-colors text-start"   >
                             +966 13 845 5555
                         </Link>
                     </div>

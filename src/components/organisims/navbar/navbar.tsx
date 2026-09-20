@@ -6,13 +6,18 @@ import NavbarMenu from "./navbarMenu";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useNavTheme } from "@/components/providers/NavThemeProvider";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
     const isWhiteBg = useNavTheme();
     const pathname = usePathname();
     const t = useTranslations("Common");
     return (
-        <div className={`w-full px-4 2xs:px-6 md:px-10 3xl:px-50 justify-between flex flex-row items-center z-100 fixed ${pathname === "/" ? "py-4 3xl:py-14 " : "py-4 xl:py-9 bg-white"}`}>
+        <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className={`w-full px-4 2xs:px-6 md:px-10 3xl:px-50 justify-between flex flex-row items-center z-100 fixed ${pathname === "/" ? "py-4 3xl:py-14 " : "py-4 xl:py-9 bg-white"}`}>
             <Link
                 href="/"
                 className={`no-focus-ring ${(isWhiteBg || pathname !== "/") && "filter-teal"}`}
@@ -32,6 +37,6 @@ export default function Navbar() {
                     <BookCall />
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }

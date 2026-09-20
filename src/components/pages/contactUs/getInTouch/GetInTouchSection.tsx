@@ -4,6 +4,7 @@ import ContactBookingForm from "./ContactBookingForm";
 import ContactDetails, { ContactDetailItem, defaultContactDetails } from "./ContactDetails";
 import ScrollDownIndicator from "./ScrollDownIndicator";
 import SocialSidebar, { SocialLink, defaultSocialLinks } from "./SocialSidebar";
+import MotionDiv from "@/components/shared/motionDiv";
 
 interface GetInTouchSectionProps {
     title?: string;
@@ -39,15 +40,19 @@ export default async function GetInTouchSection({
             <ScrollDownIndicator id="map" />
 
             <div className="relative z-1 mx-auto flex w-full max-w-330 xl:max-w-355.5 flex-col items-center">
-                <span className="text-2 md:text-1 font-bold leading-1 text-center text-text-secondary">
-                    {resolvedTitle} <span className="text-main">{resolvedHighlight}</span>
-                </span>
+                <MotionDiv delay={0.2}>
+                    <span className="text-2 md:text-1 font-bold leading-1 text-center text-text-secondary">
+                        {resolvedTitle} <span className="text-main">{resolvedHighlight}</span>
+                    </span>
+                </MotionDiv>
 
                 <div className="mt-16 flex w-full flex-col-reverse items-center justify-center gap-12 xl:flex-row lg:gap-18">
                     <div className="flex max-w-200 xl:max-w-175 flex-col items-start">
-                        <span className="max-w-200 xl:max-w-175 text-4 2xl:text-2 font-bold leading-3 2xl:leading-2 text-[#171918]">
-                            {resolvedSubtitle}
-                        </span>
+                        <MotionDiv delay={0.4}>
+                            <span className="max-w-200 xl:max-w-175 text-4 2xl:text-2 font-bold leading-3 2xl:leading-2 text-[#171918]">
+                                {resolvedSubtitle}
+                            </span>
+                        </MotionDiv>
 
                         <div className="mt-8">
                             <ContactDetails items={contactDetails} />

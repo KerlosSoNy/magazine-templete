@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import MotionDiv from "@/components/shared/motionDiv";
 
 export default async function Visions() {
     const t = await getTranslations("AboutPage.visions");
@@ -13,14 +14,18 @@ export default async function Visions() {
                 sizes="100vw"
                 className=" object-left object-cover rtl:rotate-y-180"
             />
-            <div className="flex flex-col self-baseline relative z-2">
-                <span className="font-bold text-white text-3 xl:text-1">{t("mission.title")}</span>
-                <span className="max-w-full md:max-w-90 xl:max-w-107.25 text-white text-6 xl:text-5 leading-6 lg:leading-5">{t("mission.text")}</span>
-            </div>
-            <div className="flex flex-col relative z-2 w-fit self-start md:self-end mx-auto lg:mx-20 xl:ms-50">
-                <span className="font-bold text-white text-3 xl:text-1">{t("vision.title")}</span>
-                <span className="max-w-full md:max-w-110 xl:max-w-107.25 text-white text-6 xl:text-5 leading-6 xl:leading-5">{t("vision.text")}</span>
-            </div>
+            <MotionDiv delay={0.4}>
+                <div className="flex flex-col self-baseline relative z-2">
+                    <span className="font-bold text-white text-3 xl:text-1">{t("mission.title")}</span>
+                    <span className="max-w-full md:max-w-90 xl:max-w-107.25 text-white text-6 xl:text-5 leading-6 lg:leading-5">{t("mission.text")}</span>
+                </div>
+            </MotionDiv>
+            <MotionDiv delay={0.6} className="self-start md:self-end mx-auto lg:mx-20 xl:ms-50">
+                <div className="flex flex-col relative z-2 w-fit ">
+                    <span className="font-bold text-white text-3 xl:text-1">{t("vision.title")}</span>
+                    <span className="max-w-full md:max-w-110 xl:max-w-107.25 text-white text-6 xl:text-5 leading-6 xl:leading-5">{t("vision.text")}</span>
+                </div>
+            </MotionDiv>
         </div>
     )
 }

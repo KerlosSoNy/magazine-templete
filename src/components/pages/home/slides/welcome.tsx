@@ -1,7 +1,8 @@
+'use client'
 import { useTranslations } from 'next-intl'
 import GenericButton from '@/components/buttons/genericButton'
 import Image from 'next/image'
-
+import { motion } from 'framer-motion'
 export default function Welcome() {
     const t = useTranslations('HomePage.welcome')
     const tCommon = useTranslations('Common.buttons')
@@ -9,37 +10,74 @@ export default function Welcome() {
     return (
         <div data-nav-bg="white" className="w-screen h-fit py-10 md:py-0 md:h-screen  flex items-center justify-center">
             <div className="flex flex-col lg:flex-row items-center gap-2 lg:gap-15">
-                <Image
-                    src="/images/home/welcomeImage.png"
-                    alt={t('imageAlt')}
-                    width={594}
-                    height={715}
-                    className="w-80 md:w-80 xl:w-110 3xl:w-148.5 h-80 md:h-100 xl:h-140 3xl:h-178.75"
-                />
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.5, y: -20 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.5 }}
+                    className="w-fit h-fit">
+                    <Image
+                        src="/images/home/welcomeImage.png"
+                        alt={t('imageAlt')}
+                        width={594}
+                        height={715}
+                        className="w-80 md:w-80 xl:w-110 3xl:w-148.5 h-80 md:h-100 xl:h-140 3xl:h-178.75"
+                    />
+                </motion.div>
                 <div className="flex flex-col items-start max-w-[80%] lg:max-w-100 xl:max-w-135 2xl:max-w-162.5 3xl:max-w-192.5 ovreflow-y-visible">
-                    <h2 className="font-bold text-4 md:text-3 xl:text-2 3xl:text-1 leading-3 xl:leading-2  3xl:leading-1 text-main">
+                    <motion.h2
+                        initial={{ opacity: 0, x: -40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="font-bold text-4 md:text-3 xl:text-2 3xl:text-1 leading-3 xl:leading-2  3xl:leading-1 text-main">
                         <span className="text-black">{t('titleLead')} </span>
                         <br />
                         {t('titleBrand')}
-                    </h2>
-                    <span className="text-text-placeholder md:mt-2 2xxl:mt-4 text-justify text-[12px] md:text-7 xl:text-6 3xl:text-5">
+                    </motion.h2>
+                    <motion.span
+                        initial={{ opacity: 0, x: -40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="text-text-placeholder md:mt-2 2xxl:mt-4 text-justify text-[12px] md:text-7 xl:text-6 3xl:text-5">
                         {t('paragraph1')}
-                    </span>
-                    <span className="text-text-placeholder md:mt-2 2xxl:mt-4 text-justify text-[12px] md:text-7 xl:text-6 3xl:text-5">
+                    </motion.span>
+                    <motion.span
+                        initial={{ opacity: 0, x: -40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        className="text-text-placeholder md:mt-2 2xxl:mt-4 text-justify text-[12px] md:text-7 xl:text-6 3xl:text-5">
                         {t('paragraph2')}
-                    </span>
-                    <span className="text-text-placeholder md:mt-2 2xxl:mt-4 text-justify text-[12px] md:text-7 xl:text-6 3xl:text-5">
+                    </motion.span>
+                    <motion.span
+                        initial={{ opacity: 0, x: -40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
+                        className="text-text-placeholder md:mt-2 2xxl:mt-4 text-justify text-[12px] md:text-7 xl:text-6 3xl:text-5">
                         {t('paragraph3')}
-                    </span>
-                    <div className="flex flex-row items-center mt-2 xl:mt-3 3xl:mt-6 gap-2 lg:gap-4">
+                    </motion.span>
+                    <motion.div
+                        initial={{ opacity: 0, x: -40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.5, delay: 0.8 }}
+                        className="flex flex-row items-center mt-2 xl:mt-3 3xl:mt-6 gap-2 lg:gap-4">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM13.5 10.75H8.31L10.03 12.47C10.32 12.76 10.32 13.24 10.03 13.53C9.88 13.68 9.69 13.75 9.5 13.75C9.31 13.75 9.12 13.68 8.97 13.53L5.97 10.53C5.83052 10.3889 5.7523 10.1984 5.7523 10C5.7523 9.80157 5.83052 9.61114 5.97 9.47L8.97 6.47C9.26 6.18 9.74 6.18 10.03 6.47C10.32 6.76 10.32 7.24 10.03 7.53L8.31 9.25H13.5C13.91 9.25 14.25 9.59 14.25 10C14.25 10.41 13.91 10.75 13.5 10.75Z" fill="#145048" />
                         </svg>
                         <span className="text-6 lg:text-5 font-inter text-text-secondary">
                             {t('storyLink')}
                         </span>
-                    </div>
-                    <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row items-start xl:items-center mb-4 3xl:mb-8 mt-2 xl:mt-3 3xl:mt-6 gap-3 md:gap-5 lg:gap-2 xl:gap-4 3xl:gap-7">
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, x: -40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.5, delay: 1 }}
+                        className="flex flex-col md:flex-row lg:flex-col xl:flex-row items-start xl:items-center mb-4 3xl:mb-8 mt-2 xl:mt-3 3xl:mt-6 gap-3 md:gap-5 lg:gap-2 xl:gap-4 3xl:gap-7">
                         <div className="flex flex-row items-center gap-2 lg:gap-4">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#145048" />
@@ -56,8 +94,22 @@ export default function Welcome() {
                                 +966 13 845 5555
                             </span>
                         </div>
-                    </div>
-                    <GenericButton title={tCommon('discoverMore')} />
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: -40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{
+                            type: 'spring',
+                            stiffness: 300,
+                            damping: 12,
+                            duration: 0.5,
+                            delay: 1.2,
+                            bounce: 0.6,
+                        }}
+                    >
+                        <GenericButton title={tCommon('discoverMore')} />
+                    </motion.div>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ interface ApproachStep {
 
 export default function ApproachStepCard({ step }: { step: ApproachStep }) {
     return (
-        <div className="bg-white border border-text-disabled/40 rounded-lg p-6 flex flex-col gap-6">
+        <div className="bg-white border border-text-disabled/40 rounded-lg p-6 h-full flex flex-col gap-6">
             <div className="flex gap-4 items-center">
                 <span className="bg-[#0E3832] rounded-full size-8 flex items-center justify-center text-6 font-bold text-white">
                     {step.number}

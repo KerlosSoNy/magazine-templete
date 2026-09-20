@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import MaturityCards from '../cards/maturity/MaturityCards'
 import GenericButton from '@/components/buttons/genericButton'
-
+import { motion } from 'framer-motion'
 export default function DiscoverBusiness() {
     const t = useTranslations('HomePage.discoverBusiness')
 
@@ -12,15 +12,44 @@ export default function DiscoverBusiness() {
             </svg>
 
             <div className="w-full container flex flex-col items-center z-2">
-                <span className="text-3 3xl:text-1 text-white font-bold leading-3 3xl:leading-1 max-w-[95%] md:max-w-220 3xl:max-w-297 text-center">
+                <motion.span
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="text-3 3xl:text-1 text-white font-bold leading-3 3xl:leading-1 max-w-[95%] md:max-w-220 3xl:max-w-297 text-center">
                     {t('title')}
-                </span>
-                <span className="text-center max-w-[95%] md:max-w-150 3xl:max-w-200 text-7 3xl:text-5 text-text-disabled font-inter leading-6 3xl:leading-5 mt-5">
+                </motion.span>
+                <motion.span
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                    className="text-center max-w-[95%] md:max-w-150 3xl:max-w-200 text-7 3xl:text-5 text-text-disabled font-inter leading-6 3xl:leading-5 mt-5">
                     {t('subtitle')}
-                </span>
+                </motion.span>
                 <MaturityCards />
-                <GenericButton revertColors withoutIcon mainClasses='mt-10 3xl:mt-10 h-10 3xl:h-[56px]' titleClasses='font-inter font-medium! text-5' title={t('cta')} />
-                <span className="text-7 3xl:text-5 font-inter leading-5 text-text-disabled mt-2 3xl:mt-6">{t('footnote')}</span>
+                <motion.div
+                    initial={{ opacity: 0, y: -40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{
+                        type: 'spring',
+                        stiffness: 300,
+                        damping: 12,
+                        duration: 0.5,
+                        delay: 1,
+                        bounce: 0.6,
+                    }}
+                >
+                    <GenericButton revertColors withoutIcon mainClasses='mt-10 3xl:mt-10 h-10 3xl:h-[56px]' titleClasses='font-inter font-medium! text-5' title={t('cta')} />
+                </motion.div>
+                <motion.span
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.5, delay: 1.2 }}
+                    className="text-7 3xl:text-5 font-inter leading-5 text-text-disabled mt-2 3xl:mt-6">{t('footnote')}</motion.span>
             </div>
         </div>
     )

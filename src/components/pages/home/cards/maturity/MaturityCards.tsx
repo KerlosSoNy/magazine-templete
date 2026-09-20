@@ -2,7 +2,7 @@
 import { useLocale, useTranslations } from 'next-intl'
 import { pickLocale } from '@/lib/i18n/pickLocale'
 import { maturityData } from './dummy'
-
+import { motion } from "framer-motion";
 export default function MaturityCards() {
     const locale = useLocale()
     const t = useTranslations('HomePage.discoverBusiness')
@@ -10,7 +10,18 @@ export default function MaturityCards() {
     return (
         <div className="w-full max-w-300 3xl:max-w-355.5 px-4 grid grid-cols-2 lg:flex gap-4 mt-5 3xl:mt-10">
             {maturityData.map((item, index) => (
-                <div
+                <motion.div
+                    initial={{ opacity: 0, y: -40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{
+                        type: 'spring',
+                        stiffness: 300,
+                        damping: 12,
+                        duration: 0.5,
+                        delay: index * 0.2,
+                        bounce: 0.6,
+                    }}
                     key={index}
                     className="group flex-1 flex flex-col justify-between rounded-lg p-3 xl:p-4 2xl:p-5 h-50 md:h-40 lg:h-60 2xl:h-63.75 transition-colors duration-300 border bg-transparent border-[#9FB7B4] hover:bg-secondary"
                 >
@@ -40,7 +51,7 @@ export default function MaturityCards() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             ))}
         </div>
     )

@@ -12,7 +12,6 @@ import {
     descriptionVariants,
 } from './variants'
 import GenericButton from '@/components/buttons/genericButton'
-
 export default function DiscoverCards() {
     const [activeIndex, setActiveIndex] = useState<number | null>(null)
     const containerRef = useRef<HTMLDivElement>(null)
@@ -39,7 +38,11 @@ export default function DiscoverCards() {
     }, [])
 
     return (
-        <div
+        <motion.div
+            initial={{ opacity: 0, y: -60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
             ref={containerRef}
             className="container mt-10  h-fit  overflow-hidden lg:mt-14 flex-wrap lg:flex-nowrap grid grid-cols-2 lg:flex lg:h-90 3xl:h-121"
         >
@@ -122,6 +125,6 @@ export default function DiscoverCards() {
                     </motion.div>
                 )
             })}
-        </div>
+        </motion.div>
     )
 }

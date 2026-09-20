@@ -8,6 +8,7 @@ import { ourCase } from '@/components/pages/home/cards/case/dummy'
 import { pickLocale } from '@/lib/i18n/pickLocale'
 import FeaturedCaseCard from './FeaturedCaseCard'
 import CaseStudyCard from './CaseStudyCard'
+import MotionDiv from '@/components/shared/motionDiv'
 
 const PAGE_SIZE = 6
 
@@ -51,39 +52,53 @@ export default function CaseStudiesList() {
     return (
         <div id="case-studies" className="container mx-auto flex flex-col gap-16 py-16 lg:py-20">
             <div className="flex flex-col gap-8 md:gap-11">
-                <span className="text-5 text-text-placeholder">{t('eyebrow')}</span>
-                <h1 className="text-2 md:text-1 font-bold leading-2 md:leading-1 text-text-secondary max-w-220">
-                    <span className="text-main">{t('headingHighlight')}</span> {t('headingRest')}
-                </h1>
+                <MotionDiv delay={0.2}>
+                    <span className="text-5 text-text-placeholder">{t('eyebrow')}</span>
+                </MotionDiv>
+                <MotionDiv delay={0.3}>
+                    <h1 className="text-2 md:text-1 font-bold leading-2 md:leading-1 text-text-secondary max-w-220">
+                        <span className="text-main">{t('headingHighlight')}</span> {t('headingRest')}
+                    </h1>
+                </MotionDiv>
                 <div className="flex flex-col sm:flex-row gap-4 -mt-6 max-w-140">
-                    <SelectField
-                        srOnly={false}
-                        id="case-studies-service"
-                        name="service"
-                        label={t('filters.serviceLabel')}
-                        value={service}
-                        onChange={handleFilterChange(setService)}
-                        options={serviceOptions}
-                    />
-                    <SelectField
-                        id="case-studies-year"
-                        name="year"
-                        srOnly={false}
-                        label={t('filters.yearLabel')}
-                        value={year}
-                        onChange={handleFilterChange(setYear)}
-                        options={yearOptions}
-                    />
+                    <MotionDiv delay={0.4}>
+                        <SelectField
+                            srOnly={false}
+                            id="case-studies-service"
+                            name="service"
+                            label={t('filters.serviceLabel')}
+                            value={service}
+                            onChange={handleFilterChange(setService)}
+                            options={serviceOptions}
+                        />
+                    </MotionDiv>
+                    <MotionDiv delay={0.6}>
+                        <SelectField
+                            id="case-studies-year"
+                            name="year"
+                            srOnly={false}
+                            label={t('filters.yearLabel')}
+                            value={year}
+                            onChange={handleFilterChange(setYear)}
+                            options={yearOptions}
+                        />
+                    </MotionDiv>
                 </div>
             </div>
 
-            {featured && <FeaturedCaseCard item={featured} />}
+            {featured &&
+                <MotionDiv delay={0.8}>
+                    <FeaturedCaseCard item={featured} />
+                </MotionDiv>
+            }
 
             {gridItems.length > 0 && (
                 <div className="flex flex-col gap-16 border-t border-text-disabled pt-4 lg:pt-16">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-6 lg:gap-y-16">
                         {gridItems.map((item, index) => (
-                            <CaseStudyCard item={item} key={item.slug + index} />
+                            <MotionDiv duration={1} spring key={item.slug} delay={1 + index * 0.3} axis="y">
+                                <CaseStudyCard item={item} key={item.slug + index} />
+                            </MotionDiv>
                         ))}
                     </div>
 

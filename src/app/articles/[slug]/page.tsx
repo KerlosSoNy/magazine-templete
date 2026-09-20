@@ -1,8 +1,6 @@
 import { notFound } from 'next/navigation'
 import { articles } from '@/components/pages/articles/dummy'
 import ArticleHero from '@/components/pages/articles/details/ArticleHero'
-import ArticleContent from '@/components/pages/articles/details/ArticleContent'
-import RelatedArticles from '@/components/pages/articles/details/RelatedArticles'
 import ScrollDownIndicator from '@/components/pages/contactUs/getInTouch/ScrollDownIndicator'
 import SocialSidebar, { defaultSocialLinks } from '@/components/pages/contactUs/getInTouch/SocialSidebar'
 import GetInTouch from '@/components/pages/home/slides/getInTouch'

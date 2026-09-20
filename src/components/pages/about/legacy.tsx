@@ -10,6 +10,7 @@ import type { LocalizedText } from '@/lib/i18n/pickLocale'
 import { pickLocale } from '@/lib/i18n/pickLocale'
 import MilestoneCard from './Cards/MilestoneCard'
 import { AboutUsIconLegacySection } from '@/components/icons/aboutUs'
+import MotionDiv from '@/components/shared/motionDiv'
 
 const milestones: { year: string; title: LocalizedText; points: LocalizedText[] }[] = [
     {
@@ -67,39 +68,46 @@ export default function Legacy() {
                 <AboutUsIconLegacySection />
             </div>
 
-            <h2 className="text-3 md:text-2 lg:text-1 font-bold text-text-secondary text-center leading-3 md:leading-2 lg:leading-1 z-2">
-                {t('headingLine1')}<br />
-                {t('headingLine2Prefix')} <span className="text-main">{t('headingHighlight')}</span>
-            </h2>
-            <span className="text-6 md:text-5 font-bold text-text-secondary text-center mt-4 z-2">{t('subheading')}</span>
-
+            <MotionDiv delay={0.2}>
+                <h2 className="text-3 md:text-2 lg:text-1 font-bold text-text-secondary text-center leading-3 md:leading-2 lg:leading-1 z-2">
+                    {t('headingLine1')}<br />
+                    {t('headingLine2Prefix')} <span className="text-main">{t('headingHighlight')}</span>
+                </h2>
+            </MotionDiv>
+            <MotionDiv delay={0.4}>
+                <span className="text-6 md:text-5 font-bold text-text-secondary text-center mt-4 z-2">{t('subheading')}</span>
+            </MotionDiv>
             <div className="container grid grid-cols-1 lg:grid-cols-2 gap-10 mt-14 items-start z-2">
-                <div className="lg:sticky lg:top-24 w-full max-w-114.25 lg:max-w-none lg:w-[457.06px] justify-self-center lg:justify-self-end">
-                    <div className="relative h-72 sm:h-90 lg:h-[677.77px] lg:min-h-[677.77px] rounded-xl overflow-hidden">
-                        <motion.div style={{ y }} className="absolute inset-x-0 -top-24 -bottom-24">
-                            <Image
-                                src="/images/about/hand.jpg"
-                                alt={t("imageAlt")}
-                                fill
-                                sizes="(min-width: 1024px) 457px, 100vw"
-                                className="object-cover"
-                            />
-                        </motion.div>
+                <MotionDiv delay={0.6} className="lg:sticky lg:top-24 w-full max-w-114.25 lg:max-w-none lg:w-[457.06px] justify-self-center lg:justify-self-end">
+                    <div >
+                        <div className="relative h-72 sm:h-90 lg:h-[677.77px] lg:min-h-[677.77px] rounded-xl overflow-hidden">
+                            <motion.div style={{ y }} className="absolute inset-x-0 -top-24 -bottom-24">
+                                <Image
+                                    src="/images/about/hand.jpg"
+                                    alt={t("imageAlt")}
+                                    fill
+                                    sizes="(min-width: 1024px) 457px, 100vw"
+                                    className="object-cover"
+                                />
+                            </motion.div>
+                        </div>
                     </div>
-                </div>
+                </MotionDiv>
 
                 <div className="relative flex flex-col gap-20">
                     <div className="absolute inset-s-5 top-4 bottom-3.5 w-px bg-[#EAE9E9]" />
-                    {milestones.map((milestone) => (
+                    {milestones.map((milestone, index) => (
                         <div key={milestone.year} className="relative flex gap-4 items-start">
                             <span className="relative z-10 mt-1.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EAE9E9]">
                                 <DarkCalendarIcon />
                             </span>
-                            <MilestoneCard
-                                year={milestone.year}
-                                title={pickLocale(milestone.title, locale)}
-                                points={milestone.points.map((point) => pickLocale(point, locale))}
-                            />
+                            <MotionDiv once={false} delay={0.8 + 0.1 * index} key={milestone.year} className="relative flex gap-4 items-start">
+                                <MilestoneCard
+                                    year={milestone.year}
+                                    title={pickLocale(milestone.title, locale)}
+                                    points={milestone.points.map((point) => pickLocale(point, locale))}
+                                />
+                            </MotionDiv>
                         </div>
                     ))}
                 </div>

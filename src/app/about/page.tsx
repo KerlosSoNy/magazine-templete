@@ -15,7 +15,6 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { resolveLocale } from "@/lib/i18n/locale";
-
 export async function generateMetadata(): Promise<Metadata> {
     const t = await getTranslations("AboutPage.meta");
     const locale = resolveLocale(await getLocale());

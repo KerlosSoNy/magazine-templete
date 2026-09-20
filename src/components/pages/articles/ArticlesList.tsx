@@ -7,6 +7,7 @@ import GenericButton from '@/components/buttons/genericButton'
 import { articles } from './dummy'
 import ArticleCard from './ArticleCard'
 import { pickLocale } from '@/lib/i18n/pickLocale'
+import MotionDiv from '@/components/shared/motionDiv'
 
 const PAGE_SIZE = 6
 const FEATURED_COUNT = 3
@@ -57,51 +58,63 @@ export default function ArticlesList() {
     return (
         <div id="articles" className="container mx-auto flex flex-col gap-16 py-16 lg:py-20">
             <div className="flex flex-col gap-8 md:gap-11">
-                <span className="text-5 text-text-placeholder">{t('eyebrow')}</span>
-                <h1 className="text-2 md:text-1 font-bold leading-2 md:leading-1 text-text-secondary max-w-220">
-                    {t('heading')} <span className="text-main">{t('headingHighlight')}</span>
-                </h1>
+                <MotionDiv delay={0.2}>
+                    <span className="text-5 text-text-placeholder">{t('eyebrow')}</span>
+                </MotionDiv>
+                <MotionDiv delay={0.4}>
+                    <h1 className="text-2 md:text-1 font-bold leading-2 md:leading-1 text-text-secondary max-w-220">
+                        {t('heading')} <span className="text-main">{t('headingHighlight')}</span>
+                    </h1>
+                </MotionDiv>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
                 {articles.slice(0, FEATURED_COUNT).map((item, index: number) => (
-                    <div key={index} className={`${index === 0 && 'md:col-span-2'}`}>
+                    <MotionDiv spring axis="y" delay={1 + index * 0.1} key={index} className={`${index === 0 && 'md:col-span-2'}`}>
                         <ArticleCard item={item} key={item.slug} />
-                    </div>
+                    </MotionDiv>
                 ))}
             </div>
 
             <div className="flex flex-col gap-16 border-t border-text-disabled pt-4 lg:pt-16">
                 <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-                    <h2 className="text-2 md:text-1 font-bold leading-2 md:leading-1 text-text-secondary">
-                        {t('allHeading')} <span className="text-main">{t('allHeadingHighlight')}</span>
-                    </h2>
+                    <MotionDiv delay={0.2}>
+                        <h2 className="text-2 md:text-1 font-bold leading-2 md:leading-1 text-text-secondary">
+                            {t('allHeading')} <span className="text-main">{t('allHeadingHighlight')}</span>
+                        </h2>
+                    </MotionDiv>
                     <div className="flex flex-col sm:flex-row gap-4 max-w-140">
-                        <SelectField
-                            srOnly={false}
-                            id="articles-industry"
-                            name="industry"
-                            label={t('filterIndustry')}
-                            value={industry}
-                            onChange={handleFilterChange(setIndustry)}
-                            options={industryOptions}
-                        />
-                        <SelectField
-                            srOnly={false}
-                            id="articles-year"
-                            name="year"
-                            label={t('filterYear')}
-                            value={year}
-                            onChange={handleFilterChange(setYear)}
-                            options={yearOptions}
-                        />
+                        <MotionDiv delay={0.4}>
+                            <SelectField
+                                srOnly={false}
+                                id="articles-industry"
+                                name="industry"
+                                label={t('filterIndustry')}
+                                value={industry}
+                                onChange={handleFilterChange(setIndustry)}
+                                options={industryOptions}
+                            />
+                        </MotionDiv>
+                        <MotionDiv delay={0.6}>
+                            <SelectField
+                                srOnly={false}
+                                id="articles-year"
+                                name="year"
+                                label={t('filterYear')}
+                                value={year}
+                                onChange={handleFilterChange(setYear)}
+                                options={yearOptions}
+                            />
+                        </MotionDiv>
                     </div>
                 </div>
 
                 {gridItems.length > 0 && (
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16">
-                        {gridItems.map((item) => (
-                            <ArticleCard item={item} key={item.slug} />
+                        {gridItems.map((item, index) => (
+                            <MotionDiv spring axis="y" delay={1 + index * 0.1} key={item.slug} >
+                                <ArticleCard item={item} key={item.slug} />
+                            </MotionDiv>
                         ))}
                     </div>
                 )}

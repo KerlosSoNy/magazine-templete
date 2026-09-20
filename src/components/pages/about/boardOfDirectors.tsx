@@ -3,6 +3,7 @@ import type { Locale } from '@/lib/i18n/locale'
 import type { LocalizedText } from '@/lib/i18n/pickLocale'
 import { pickLocale } from '@/lib/i18n/pickLocale'
 import BoardMemberCard from './Cards/BoardMemberCard'
+import MotionDiv from '@/components/shared/motionDiv'
 
 const boardMembers: { name: string; title: LocalizedText; image: string }[] = [
     {
@@ -39,20 +40,29 @@ export default async function BoardOfDirectors() {
     return (
         <div data-nav-bg="black" className="w-screen flex flex-col items-center py-16 xl:py-24 px-4 sm:px-8 lg:px-0 bg-main relative max-w-full overflow-hidden">
             <div className="container flex flex-col items-center z-2">
-                <h2 className="text-3 xl:text-1 font-bold text-white text-center">{t('heading')}</h2>
-                <p className="max-w-156 text-5 text-white/80 text-center mt-3 leading-5">{t('subheading')}</p>
+                <MotionDiv delay={0.2}>
+                    <h2 className="text-3 xl:text-1 font-bold text-white text-center">{t('heading')}</h2>
+                </MotionDiv>
+                <MotionDiv delay={0.4}>
+                    <p className="max-w-156 text-5 text-white/80 text-center mt-3 leading-5">{t('subheading')}</p>
+                </MotionDiv>
 
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-10 w-full">
-                    {boardMembers.map((member) => (
-                        <BoardMemberCard key={member.name} name={member.name} image={member.image} title={pickLocale(member.title, locale)} />
+                    {boardMembers.map((member, index) => (
+                        <MotionDiv key={index} delay={0.6 + index * 0.1} axis="y" spring>
+                            <BoardMemberCard key={member.name} name={member.name} image={member.image} title={pickLocale(member.title, locale)} />
+                        </MotionDiv>
                     ))}
                 </div>
 
-                <h2 className="text-3 xl:text-1 font-bold text-white text-center mt-16">{t('executiveHeading')}</h2>
-
+                <MotionDiv delay={0.8}>
+                    <h2 className="text-3 xl:text-1 font-bold text-white text-center mt-16">{t('executiveHeading')}</h2>
+                </MotionDiv>
                 <div className="grid grid-cols-2 gap-6 mt-10 w-full lg:w-[calc(50%-0.75rem)]">
-                    {executiveManagement.map((member) => (
-                        <BoardMemberCard key={member.name} name={member.name} image={member.image} title={pickLocale(member.title, locale)} />
+                    {executiveManagement.map((member, index) => (
+                        <MotionDiv key={index} delay={0.6 + index * 0.1} axis="y" spring>
+                            <BoardMemberCard key={member.name} name={member.name} image={member.image} title={pickLocale(member.title, locale)} />
+                        </MotionDiv>
                     ))}
                 </div>
             </div>

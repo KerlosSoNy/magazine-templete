@@ -8,21 +8,18 @@ const nextConfig: NextConfig = {
       optimizePackageImports: ['gsap', 'swiper', 'framer-motion', 'leaflet', 'react-leaflet'],
     },
     images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'plus.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'tawq-cms.o-projects.org',
-      },
-    ],
-  },
+      unoptimized: true,
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'images.unsplash.com',
+        },
+        {
+          protocol: 'https',
+          hostname: 'plus.unsplash.com',
+        },
+      ],
+    },
 };
  
 const withNextIntl = createNextIntlPlugin();

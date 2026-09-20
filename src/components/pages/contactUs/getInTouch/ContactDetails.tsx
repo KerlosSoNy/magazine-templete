@@ -2,8 +2,9 @@ import { ReactNode } from "react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { LocalizedText, pickLocale } from "@/lib/i18n/pickLocale";
 import { resolveLocale } from "@/lib/i18n/locale";
-import { EmailOutlineIcon, GlobeOutlineIcon, LinkedInOutlineIcon, LocationOutlineIcon, MailboxOutlineIcon, PhoneOutlineIcon, XOutlineIcon } from "./icons";
+import { LinkedInOutlineIcon, XOutlineIcon } from "./icons";
 import { SocialLink } from "./SocialSidebar";
+import MotionDiv from "@/components/shared/motionDiv";
 
 export interface ContactDetailItem {
     icon: ReactNode;
@@ -118,21 +119,24 @@ export default async function ContactDetails({ items = defaultContactDetails }: 
                     </>
                 );
 
-                return item.href ? (
-                    <a
-                        key={index}
-                        href={item.href}
-                        className="flex flex-row items-start gap-3 hover:opacity-70 transition-opacity"
-                    >
-                        {content}
-                    </a>
-                ) : (
-                    <div key={index} className="flex flex-row items-start gap-3">
-                        {content}
-                    </div>
+                return (
+                    <MotionDiv key={index} delay={0.2 + index * 0.1} axis="x">
+                        {item.href ? (
+                            <a
+                                href={item.href}
+                                className="flex flex-row items-start gap-3 hover:opacity-70 transition-opacity"
+                            >
+                                {content}
+                            </a>
+                        ) : (
+                            <div className="flex flex-row items-start gap-3">
+                                {content}
+                            </div>
+                        )}
+                    </MotionDiv>
                 );
             })}
-            <div className="flex flex-row items-center gap-4">
+            <MotionDiv delay={0.2 + items.length * 0.1} axis="x" className="flex flex-row items-center gap-4">
                 {defaultSocialLinks.map((social, index) => (
                     <a
                         key={index}
@@ -143,7 +147,7 @@ export default async function ContactDetails({ items = defaultContactDetails }: 
                         {social.icon}
                     </a>
                 ))}
-            </div>
+            </MotionDiv>
         </div>
     );
 }

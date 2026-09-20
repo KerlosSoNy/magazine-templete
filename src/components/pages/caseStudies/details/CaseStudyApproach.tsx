@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 import ApproachStepCard from './ApproachStepCard'
+import MotionDiv from '@/components/shared/motionDiv'
 
 interface ApproachStep {
     number: string
@@ -15,15 +16,21 @@ export default async function CaseStudyApproach() {
         <div className="w-full bg-main">
             <div className="container mx-auto flex flex-col gap-14 py-16 lg:py-42">
                 <div className="flex flex-col gap-3 items-center text-center max-w-240 mx-auto">
-                    <span className="text-5 text-white/80">{t('eyebrow')}</span>
-                    <h2 className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-white">
-                        {t('heading')}
-                    </h2>
+                    <MotionDiv delay={0.2}>
+                        <span className="text-5 text-white/80">{t('eyebrow')}</span>
+                    </MotionDiv>
+                    <MotionDiv delay={0.4}>
+                        <h2 className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-white">
+                            {t('heading')}
+                        </h2>
+                    </MotionDiv>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-                    {steps.map((step) => (
-                        <ApproachStepCard key={step.number} step={step} />
+                    {steps.map((step, index) => (
+                        <MotionDiv key={index} spring axis="y" delay={1 + index * 0.1}>
+                            <ApproachStepCard key={step.number} step={step} />
+                        </MotionDiv>
                     ))}
                 </div>
             </div>

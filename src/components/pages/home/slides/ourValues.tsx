@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import DiscoverCards from '../cards/discover/DiscoverCards'
-
+import { motion } from 'framer-motion'
 export default function OurValues() {
     const t = useTranslations('HomePage.ourValues')
 
@@ -16,8 +16,18 @@ export default function OurValues() {
                 loading="eager"
             />
             <div className="flex flex-col w-full items-center text-center z-2">
-                <h2 className="max-w-150 text-3 3xl:text-1 font-bold leading-1 text-white">{t('title')}</h2>
-                <p className="max-w-128.75 text-6 3xl:text-5 text-white 3xl:mt-5 leading-6 3xl:leading-5">{t('description')}</p>
+                <motion.h2
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="max-w-150 text-3 3xl:text-1 font-bold leading-1 text-white">{t('title')}</motion.h2>
+                <motion.p
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="max-w-128.75 text-6 3xl:text-5 text-white 3xl:mt-5 leading-6 3xl:leading-5">{t('description')}</motion.p>
                 <DiscoverCards />
             </div>
         </div>

@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { whyJoinUsSteps } from './dummy'
 import WhyJoinUsStepCard from './WhyJoinUsStepCard'
+import MotionDiv from '@/components/shared/motionDiv'
 
 export default function WhyJoinUs() {
     const t = useTranslations('CareersPage.whyJoinUs')
@@ -15,13 +16,6 @@ export default function WhyJoinUs() {
     const rightColRef = useRef<HTMLDivElement>(null)
 
     const [travelDistance, setTravelDistance] = useState(0)
-
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ['start end', 'end start'],
-    })
-    const y = useTransform(scrollYProgress, [0, 1], [-30, 30])
-
     const { scrollYProgress: containerProgress } = useScroll({
         target: containerRef,
         offset: ['start start', 'end end'],
@@ -65,10 +59,10 @@ export default function WhyJoinUs() {
                         style={{ translateY }}
                         className="lg:sticky lg:top-24 flex flex-col gap-8 lg:gap-10"
                     >
-                        <h2 className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-white capitalize">
+                        <MotionDiv as='h2' delay={0.2} className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-white capitalize">
                             {t('heading')}
-                        </h2>
-                        <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden">
+                        </MotionDiv>
+                        <MotionDiv delay={0.4} className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden">
                             <motion.div className="absolute inset-x-0 -top-20 -bottom-20">
                                 <Image
                                     src="/images/careers/why-join-us.png"
@@ -78,20 +72,22 @@ export default function WhyJoinUs() {
                                     className="object-cover"
                                 />
                             </motion.div>
-                        </div>
-                        <p className="text-6 md:text-5 text-white">
+                        </MotionDiv>
+                        <MotionDiv delay={0.6} as='p' className="text-6 md:text-5 text-white">
                             {t('description')}
-                        </p>
+                        </MotionDiv>
                     </motion.div>
                 </div>
 
                 <div ref={rightColRef} className="lg:w-1/2 flex flex-col">
                     {whyJoinUsSteps.map((step, index) => (
-                        <WhyJoinUsStepCard
-                            key={step.number}
-                            step={step}
-                            isLast={index === whyJoinUsSteps.length - 1}
-                        />
+                        <MotionDiv key={step.number} delay={1 + index * 0.1} axis="x" spring>
+                            <WhyJoinUsStepCard
+                                key={step.number}
+                                step={step}
+                                isLast={index === whyJoinUsSteps.length - 1}
+                            />
+                        </MotionDiv>
                     ))}
                 </div>
             </div>

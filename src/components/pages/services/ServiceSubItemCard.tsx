@@ -10,7 +10,7 @@ export default function ServiceSubItemCard({ item }: { item: ServiceSubItem }) {
     return (
         <div className="flex gap-3 items-start">
             <Image src={item.icon} alt="" width={64} height={64} className="size-16 shrink-0" />
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1">
                 <span className="text-4 font-bold text-text-placeholder">{pickLocale(item.title, locale)}</span>
                 <p className="text-6 text-text-disabled">{pickLocale(item.description, locale)}</p>
             </div>

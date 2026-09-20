@@ -10,6 +10,7 @@ const CalendarIcon = () => (
 )
 
 import type { LocalizedText } from "@/lib/i18n/pickLocale"
+import MotionDiv from "@/components/shared/motionDiv"
 
 export interface NewsItem {
     date: LocalizedText
@@ -24,7 +25,7 @@ export default function NewsCard({ item, large }: { item: NewsItem, large?: bool
     const title = pickLocale(item.title, locale)
 
     return (
-        <div className="flex flex-col items-start w-[95%] mx-auto md:mx-0 md:w-full">
+        <MotionDiv delay={0.2} axis="y" spring className="flex flex-col items-start w-[95%] mx-auto md:mx-0 md:w-full">
             <div className={`relative w-full overflow-hidden rounded-xl ${large ? "h-70 3xl:h-82.5 max-h-82.5" : "h-51 3xl:h-61.5 max-h-61.5"} ]`}>
                 <Image
                     src={item.image}
@@ -48,6 +49,6 @@ export default function NewsCard({ item, large }: { item: NewsItem, large?: bool
                 titleClasses="text-main!"
                 svgColor="stroke-main"
             />
-        </div>
+        </MotionDiv>
     )
 }

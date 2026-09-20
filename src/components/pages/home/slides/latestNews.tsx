@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl"
 import { AnimatePresence, motion } from "framer-motion"
 import NewsCard from "../cards/news/NewsCard"
 import { latestNews } from "../cards/news/dummy"
-
 const ArrowLeft = () => (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="rtl:rotate-180">
         <path d="M13.3334 8H2.66675M2.66675 8L7.33341 3.33334M2.66675 8L7.33341 12.6667" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -82,12 +81,27 @@ export default function LatestNews() {
             <div className="container flex flex-col">
                 <div className="flex items-center justify-between px-4 md:px-0">
                     <div className="flex flex-col items-start">
-                        <span className="text-7 3xl:text-5 text-text-placeholder">{t("eyebrow")}</span>
-                        <h2 className="text-3 3xl:text-1 font-bold leading-3 3xl:leading-1 text-text-secondary mt-2 3xl:mt-4">
+                        <motion.span
+                            initial={{ opacity: 0, x: -40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: false, amount: 0.5 }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                            className="text-7 3xl:text-5 text-text-placeholder">{t("eyebrow")}</motion.span>
+                        <motion.h2
+                            initial={{ opacity: 0, x: -40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: false, amount: 0.5 }}
+                            transition={{ duration: 0.5, delay: 0.6 }}
+                            className="text-3 3xl:text-1 font-bold leading-3 3xl:leading-1 text-text-secondary mt-2 3xl:mt-4">
                             {t("headingLead")} <span className="text-main">{t("headingHighlight")}</span>
-                        </h2>
+                        </motion.h2>
                     </div>
-                    <div className="flex items-center gap-3">
+                    <motion.div
+                        initial={{ opacity: 0, x: -40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{ duration: 0.5, delay: 0.8 }}
+                        className="flex items-center gap-3">
                         <button
                             type="button"
                             aria-label={t("prevAria")}
@@ -104,7 +118,7 @@ export default function LatestNews() {
                         >
                             <ArrowRight />
                         </button>
-                    </div>
+                    </motion.div>
                 </div>
                 <div className={`grid ${gridColsClass} gap-5.25 mt-4 3xl:mt-8`}>
                     <AnimatePresence mode="popLayout" initial={false} custom={direction}>
@@ -117,10 +131,20 @@ export default function LatestNews() {
                                 initial="initial"
                                 animate="animate"
                                 exit="exit"
-                                transition={{ duration: 0.5, ease: 'easeInOut' }}
-                                className={slot === 0 && visibleCount > 1 ? "col-span-2" : "col-span-1"}
+                                transition={{
+                                    duration: 0.5,
+                                    ease: 'easeInOut',
+                                }}
+                                className={
+                                    slot === 0 && visibleCount > 1
+                                        ? 'col-span-2'
+                                        : 'col-span-1'
+                                }
                             >
-                                <NewsCard item={item} large={slot === 0} />
+                                <NewsCard
+                                    item={item}
+                                    large={slot === 0}
+                                />
                             </motion.div>
                         ))}
                     </AnimatePresence>

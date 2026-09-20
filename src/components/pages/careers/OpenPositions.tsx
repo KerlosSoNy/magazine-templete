@@ -6,6 +6,7 @@ import { jobPositions } from './dummy'
 import { useCareerApply } from '@/components/providers/CareerApplyProvider'
 import { pickLocale } from '@/lib/i18n/pickLocale'
 import JobPositionCard from './JobPositionCard'
+import MotionDiv from '@/components/shared/motionDiv'
 
 const PAGE_SIZE = 3
 const ALL_DEPARTMENTS = '__all__'
@@ -45,31 +46,35 @@ export default function OpenPositions() {
         <div id="open-positions" className="bg-white">
             <div className=" mx-auto flex flex-col items-center gap-16 py-16 lg:py-20">
                 <div className="flex container flex-col gap-9 w-full">
-                    <span className="text-5 text-text-placeholder">{t('eyebrow')}</span>
-                    <h2 className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-text-secondary capitalize">
+                    <MotionDiv as="span" delay={0.2} className="text-5 text-text-placeholder">{t('eyebrow')}</MotionDiv>
+                    <MotionDiv as="h1" delay={0.4} className="text-3 md:text-2 xl:text-1 font-bold leading-3 md:leading-2 xl:leading-1 text-text-secondary capitalize">
                         {t('headingPrefix')} <span className="text-main">{t('headingHighlight')}</span>
-                    </h2>
+                    </MotionDiv>
                     <div className="flex gap-4 items-center overflow-x-auto hide-scrollbar -mx-1 px-1">
-                        {departments.map((dept) => {
+                        {departments.map((dept, index) => {
                             const isActive = dept === department
                             return (
-                                <button
-                                    key={dept}
-                                    type="button"
-                                    onClick={() => handleDepartmentChange(dept)}
-                                    className={`h-9 px-4 rounded-lg text-7 whitespace-nowrap shrink-0 transition-all duration-300 ${isActive ? 'bg-main text-white' : 'bg-secondary-bg text-text-placeholder hover:bg-secondary-bg/70'
-                                        }`}
-                                >
-                                    {dept === ALL_DEPARTMENTS ? t('allDepartments') : dept}
-                                </button>
+                                <MotionDiv key={index} delay={0.6 + index * 0.1}>
+                                    <button
+                                        key={dept}
+                                        type="button"
+                                        onClick={() => handleDepartmentChange(dept)}
+                                        className={`h-9 px-4 rounded-lg text-7 whitespace-nowrap shrink-0 transition-all duration-300 ${isActive ? 'bg-main text-white' : 'bg-secondary-bg text-text-placeholder hover:bg-secondary-bg/70'
+                                            }`}
+                                    >
+                                        {dept === ALL_DEPARTMENTS ? t('allDepartments') : dept}
+                                    </button>
+                                </MotionDiv>
                             )
                         })}
                     </div>
                 </div>
 
                 <div className="flex flex-col w-full">
-                    {visibleJobs.map((job) => (
-                        <JobPositionCard key={job.id} job={job} onApply={openApplyForm} />
+                    {visibleJobs.map((job, index) => (
+                        <MotionDiv key={index} delay={0.6 + index * 0.1} axis="x" spring>
+                            <JobPositionCard key={job.id} job={job} onApply={openApplyForm} />
+                        </MotionDiv>
                     ))}
                 </div>
 
